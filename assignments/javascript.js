@@ -1,12 +1,13 @@
-/*
 let country = "Serbia";
 const continent = "Europe";
-let population = 6.8;
-// console.log(country, continent, population);
-let isIsland = false;
-const language = "serbian";
-console.log(isIsland, population, country, language);
-*/
+// let population = 6.8;
+// // console.log(country, continent, population);
+// let isIsland = false;
+let language;
+// console.log(typeof isIsland);
+// console.log(typeof population);
+// console.log(typeof country);
+// console.log(typeof language);
 
 // MATH OPERATORS
 const now = 2037;
@@ -52,14 +53,43 @@ const sladyNew = `I'm ${firstName}, a ${year - birthYear} year old ${job}`;
 // multiple
 // lines`); //creating multi line string (enter...logicno)
 
+//(asignment)
+let population = 6.8;
+// console.log(population / 2);
+// population++;
+// console.log(population);
+let finland = 6;
+// console.log(population > finland);
+let averagePopulation = 33;
+// console.log(averagePopulation > population);
+language = "serbian";
+// let description =
+//   country +
+//   " is in " +
+//   continent +
+//   ", and it's " +
+//   population +
+//   " people speak " +
+//   language +
+//   ".";
+
+let description = `${country} is in ${continent}, and it's ${population} people speak ${language}.`;
+// console.log(description);
+
+if (population > averagePopulation) {
+  console.log("Serbia population is above average.");
+} else {
+  console.log("Serbia population is bellow avarage");
+}
+
 //IF / ELSE STATEMNTS (if/else control structure)
 const age = 15;
 
 if (age >= 18) {
-  console.log("Sarah can start driving licence 🚗");
+  // console.log("Sarah can start driving licence 🚗");
 } else {
   const yearsLeft = 18 - age;
-  console.log(`Sarah is too young. Wait another ${yearsLeft} years :)`);
+  // console.log(`Sarah is too young. Wait another ${yearsLeft} years :)`);
 }
 
 let century;
