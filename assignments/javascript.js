@@ -42,12 +42,29 @@ const year = 2030;
 
 const slady =
   "I'm " + firstName + ", a " + (year - birthYear) + " yaers old " + job;
-console.log(slady);
+// console.log(slady);
 
 //...TEMPLATE LITERALS
 const sladyNew = `I'm ${firstName}, a ${year - birthYear} year old ${job}`;
-console.log(sladyNew);
+// console.log(sladyNew);
 //laksi nacin da se napise string. koristi se back tick, dugme iznad taba. variables se pisu ${ime var, ili func ili bilo sta}
-console.log(`String
-multiple
-lines`); //creating multi line string (enter...logicno)
+// console.log(`String
+// multiple
+// lines`); //creating multi line string (enter...logicno)
+
+//IF / ELSE STATEMNTS (if/else control structure)
+const age = 15;
+
+if (age >= 18) {
+  console.log("Sarah can start driving licence 🚗");
+} else {
+  const yearsLeft = 18 - age;
+  console.log(`Sarah is too young. Wait another ${yearsLeft} years :)`);
+}
+
+let century;
+if (birthYear <= 2000) {
+  century = 20;
+} else {
+  century = 21;
+}
