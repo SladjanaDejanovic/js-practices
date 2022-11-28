@@ -98,3 +98,17 @@ if (birthYear <= 2000) {
 } else {
   century = 21;
 }
+
+//TYPE CONVERSION
+const inputYear = "1994";
+console.log(Number(inputYear)); //this would give converted version, from string to number, but the original will still remain in a form of a string
+console.log(inputYear + 18); //that's why this isnt working still
+console.log(Number(inputYear) + 18);
+console.log(String(23));
+//TYPE COERCION
+console.log("i am " + 28 + " years old"); //whenever an operatior is dealing with 2 values that have different types. js will then behind the scenes convert one of the values to match the other value. plus will make numbers into string
+console.log("23" - "10" - 3); //minus operator trigers opposite conversion, making strings into numbers
+
+let n = "1" + 1; //"11" - sve pretvara u string
+n = n - 1; // a onda jer se koristi minus to n pretvara u broj
+console.log(n); //tako da n ispadne 10
