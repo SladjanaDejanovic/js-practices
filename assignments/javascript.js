@@ -83,7 +83,7 @@ if (population > averagePopulation) {
 }
 
 //IF / ELSE STATEMNTS (if/else control structure)
-const age = 15;
+var age = 15;
 
 if (age >= 18) {
   // console.log("Sarah can start driving licence 🚗");
@@ -123,13 +123,40 @@ n = n - 1; // a onda jer se koristi minus to n pretvara u broj
 
 let height; //ovde je var nedefinisano - undefined, a to je falsy value
 if (height) {
-  console.log("YEY Height is defined!");
+  //console.log("YEY Height is defined!");
 } else {
-  console.log("Height is UNDEFINED"); //i zato ce da pokaze ovu vrednost. i u slucaju da definisemo height da je 0, opet bi pokazivalo isto jer je 0 falsy value (u ovom scenariju, sa ovim if else statemnts to mu dodje kao bug)
+  //console.log("Height is UNDEFINED"); //i zato ce da pokaze ovu vrednost. i u slucaju da definisemo height da je 0, opet bi pokazivalo isto jer je 0 falsy value (u ovom scenariju, sa ovim if else statemnts to mu dodje kao bug)
 }
 height = 120;
 if (height) {
-  console.log("YEY Height is defined!");
+  //console.log("YEY Height is defined!");
 } else {
-  console.log("Height is UNDEFINED");
+  c; //onsole.log("Height is UNDEFINED");
 } // a u ovom slucaju gde smo odredili height pokazace prvu recenicu, koja je true.
+
+//EQUALITY OPERATORS == vs ===
+
+age = 18; //one = is for asigning value
+//if (age === 18) console.log("You just became an adult! :D"); //ako imam samo jedan line of code ne trebaju mi viticaste zagrade, kao za code block
+//samo ako je age tacno 18, to znace ova tri znaka jednako === , onda ce da se pokaze sta treba
+//=== strict equality operator, doesn't perform type coercion, it only returns true when both values are exactly the same:  "18" === 18  ----> false
+//== loose equality operator, does type coercion: "18" == 18  --->true
+//== se skoro nikad ne koristi
+
+const favorite = Number(prompt("What is your favorite number?"));
+//console.log(favorite);
+//console.log(typeof favorite);
+// if (favorite == 13) {
+//   console.log("Cool! 13 is an amazing number!");
+// }
+if (favorite === 13) {
+  console.log("Cool! 13 is an amazing number!");
+} else if (favorite === 7) {
+  console.log("7 is also a cool number");
+} else {
+  console.log("Number is not 13 or 7");
+}
+//if the first condition is false, then it checks for another condition (and another and another, as much else if there is) and if that's also false then it's gonna execute else
+
+//different operator:
+if (favorite !== 13) console.log("Why not 13?");
