@@ -77,9 +77,9 @@ let description = `${country} is in ${continent}, and it's ${population} people 
 // console.log(description);
 
 if (population > averagePopulation) {
-  console.log("Serbia population is above average.");
+  //console.log("Serbia population is above average.");
 } else {
-  console.log("Serbia population is bellow avarage");
+  //console.log("Serbia population is bellow avarage");
 }
 
 //IF / ELSE STATEMNTS (if/else control structure)
@@ -101,14 +101,35 @@ if (birthYear <= 2000) {
 
 //TYPE CONVERSION
 const inputYear = "1994";
-console.log(Number(inputYear)); //this would give converted version, from string to number, but the original will still remain in a form of a string
-console.log(inputYear + 18); //that's why this isnt working still
-console.log(Number(inputYear) + 18);
-console.log(String(23));
+//console.log(Number(inputYear)); //this would give converted version, from string to number, but the original will still remain in a form of a string
+//console.log(inputYear + 18); //that's why this isnt working still
+//console.log(Number(inputYear) + 18);
+//console.log(String(23));
 //TYPE COERCION
-console.log("i am " + 28 + " years old"); //whenever an operatior is dealing with 2 values that have different types. js will then behind the scenes convert one of the values to match the other value. plus will make numbers into string
-console.log("23" - "10" - 3); //minus operator trigers opposite conversion, making strings into numbers
+//console.log("i am " + 28 + " years old"); //whenever an operatior is dealing with 2 values that have different types. js will then behind the scenes convert one of the values to match the other value. plus will make numbers into string
+//console.log("23" - "10" - 3); //minus operator trigers opposite conversion, making strings into numbers
 
 let n = "1" + 1; //"11" - sve pretvara u string
 n = n - 1; // a onda jer se koristi minus to n pretvara u broj
-console.log(n); //tako da n ispadne 10
+//console.log(n); //tako da n ispadne 10
+
+//5 falsy values: 0, "", undefined, null. Nan
+//all of these falsy values will be converted to false when we attempt to convert them to a boolean.. everything else are thruty values
+// console.log(Boolean(0));
+// console.log(Boolean(undefined));
+// console.log(Boolean("Slady"));
+// console.log(Boolean({})); //empty object
+// console.log(Boolean(""));
+
+let height; //ovde je var nedefinisano - undefined, a to je falsy value
+if (height) {
+  console.log("YEY Height is defined!");
+} else {
+  console.log("Height is UNDEFINED"); //i zato ce da pokaze ovu vrednost. i u slucaju da definisemo height da je 0, opet bi pokazivalo isto jer je 0 falsy value (u ovom scenariju, sa ovim if else statemnts to mu dodje kao bug)
+}
+height = 120;
+if (height) {
+  console.log("YEY Height is defined!");
+} else {
+  console.log("Height is UNDEFINED");
+} // a u ovom slucaju gde smo odredili height pokazace prvu recenicu, koja je true.
