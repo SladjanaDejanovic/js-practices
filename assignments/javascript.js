@@ -143,20 +143,44 @@ age = 18; //one = is for asigning value
 //== loose equality operator, does type coercion: "18" == 18  --->true
 //== se skoro nikad ne koristi
 
-const favorite = Number(prompt("What is your favorite number?"));
-//console.log(favorite);
-//console.log(typeof favorite);
-// if (favorite == 13) {
-//   console.log("Cool! 13 is an amazing number!");
+// const favorite = Number(prompt("What is your favorite number?"));
+// console.log(favorite);
+// console.log(typeof favorite);
+//  if (favorite == 13) {
+//    console.log("Cool! 13 is an amazing number!");
+//  }
+
+// if (favorite === 13) {
+//   //console.log("Cool! 13 is an amazing number!");
+// } else if (favorite === 7) {
+//   //console.log("7 is also a cool number");
+// } else {
+//   //console.log("Number is not 13 or 7");
 // }
-if (favorite === 13) {
-  console.log("Cool! 13 is an amazing number!");
-} else if (favorite === 7) {
-  console.log("7 is also a cool number");
-} else {
-  console.log("Number is not 13 or 7");
-}
 //if the first condition is false, then it checks for another condition (and another and another, as much else if there is) and if that's also false then it's gonna execute else
 
 //different operator:
-if (favorite !== 13) console.log("Why not 13?");
+//if (favorite !== 13) console.log("Why not 13?");
+
+//LOGICAL OPERATOS
+const hasDriversLicence = true; //A
+const hasGoodVision = true; //B
+
+console.log(hasDriversLicence && hasGoodVision); //&& znaci AND
+console.log(hasDriversLicence || hasGoodVision); // || znaci OR
+console.log(!hasDriversLicence); //! znaci NOT
+
+// if (hasDriversLicence && hasGoodVision) {
+//   console.log("Sarah is able to drive");
+// } else {
+//   console.log("Someone else should drive.");
+// }
+
+const isTired = false; //C
+console.log(hasDriversLicence || hasGoodVision || isTired);
+
+if (hasDriversLicence && hasGoodVision && !isTired) {
+  console.log("Sarah is able to drive");
+} else {
+  console.log("Someone else should drive.");
+}
