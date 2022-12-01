@@ -166,9 +166,9 @@ age = 18; //one = is for asigning value
 const hasDriversLicence = true; //A
 const hasGoodVision = true; //B
 
-console.log(hasDriversLicence && hasGoodVision); //&& znaci AND
-console.log(hasDriversLicence || hasGoodVision); // || znaci OR
-console.log(!hasDriversLicence); //! znaci NOT
+//console.log(hasDriversLicence && hasGoodVision); //&& znaci AND
+//console.log(hasDriversLicence || hasGoodVision); // || znaci OR
+//console.log(!hasDriversLicence); //! znaci NOT
 
 // if (hasDriversLicence && hasGoodVision) {
 //   console.log("Sarah is able to drive");
@@ -177,10 +177,22 @@ console.log(!hasDriversLicence); //! znaci NOT
 // }
 
 const isTired = false; //C
-console.log(hasDriversLicence || hasGoodVision || isTired);
+//console.log(hasDriversLicence || hasGoodVision || isTired);
 
 if (hasDriversLicence && hasGoodVision && !isTired) {
-  console.log("Sarah is able to drive");
+  //console.log("Sarah is able to drive");
 } else {
-  console.log("Someone else should drive.");
+  //console.log("Someone else should drive.");
+}
+
+const numNeighbours = Number(
+  prompt("How many neighbour countries does your country have?")
+);
+
+if (numNeighbours == 1) {
+  console.log("Only one border");
+} else if (numNeighbours > 1) {
+  console.log("More than one border");
+} else {
+  console.log("No borders");
 }
