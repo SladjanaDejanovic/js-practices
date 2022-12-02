@@ -185,14 +185,14 @@ if (hasDriversLicence && hasGoodVision && !isTired) {
   //console.log("Someone else should drive.");
 }
 
-const numNeighbours = Number(
-  prompt("How many neighbour countries does your country have?")
-);
+// const numNeighbours = Number(
+//   prompt("How many neighbour countries does your country have?")
+// );
 
-if (numNeighbours == 1) {
-  console.log("Only one border");
-} else if (numNeighbours > 1) {
-  console.log("More than one border");
-} else {
-  console.log("No borders");
-}
+// if (numNeighbours === 1) {
+//   console.log("Only one border");
+// } else if (numNeighbours > 1) {
+//   console.log("More than one border");
+// } else {
+//   console.log("No borders");
+// }
