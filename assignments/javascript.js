@@ -196,3 +196,46 @@ if (hasDriversLicence && hasGoodVision && !isTired) {
 // } else {
 //   console.log("No borders");
 // }
+
+//  THE SWITCH STATEMENT
+
+const day = "tuesday";
+switch (day) {
+  case "monday": //day === 'monday'
+    console.log("Plan course structure");
+    console.log("Go to coding meetup");
+    break; //without break code just keeps executing
+  case "tuesday":
+    console.log("Prepare theory videos");
+    break;
+  case "wednsday":
+  case "thurstay": // ako hocemo da izvrsimo istu stvar za dva razlicita dana, onda mozemo da napisemo case"": i onda odma drugi ispod case"":   i onda ce to da se primeni na oba slucaja
+    console.log("Write code examples");
+    break;
+  case "friday":
+    console.log("Record videos");
+    break;
+  case "saturday":
+  case "sunday":
+    console.log("Enjoy the weekend");
+    break;
+  default: //like else block at the end of if else statement
+    console.log("Not a valid day");
+}
+
+//all this but as if/else statement:
+
+// if (day === "monday") {
+//   console.log("Plan course structure");
+//   console.log("Go to coding meetup");
+// } else if (day === "tuesday") {
+//   console.log("Prepare theory videos");
+// } else if (day === "wednsday" || day === "thursday") {
+//   console.log("Write code examples");
+// } else if (day === "friday") {
+//   console.log("Record videos");
+// } else if (day === "saturday" || day === "sunday") {
+//   console.log("Enjoy the weekend");
+// } else {
+//   console.log("Not a valid day");
+// }
