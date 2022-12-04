@@ -271,3 +271,15 @@ if (hasDriversLicence && hasGoodVision && !isTired) {
 //   default:
 //     console.log("Great language too! :D");
 // }
+
+///// STATEMTS AND EXPRESSIONS
+3 + 4; //expression is something that gives value
+1991;
+true && false && !true;
+
+if (23 > 10) {
+  const str = "23 is bigger";
+} // this is a statement (same as swtitch statemnt)(could be called declaration)
+
+//in template literals we can put only expressions (something that gives value). ${} --> that's expression. we can't insert any statement, like if/else statement, inside this ${}
+console.log(`I'm ${2037 - 1994} years old.`);
