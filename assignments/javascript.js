@@ -3,7 +3,7 @@ const continent = "Europe";
 // let population = 6.8;
 // // console.log(country, continent, population);
 // let isIsland = false;
-let language;
+//let language;
 // console.log(typeof isIsland);
 // console.log(typeof population);
 // console.log(typeof country);
@@ -68,7 +68,7 @@ let finland = 6;
 // console.log(population > finland);
 let averagePopulation = 33;
 // console.log(averagePopulation > population);
-language = "serbian";
+//language = "serbian";
 // let description =
 //   country +
 //   " is in " +
@@ -79,7 +79,7 @@ language = "serbian";
 //   language +
 //   ".";
 
-let description = `${country} is in ${continent}, and it's ${population} people speak ${language}.`;
+//let description = `${country} is in ${continent}, and it's ${population} people speak ${language}.`;
 // console.log(description);
 
 if (population > averagePopulation) {
@@ -210,29 +210,29 @@ if (hasDriversLicence && hasGoodVision && !isTired) {
 
 /////////////  THE SWITCH STATEMENT
 
-const day = "tuesday";
-switch (day) {
-  case "monday": //day === 'monday'
-    console.log("Plan course structure");
-    console.log("Go to coding meetup");
-    break; //without break code just keeps executing
-  case "tuesday":
-    console.log("Prepare theory videos");
-    break;
-  case "wednsday":
-  case "thurstay": // ako hocemo da izvrsimo istu stvar za dva razlicita dana, onda mozemo da napisemo case"": i onda odma drugi ispod case"":   i onda ce to da se primeni na oba slucaja
-    console.log("Write code examples");
-    break;
-  case "friday":
-    console.log("Record videos");
-    break;
-  case "saturday":
-  case "sunday":
-    console.log("Enjoy the weekend");
-    break;
-  default: //like else block at the end of if else statement
-    console.log("Not a valid day");
-}
+// const day = "tuesday";
+// switch (day) {
+//   case "monday": //day === 'monday'
+//     console.log("Plan course structure");
+//     console.log("Go to coding meetup");
+//     break; //without break code just keeps executing
+//   case "tuesday":
+//     console.log("Prepare theory videos");
+//     break;
+//   case "wednsday":
+//   case "thurstay": // ako hocemo da izvrsimo istu stvar za dva razlicita dana, onda mozemo da napisemo case"": i onda odma drugi ispod case"":   i onda ce to da se primeni na oba slucaja
+//     console.log("Write code examples");
+//     break;
+//   case "friday":
+//     console.log("Record videos");
+//     break;
+//   case "saturday":
+//   case "sunday":
+//     console.log("Enjoy the weekend");
+//     break;
+//   default: //like else block at the end of if else statement
+//     console.log("Not a valid day");
+// }
 
 //all this but as if/else statement:
 
@@ -249,4 +249,25 @@ switch (day) {
 //   console.log("Enjoy the weekend");
 // } else {
 //   console.log("Not a valid day");
+// }
+
+/// (assignment)
+// let language = "serbian";
+// switch (language) {
+//   case "mandarin":
+//   case "chinese":
+//     console.log("MOST number of native speakers!");
+//     break;
+//   case "spanish":
+//     console.log("2nd place in number of native speakers!");
+//     break;
+//   case "english":
+//     console.log("3rd place");
+//     break;
+//   case "hindi":
+//     console.log("Number 4");
+//   case "arabic":
+//     console.log("5th most spoken language");
+//   default:
+//     console.log("Great language too! :D");
 // }
