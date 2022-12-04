@@ -9,7 +9,8 @@ let language;
 // console.log(typeof country);
 // console.log(typeof language);
 
-// MATH OPERATORS
+//////// MATH OPERATORS
+
 const now = 2037;
 const ageSlady = now - 1994;
 const ageYuri = now - 1999;
@@ -20,14 +21,16 @@ const averageAge = (ageSlady + ageYuri) / 2;
 // const lastName = "Dejanovic";
 // console.log(firstName + " " + lastName);
 
-// ASSIGNMENT OPERATORS
+//////    ASSIGNMENT OPERATORS
+
 let x = 10 + 5; //x ce biti 15
 x += 10; // na vrednost x (koja je 15 zbog ovog iznad) dodaje se 10
 x *= 4; // vrednost x (koja je sad 25) mnozi se sa 4
 x++; //x = x + 1
 // console.log(x);
 
-// COMPARISON OPERATORS
+////////// COMPARISON OPERATORS
+
 // console.log(ageSlady > ageYuri);
 // console.log(ageYuri >= 30);
 
@@ -35,7 +38,8 @@ const isAge = ageYuri >= 30; //store this result if we need it later in code
 
 // console.log(now - 1994 > now - 1999); //isto sto i ovo: console.log(ageSlady > ageYuri);, da ne mora da se racuna posebno (12, 13, 14 red), nego odmah ovde ovako
 
-//STRINGS AND ...
+////////   STRINGS AND ...
+
 const firstName = "Slady";
 const job = "bookbinder";
 const birthYear = 1994;
@@ -45,7 +49,8 @@ const slady =
   "I'm " + firstName + ", a " + (year - birthYear) + " yaers old " + job;
 // console.log(slady);
 
-//...TEMPLATE LITERALS
+/////   ...TEMPLATE LITERALS
+
 const sladyNew = `I'm ${firstName}, a ${year - birthYear} year old ${job}`;
 // console.log(sladyNew);
 //laksi nacin da se napise string. koristi se back tick, dugme iznad taba. variables se pisu ${ime var, ili func ili bilo sta}
@@ -53,7 +58,8 @@ const sladyNew = `I'm ${firstName}, a ${year - birthYear} year old ${job}`;
 // multiple
 // lines`); //creating multi line string (enter...logicno)
 
-//(asignment)
+//(assignment)
+
 let population = 6.8;
 // console.log(population / 2);
 // population++;
@@ -82,7 +88,8 @@ if (population > averagePopulation) {
   //console.log("Serbia population is bellow avarage");
 }
 
-//IF / ELSE STATEMNTS (if/else control structure)
+/////////   IF / ELSE STATEMNTS (if/else control structure)
+
 var age = 15;
 
 if (age >= 18) {
@@ -99,7 +106,8 @@ if (birthYear <= 2000) {
   century = 21;
 }
 
-//TYPE CONVERSION
+//////////////  TYPE CONVERSION
+
 const inputYear = "1994";
 //console.log(Number(inputYear)); //this would give converted version, from string to number, but the original will still remain in a form of a string
 //console.log(inputYear + 18); //that's why this isnt working still
@@ -131,10 +139,10 @@ height = 120;
 if (height) {
   //console.log("YEY Height is defined!");
 } else {
-  c; //onsole.log("Height is UNDEFINED");
+  //console.log("Height is UNDEFINED");
 } // a u ovom slucaju gde smo odredili height pokazace prvu recenicu, koja je true.
 
-//EQUALITY OPERATORS == vs ===
+/////////////// EQUALITY OPERATORS == vs ===
 
 age = 18; //one = is for asigning value
 //if (age === 18) console.log("You just became an adult! :D"); //ako imam samo jedan line of code ne trebaju mi viticaste zagrade, kao za code block
@@ -162,7 +170,8 @@ age = 18; //one = is for asigning value
 //different operator:
 //if (favorite !== 13) console.log("Why not 13?");
 
-//LOGICAL OPERATOS
+//////////    LOGICAL OPERATOS
+
 const hasDriversLicence = true; //A
 const hasGoodVision = true; //B
 
@@ -185,6 +194,8 @@ if (hasDriversLicence && hasGoodVision && !isTired) {
   //console.log("Someone else should drive.");
 }
 
+//(assignment)
+
 // const numNeighbours = Number(
 //   prompt("How many neighbour countries does your country have?")
 // );
@@ -197,7 +208,7 @@ if (hasDriversLicence && hasGoodVision && !isTired) {
 //   console.log("No borders");
 // }
 
-//  THE SWITCH STATEMENT
+/////////////  THE SWITCH STATEMENT
 
 const day = "tuesday";
 switch (day) {
