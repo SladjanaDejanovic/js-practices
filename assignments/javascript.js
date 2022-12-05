@@ -282,4 +282,29 @@ if (23 > 10) {
 } // this is a statement (same as swtitch statemnt)(could be called declaration)
 
 //in template literals we can put only expressions (something that gives value). ${} --> that's expression. we can't insert any statement, like if/else statement, inside this ${}
-console.log(`I'm ${2037 - 1994} years old.`);
+//console.log(`I'm ${2037 - 1994} years old.`);
+
+///// THE CONDITIONAL (TERNATY) OPERATOR
+var age = 23;
+// age >= 18
+//   ? console.log("I like to drink wine 🍷") // if conditon is true then it will be executed this line of code, and we can put only 1 line of code after ?
+//   : console.log("I like to drink water"); //  ? if : else
+// used instead if else statement, it's also called ternaty operator bc it has 3 parts: condition, if part, else part
+
+//operetaror produces value, so it's an expression
+
+//useful to conditionally declare variables:
+const drink = age >= 18 ? "wine" : "water";
+console.log(drink);
+
+//any variable we declare inside a block is not available outside, so we have to declare it outside
+// let drink2;
+// if (age >= 18) {
+//   drink2 = "wine";
+// } else {
+//   drink2 = "water";
+// }
+// console.log(drink2);
+
+//it can be used in template literal:
+console.log(`I like to drink ${age >= 18 ? "wine" : "water"}`);
