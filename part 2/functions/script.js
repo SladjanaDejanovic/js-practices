@@ -80,3 +80,21 @@ const age3 = calcAge3(1994);
 console.log(age2, age3);
 
 //// we can call function declarationS BEFORE THEY ARE DEFINED IN A CODE. This isn't working with expressions
+
+//////  ARROW FUNCTIONS //////////
+//storing the value of arrow function in variable
+const calcAge4 = (birthYear) => 2037 - birthYear;
+
+//simple way of writing one line functions, withouth curly braces, and not using return bc it implicit
+const age4 = calcAge4(1994);
+console.log(age4);
+
+//for bigger code we need {} and return, and arrow functions don't get "this" keyword
+const yearsUntilRetirement = (birthYear, firstName) => {
+  const age = 2037 - birthYear;
+  const retirement = 65 - age;
+  //return retirement;
+  return `${firstName} retires in ${retirement} years.`;
+};
+console.log(yearsUntilRetirement(1994, "Slady"));
+console.log(yearsUntilRetirement(1999, "Yuri"));
