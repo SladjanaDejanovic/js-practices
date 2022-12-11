@@ -29,11 +29,11 @@ if (hasDriversLicense) console.log("I can drive!");
 
 // logger(); //  --->  invoking/calling/running the function
 
-function fruitProcessor(apples, oranges) {
-  //these parameters represent the input data of this function
-  const juice = `Juice with ${apples} apples and ${oranges} oranges.`;
-  return juice; // this will be the result of executing this function
-}
+// function fruitProcessor(apples, oranges) {
+//   //these parameters represent the input data of this function
+//   const juice = `Juice with ${apples} apples and ${oranges} oranges.`;
+//   return juice; // this will be the result of executing this function
+// }
 
 //running the function: (in parenteces we're specifying actual values for parameters apples and oranges ---> arguments)
 fruitProcessor(5, 0);
@@ -77,17 +77,18 @@ const calcAge3 = function (birthYear) {
 // expression produces value (this is expression:    function (birthYear) {return 2037 - birthYear;}   ), so weasign this value to this variable. this variable will hold function value basically
 
 const age3 = calcAge3(1994);
-console.log(age2, age3);
+// console.log(age2, age3);
 
 //// we can call function declarationS BEFORE THEY ARE DEFINED IN A CODE. This isn't working with expressions
 
 //////  ARROW FUNCTIONS //////////
+
 //storing the value of arrow function in variable
 const calcAge4 = (birthYear) => 2037 - birthYear;
 
 //simple way of writing one line functions, withouth curly braces, and not using return bc it implicit
 const age4 = calcAge4(1994);
-console.log(age4);
+// console.log(age4);
 
 //for bigger code we need {} and return, and arrow functions don't get "this" keyword
 const yearsUntilRetirement = (birthYear, firstName) => {
@@ -96,5 +97,19 @@ const yearsUntilRetirement = (birthYear, firstName) => {
   //return retirement;
   return `${firstName} retires in ${retirement} years.`;
 };
-console.log(yearsUntilRetirement(1994, "Slady"));
-console.log(yearsUntilRetirement(1999, "Yuri"));
+// console.log(yearsUntilRetirement(1994, "Slady"));
+// console.log(yearsUntilRetirement(1999, "Yuri"));
+
+//////   FUNCTION CALLING OTHER FUNCTIONS
+
+function cutFruitPieces(fruit) {
+  return fruit * 4;
+}
+
+function fruitProcessor(apples, oranges) {
+  const applePieces = cutFruitPieces(apples);
+  const orangePieces = cutFruitPieces(oranges);
+  const juice = `Juice with ${applePieces} pieces of apple and ${orangePieces} pieces of orange.`;
+  return juice;
+}
+console.log(fruitProcessor(2, 3));
