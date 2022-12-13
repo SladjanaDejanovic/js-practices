@@ -74,10 +74,9 @@ const calcAge3 = function (birthYear) {
   return 2037 - birthYear;
 };
 
-// expression produces value (this is expression:    function (birthYear) {return 2037 - birthYear;}   ), so weasign this value to this variable. this variable will hold function value basically
+// expression produces value (this is expression:    function (birthYear) {return 2037 - birthYear;}   ), so we asign this value to this variable. this variable will hold function value basically
 
 const age3 = calcAge3(1994);
-// console.log(age2, age3);
 
 //// we can call function declarationS BEFORE THEY ARE DEFINED IN A CODE. This isn't working with expressions
 
