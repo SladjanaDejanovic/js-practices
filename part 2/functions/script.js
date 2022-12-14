@@ -50,10 +50,10 @@ const appleOrangeJuice = fruitProcessor(2, 4);
 /////      DECLARATION VS EXPRESSION  ///////////////
 
 ///       FUNCTION DECLARATION
-function calcAge1(birthYear) {
-  const age = 2037 - birthYear; // we calculate the age first
-  return age; //and then return the value, we take it out of the function using "return " keyword, so we can use it later
-}
+// function calcAge1(birthYear) {
+//   const age = 2037 - birthYear; // we calculate the age first
+//   return age; //and then return the value, we take it out of the function using "return " keyword, so we can use it later
+// }
 
 //could be simplified, if all we want to do is to return this value, we don't need to store it in a variable:
 
@@ -96,8 +96,8 @@ const yearsUntilRetirement = (birthYear, firstName) => {
   //return retirement;
   return `${firstName} retires in ${retirement} years.`;
 };
-// console.log(yearsUntilRetirement(1994, "Slady"));
-// console.log(yearsUntilRetirement(1999, "Yuri"));
+console.log(yearsUntilRetirement(1994, "Slady"));
+console.log(yearsUntilRetirement(1999, "Yuri"));
 
 //////   FUNCTION CALLING OTHER FUNCTIONS
 
@@ -111,4 +111,25 @@ function fruitProcessor(apples, oranges) {
   const juice = `Juice with ${applePieces} pieces of apple and ${orangePieces} pieces of orange.`;
   return juice;
 }
-console.log(fruitProcessor(2, 3));
+// console.log(fruitProcessor(2, 3));
+
+//////////////////
+
+// const calcAge = function (birthYear) {
+//   return 2037 - birthYear;
+// };
+// const yearsUntilRetirement = function (birthYear, firstName) {
+//   const age = calcAge(birthYear);
+//   const retirement = 65 - age;
+// };
+
+// console.log(yearsUntilRetirement(1994, "Slady"));
+
+// // if (retirement > 0) {
+// //   console.log(`${firstName} reitres in ${retirement} years`);
+// //   return retirement;
+// // } else {
+// //   console.log(`${firstName} has already retired`);
+// //   return -1;
+// // }
+// after return function is over, can't do anything anymore, that's why this console.log after return won't work. return immediately exits the function, any line after it is not reached
