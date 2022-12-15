@@ -90,14 +90,14 @@ const age4 = calcAge4(1994);
 // console.log(age4);
 
 //for bigger code we need {} and return, and arrow functions don't get "this" keyword
-const yearsUntilRetirement = (birthYear, firstName) => {
-  const age = 2037 - birthYear;
-  const retirement = 65 - age;
-  //return retirement;
-  return `${firstName} retires in ${retirement} years.`;
-};
-console.log(yearsUntilRetirement(1994, "Slady"));
-console.log(yearsUntilRetirement(1999, "Yuri"));
+// const yearsUntilRetirement = (birthYear, firstName) => {
+//   const age = 2037 - birthYear;
+//   const retirement = 65 - age;
+//   //return retirement;
+//   return `${firstName} retires in ${retirement} years.`;
+// };
+// console.log(yearsUntilRetirement(1994, "Slady"));
+// console.log(yearsUntilRetirement(1999, "Yuri"));
 
 //////   FUNCTION CALLING OTHER FUNCTIONS
 
@@ -115,21 +115,21 @@ function fruitProcessor(apples, oranges) {
 
 //////////////////
 
-// const calcAge = function (birthYear) {
-//   return 2037 - birthYear;
-// };
-// const yearsUntilRetirement = function (birthYear, firstName) {
-//   const age = calcAge(birthYear);
-//   const retirement = 65 - age;
-// };
+const calcAge = function (birthYear) {
+  return 2037 - birthYear;
+};
+const yearsUntilRetirement = function (birthYear, firstName) {
+  const age = calcAge(birthYear);
+  const retirement = 65 - age;
+  // return `${firstName} will retire at ${retirement}`;
 
-// console.log(yearsUntilRetirement(1994, "Slady"));
-
-// // if (retirement > 0) {
-// //   console.log(`${firstName} reitres in ${retirement} years`);
-// //   return retirement;
-// // } else {
-// //   console.log(`${firstName} has already retired`);
-// //   return -1;
-// // }
+  if (retirement > 0) {
+    console.log(`${firstName} reitres in ${retirement} years`);
+    return retirement;
+  } else {
+    console.log(`${firstName} has already retired`);
+    return -1;
+  }
+};
+console.log(yearsUntilRetirement(1994, "Slady"));
 // after return function is over, can't do anything anymore, that's why this console.log after return won't work. return immediately exits the function, any line after it is not reached
