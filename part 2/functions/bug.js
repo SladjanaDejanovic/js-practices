@@ -18,3 +18,4 @@ console.log(yearsUntilRetirement(1994));
 //   console.log(`${firstName} has already retired`);
 //   return -1;
 // }
+// this if part was outside the function, that's why it didn't work.. and that return that wasn't working bc of some previous lines of code that i forgot to comment out
