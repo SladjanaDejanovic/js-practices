@@ -42,3 +42,44 @@ const ages = [
   calcAge(years[years.length - 1]),
 ];
 console.log(ages);
+
+//js has built in functions that we can apply directly on arrays, called METHODS. we can think of them as array operations
+
+//////Adding elements
+//to add an element to the end array:
+friends.push("Peter");
+console.log(friends);
+
+//if we wanna add something then check how long array is, store it in a variable then call it in console.log:
+// const newLenght = friends.push("Bob");
+// console.log(newLenght);
+
+//to add element on the beginning of the array:
+friends.unshift("John");
+console.log(friends);
+
+///Removing elements
+//remove last el:
+friends.pop(); ///we can do this as many as we want, so we can have this:
+// friends.pop();
+// friends.pop();
+console.log(friends);
+
+//to return what element was removed:
+const popped = friends.pop();
+console.log(popped);
+
+//to remove first el:
+friends.shift();
+console.log(friends);
+
+/////method that tells in which position is certain el in array:
+console.log(friends.indexOf("Steven"));
+
+//to check if el is in the array or not
+console.log(friends.includes("Steven"));
+console.log(friends.includes("Bob"));
+
+if (friends.includes("Steven")) {
+  console.log("You have a friend called Steven");
+}
