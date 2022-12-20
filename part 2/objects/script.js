@@ -66,8 +66,36 @@ const slady = {
   friends: ["Yuri", "Kris", "Marija", "Marijana"],
   hasDriversLicense: false,
 
-  calcAge: function (birthYear) {
-    return 2022 - birthYear;
-  }, // every function that is attached to an object is called method
+  // calcAge: function (birthYear) {
+  //   return 2022 - birthYear;
+  // }, // every function that is attached to an object is called method
+
+  // calcAge: function () {
+  //   // console.log(this);
+  //   return 2022 - this.birthYear;
+  // },
+
+  calcAge: function () {
+    this.age = 2022 - this.birthYear; //store it in a variable, this way it doesn't have to be computed every time we call a function (bc if it's some more complex computation it will take a lot of time), instead we retrive the property
+    return this.age;
+  },
+
+  /////Challenge:
+  //"Sladjana is a 28-years old frontend dev, and she has no driver's license."
+
+  getSummary: function () {
+    return `${this.firstName} is ${this.age}-years old ${
+      this.job
+    }, and she has ${this.hasDriversLicense ? "a" : "no"} driver's license.`;
+  },
 };
-console.log(slady.calcAge(1994));
+
+console.log(slady.calcAge());
+
+console.log(slady.age);
+console.log(slady.age);
+console.log(slady.age);
+
+// console.log(slady["calcAge"](1994));
+
+console.log(slady.getSummary());
