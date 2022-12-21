@@ -308,3 +308,5 @@ console.log(drink);
 
 //it can be used in template literal:
 console.log(`I like to drink ${age >= 18 ? "wine" : "water"}`);
+
+//  if-else are CONTROL structures, arrays and objects are DATA structures

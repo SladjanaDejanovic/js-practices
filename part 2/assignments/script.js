@@ -96,7 +96,7 @@ const myCountry = {
   country: "Serbia",
   capital: "Belgrade",
   language: "serbian",
-  population: 6.8,
+  population: 6,
   neighbours: [
     "Hungary",
     "Romania",
@@ -107,7 +107,17 @@ const myCountry = {
     "Bosnia and Herzegovina",
     "Croatia",
   ],
+  describe: function () {
+    return `${this.country} has ${this.population} milion ${this.language}-speaking people, ${this.neighbours.length} neighbouring countries and a capital called ${this.capital}.`;
+  },
+
+  checkIsIsland: function () {
+    return (this.isIsland = this.neighbours.lenght === 0 ? true : false);
+  },
 };
+console.log(myCountry.describe());
+
+console.log(myCountry.checkIsIsland());
 
 console.log(
   `${myCountry.country} has ${myCountry.population} milion ${myCountry.language}-speaking people, ${myCountry.neighbours.length} neighbouring countries and a capital called ${myCountry.capital}.`
@@ -115,14 +125,6 @@ console.log(
 
 myCountry.population += 2;
 console.log(myCountry.population);
+
 myCountry["population"] -= 2;
 console.log(myCountry.population);
-
-myCountry.describe = function () {
-  return `${this.country} has ${this.population} milion ${this.language}-speaking people, ${this.neighbours.length} neighbouring countries and a capital called ${this.capital}.`;
-};
-console.log(myCountry.describe());
-
-myCountry.checkIsland = function () {
-  this.isIsland = this.neighbours.length === 0 ? true : false;
-};
