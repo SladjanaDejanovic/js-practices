@@ -45,7 +45,7 @@ describePopulation("South Korea", 51.74);
 
 /////////// ARRAYS /////////////
 const populations = [6.8, 214, 51.74, 100];
-console.log(populations.lenght === 4);
+// console.log(populations.lenght === 4);
 
 const percentages = [
   percentageOfWorld1(populations[0]),
@@ -53,7 +53,7 @@ const percentages = [
   percentageOfWorld1(populations[2]),
   percentageOfWorld1(populations[3]),
 ];
-console.log(percentages);
+// console.log(percentages);
 
 ///// array methods ////
 
@@ -69,9 +69,9 @@ const neighbours = [
 ];
 
 neighbours.push("Utopia");
-console.log(neighbours);
+// console.log(neighbours);
 neighbours.pop();
-console.log(neighbours);
+// console.log(neighbours);
 
 //how i did it:
 // if (neighbours.includes("Germany") === false) {
@@ -83,9 +83,46 @@ console.log(neighbours);
 // console.log(neighbours);
 
 //solution from course:
-if (!neighbours.includes("Germany")) {
-  console.log("Probably not a central Europian country :)");
-}
+// if (!neighbours.includes("Germany")) {
+//   console.log("Probably not a central Europian country :)");
+// }
 
 neighbours[neighbours.indexOf("Bosnia and Herzegovina")] = "B&H";
-console.log(neighbours);
+// console.log(neighbours);
+
+/////////// OBJECTS //////////////
+
+const myCountry = {
+  country: "Serbia",
+  capital: "Belgrade",
+  language: "serbian",
+  population: 6.8,
+  neighbours: [
+    "Hungary",
+    "Romania",
+    "Bulgaria",
+    "North Macedonia",
+    "Albania",
+    "Montenegro",
+    "Bosnia and Herzegovina",
+    "Croatia",
+  ],
+};
+
+console.log(
+  `${myCountry.country} has ${myCountry.population} milion ${myCountry.language}-speaking people, ${myCountry.neighbours.length} neighbouring countries and a capital called ${myCountry.capital}.`
+);
+
+myCountry.population += 2;
+console.log(myCountry.population);
+myCountry["population"] -= 2;
+console.log(myCountry.population);
+
+myCountry.describe = function () {
+  return `${this.country} has ${this.population} milion ${this.language}-speaking people, ${this.neighbours.length} neighbouring countries and a capital called ${this.capital}.`;
+};
+console.log(myCountry.describe());
+
+myCountry.checkIsland = function () {
+  this.isIsland = this.neighbours.length === 0 ? true : false;
+};
