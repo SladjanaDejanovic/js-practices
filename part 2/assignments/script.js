@@ -115,16 +115,24 @@ const myCountry = {
     return (this.isIsland = this.neighbours.lenght === 0 ? true : false);
   },
 };
-console.log(myCountry.describe());
+// console.log(myCountry.describe());
 
-console.log(myCountry.checkIsIsland());
+// console.log(myCountry.checkIsIsland());
 
-console.log(
-  `${myCountry.country} has ${myCountry.population} milion ${myCountry.language}-speaking people, ${myCountry.neighbours.length} neighbouring countries and a capital called ${myCountry.capital}.`
-);
+// console.log(
+//   `${myCountry.country} has ${myCountry.population} milion ${myCountry.language}-speaking people, ${myCountry.neighbours.length} neighbouring countries and a capital called ${myCountry.capital}.`
+// );
 
 myCountry.population += 2;
-console.log(myCountry.population);
+// console.log(myCountry.population);
 
 myCountry["population"] -= 2;
-console.log(myCountry.population);
+// console.log(myCountry.population);
+
+////////////  LOOPS //////////
+
+//// for loop
+
+for (let vote = 1; vote <= 50; vote++) {
+  console.log(`Voter number ${vote} is currently voting.`);
+}
