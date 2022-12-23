@@ -44,7 +44,7 @@ describePopulation("Brazil", 214);
 describePopulation("South Korea", 51.74);
 
 /////////// ARRAYS /////////////
-const populations = [6.8, 214, 51.74, 100];
+// const populations = [6.8, 214, 51.74, 100];
 // console.log(populations.lenght === 4);
 
 const percentages = [
@@ -135,4 +135,12 @@ myCountry["population"] -= 2;
 
 for (let vote = 1; vote <= 50; vote++) {
   console.log(`Voter number ${vote} is currently voting.`);
+}
+
+/// looping arrays, continue and break
+
+const populations = [6.8, 214, 51.74, 100];
+const percentages2 = [];
+for (let i = 0; i < populations.length; i++) {
+  push.percentages2();
 }
