@@ -44,7 +44,7 @@ describePopulation("Brazil", 214);
 describePopulation("South Korea", 51.74);
 
 /////////// ARRAYS /////////////
-// const populations = [6.8, 214, 51.74, 100];
+const populations = [6.8, 214, 51.74, 100];
 // console.log(populations.lenght === 4);
 
 const percentages = [
@@ -53,7 +53,7 @@ const percentages = [
   percentageOfWorld1(populations[2]),
   percentageOfWorld1(populations[3]),
 ];
-// console.log(percentages);
+console.log(percentages);
 
 ///// array methods ////
 
@@ -133,14 +133,27 @@ myCountry["population"] -= 2;
 
 //// for loop
 
-for (let vote = 1; vote <= 50; vote++) {
-  console.log(`Voter number ${vote} is currently voting.`);
-}
+// for (let vote = 1; vote <= 50; vote++) {
+//   console.log(`Voter number ${vote} is currently voting.`);
+// }
 
 /// looping arrays, continue and break
 
-const populations = [6.8, 214, 51.74, 100];
+const populations2 = [6.8, 214, 51.74, 100];
+// const percentages2 = [];
+// // for (let i = 0; i < populations2.length; i++) {
+// //   percentages2.push(percentageOfWorld1(i));
+// // }
+// for (let i = 0; i < populations2.lenght; i++) {
+//   const perc = percentageOfWorld1(populations2[i]);
+//   percentages2.push(perc);
+// }
+// console.log(percentages2);
+
+// const populations2 = [10, 1441, 332, 83];
 const percentages2 = [];
-for (let i = 0; i < populations.length; i++) {
-  push.percentages2();
+for (let i = 0; i < populations2.length; i++) {
+  const perc = percentageOfWorld1(populations2[i]);
+  percentages2.push(perc);
 }
+console.log(percentages2);
