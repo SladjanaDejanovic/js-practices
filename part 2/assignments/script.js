@@ -140,20 +140,19 @@ myCountry["population"] -= 2;
 /// looping arrays, continue and break
 
 const populations2 = [6.8, 214, 51.74, 100];
-// const percentages2 = [];
-// // for (let i = 0; i < populations2.length; i++) {
-// //   percentages2.push(percentageOfWorld1(i));
-// // }
-// for (let i = 0; i < populations2.lenght; i++) {
-//   const perc = percentageOfWorld1(populations2[i]);
-//   percentages2.push(perc);
-// }
-// console.log(percentages2);
-
-// const populations2 = [10, 1441, 332, 83];
 const percentages2 = [];
+// for (let i = 0; i < populations2.length; i++) {
+//   percentages2.push(percentageOfWorld1(populations2[i]));
+// }
+
 for (let i = 0; i < populations2.length; i++) {
   const perc = percentageOfWorld1(populations2[i]);
   percentages2.push(perc);
 }
+
+// for (let i = 0; i < populations2.length; i++) {
+//   const perc = percentageOfWorld1(populations2[i]);
+//   percentages2.push(perc);
+// }
+
 console.log(percentages2);
