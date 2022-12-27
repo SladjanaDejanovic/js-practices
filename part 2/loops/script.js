@@ -71,7 +71,7 @@ for (let i = 0; i < years.length; i++) {
 // }
 
 /////// WHILE LOOP //////////
-//specifying only a condition, doesn't need a counter (number that in increasing), only a condtition to remain true so it can keep running
+//specifying only a condition, doesn't need a counter (number that is increasing), only a condition to remain true so it can keep running
 // console.log("-------while loop");
 let rep = 1;
 while (rep <= 10) {
