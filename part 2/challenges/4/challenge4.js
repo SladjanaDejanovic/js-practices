@@ -4,7 +4,7 @@
 2. create empty arrays for tips and totals
 3. use the calcTip function from before. use a for loop to perform those 10 calcultions
 
-TEST DATA: 22, 295, 176, 440, 37, 105, 10, 1100, 86, 52
+TEST DATAgit : 22, 295, 176, 440, 37, 105, 10, 1100, 86, 52
 
 hint: call calcTip in the loop and use push method to add values to the tips and total arrays
 
