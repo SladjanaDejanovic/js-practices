@@ -93,8 +93,6 @@ const slady = {
 console.log(slady.calcAge());
 
 console.log(slady.age);
-console.log(slady.age);
-console.log(slady.age);
 
 // console.log(slady["calcAge"](1994));
 

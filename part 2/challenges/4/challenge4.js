@@ -1,10 +1,10 @@
 "use strict";
 /*
-1.craete array "bills" containing all 10 test values
+1.craete array "bills" containing all 10 test bill values
 2. create empty arrays for tips and totals
-3. use the calcTip function from before. use a for loop to perform the 10 calcultions
+3. use the calcTip function from before. use a for loop to perform those 10 calcultions
 
-test data: 22, 295, 176, 440, 37, 105, 10, 1100, 86, 52
+TEST DATA: 22, 295, 176, 440, 37, 105, 10, 1100, 86, 52
 
 hint: call calcTip in the loop and use push method to add values to the tips and total arrays
 
