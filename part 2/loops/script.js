@@ -8,8 +8,6 @@
 
 //for (let variable name = from what number is starting; condition, in this case rep<=10, meaning that loop will be running while this is true; rep ++ means increasing by one after every step){action that will be executed for this loop}
 
-//traditional counter variable name is i
-
 const slady = [
   "Sladjana",
   "Dejanovic",
