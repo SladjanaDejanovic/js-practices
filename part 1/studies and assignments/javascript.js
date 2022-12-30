@@ -23,9 +23,9 @@ const averageAge = (ageSlady + ageYuri) / 2;
 
 //////    ASSIGNMENT OPERATORS
 
-let x = 10 + 5; //x ce biti 15
-x += 10; // na vrednost x (koja je 15 zbog ovog iznad) dodaje se 10
-x *= 4; // vrednost x (koja je sad 25) mnozi se sa 4
+let x = 10 + 5;
+x += 10; // to value x (which is 15 bc of the above) add 10
+x *= 4; // value x (which is now 25) times 4
 x++; //x = x + 1
 // console.log(x);
 
@@ -58,7 +58,7 @@ const sladyNew = `I'm ${firstName}, a ${year - birthYear} year old ${job}`;
 // multiple
 // lines`); //creating multi line string (enter...logicno)
 
-//(assignment)
+///////(assignment)
 
 let population = 6.8;
 // console.log(population / 2);
@@ -83,9 +83,9 @@ let averagePopulation = 33;
 // console.log(description);
 
 if (population > averagePopulation) {
-  //console.log("Serbia population is above average.");
+  //console.log("Serbian population is above average.");
 } else {
-  //console.log("Serbia population is bellow avarage");
+  //console.log("Serbian population is bellow avarage");
 }
 
 /////////   IF / ELSE STATEMNTS (if/else control structure)
@@ -93,7 +93,7 @@ if (population > averagePopulation) {
 var age = 15;
 
 if (age >= 18) {
-  // console.log("Sarah can start driving licence 🚗");
+  // console.log("Sarah can start driving 🚗");
 } else {
   const yearsLeft = 18 - age;
   // console.log(`Sarah is too young. Wait another ${yearsLeft} years :)`);
@@ -113,15 +113,20 @@ const inputYear = "1994";
 //console.log(inputYear + 18); //that's why this isnt working still
 //console.log(Number(inputYear) + 18);
 //console.log(String(23));
-//TYPE COERCION
-//console.log("i am " + 28 + " years old"); //whenever an operatior is dealing with 2 values that have different types. js will then behind the scenes convert one of the values to match the other value. plus will make numbers into string
-//console.log("23" - "10" - 3); //minus operator trigers opposite conversion, making strings into numbers
+
+//////////TYPE COERCION
+
+//console.log("i am " + 28 + " years old"); //whenever an operatior is dealing with 2 values that have different types. js will then behind the scenes convert one of the values to match the other value. PLUS WILL MAKE NUMBERS INTO STRINGS
+//console.log("23" - "10" - 3); //MINUS operator trigers opposite conversion, making STRINGS INTO NUMBERES
 
 let n = "1" + 1; //"11" - sve pretvara u string
 n = n - 1; // a onda jer se koristi minus to n pretvara u broj
 //console.log(n); //tako da n ispadne 10
 
-//5 falsy values: 0, "", undefined, null. Nan
+/////FALSY AND THRUTY VALUES
+
+//5 falsy values: 0, "", undefined, null, NaN
+
 //all of these falsy values will be converted to false when we attempt to convert them to a boolean.. everything else are thruty values
 // console.log(Boolean(0));
 // console.log(Boolean(undefined));
@@ -147,8 +152,11 @@ if (height) {
 age = 18; //one = is for asigning value
 //if (age === 18) console.log("You just became an adult! :D"); //ako imam samo jedan line of code ne trebaju mi viticaste zagrade, kao za code block
 //samo ako je age tacno 18, to znace ova tri znaka jednako === , onda ce da se pokaze sta treba
+
 //=== strict equality operator, doesn't perform type coercion, it only returns true when both values are exactly the same:  "18" === 18  ----> false
+
 //== loose equality operator, does type coercion: "18" == 18  --->true
+
 //== se skoro nikad ne koristi
 
 // const favorite = Number(prompt("What is your favorite number?"));
@@ -194,7 +202,7 @@ if (hasDriversLicence && hasGoodVision && !isTired) {
   //console.log("Someone else should drive.");
 }
 
-//(assignment)
+/////////(assignment)
 
 // const numNeighbours = Number(
 //   prompt("How many neighbour countries does your country have?")
@@ -251,7 +259,7 @@ if (hasDriversLicence && hasGoodVision && !isTired) {
 //   console.log("Not a valid day");
 // }
 
-/// (assignment)
+/////////// (assignment)
 // let language = "serbian";
 // switch (language) {
 //   case "mandarin":
@@ -284,7 +292,8 @@ if (23 > 10) {
 //in template literals we can put only expressions (something that gives value). ${} --> that's expression. we can't insert any statement, like if/else statement, inside this ${}
 //console.log(`I'm ${2037 - 1994} years old.`);
 
-///// THE CONDITIONAL (TERNATY) OPERATOR
+////////    THE CONDITIONAL (TERNATY) OPERATOR
+
 var age = 23;
 // age >= 18
 //   ? console.log("I like to drink wine 🍷") // if conditon is true then it will be executed this line of code, and we can put only 1 line of code after ?
