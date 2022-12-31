@@ -86,3 +86,4 @@ while (dice !== 6) {
     console.log("Loop is about to end...");
   }
 }
+//Math.trunc will make it a whole number, without a decimal like Math.random does

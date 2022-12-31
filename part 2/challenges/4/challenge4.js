@@ -1,4 +1,5 @@
 "use strict";
+
 /*
 1.craete array "bills" containing all 10 test bill values
 2. create empty arrays for tips and totals
@@ -9,7 +10,6 @@ TEST DATAgit : 22, 295, 176, 440, 37, 105, 10, 1100, 86, 52
 hint: call calcTip in the loop and use push method to add values to the tips and total arrays
 
 bonus: write a function calcAverage which takes an array called "arr" as an argument. this func calculates the average of all numbers in the given array. call the func with "totals" array
-
 */
 
 const calcTip = function (bill) {
@@ -28,7 +28,7 @@ for (let i = 0; i < bills.length; i++) {
 
 console.log(bills, tips, totals);
 
-//bonus:
+/////bonus:
 
 // function calcAverage(arr){}
 const calcAverage = function (arr) {
