@@ -97,3 +97,5 @@ console.log(slady.age);
 // console.log(slady["calcAge"](1994));
 
 console.log(slady.getSummary());
+
+console.table(slady)

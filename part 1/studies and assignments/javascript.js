@@ -114,6 +114,8 @@ const inputYear = "1994";
 //console.log(Number(inputYear) + 18);
 //console.log(String(23));
 
+//prompt window always returns a string, no matter what the input is (if we put 10, later in code it will be "10", it won't be a number, until we turn it into a number with Number())
+
 //////////TYPE COERCION
 
 //console.log("i am " + 28 + " years old"); //whenever an operatior is dealing with 2 values that have different types. js will then behind the scenes convert one of the values to match the other value. PLUS WILL MAKE NUMBERS INTO STRINGS
