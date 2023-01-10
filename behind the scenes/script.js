@@ -1,7 +1,7 @@
 "use strict";
 
-/// Scope
-
+/// Scope   ///////////////
+/*
 // const and let are block scoped - only available inside {}, inside the block in which they were created
 //var are function scoped(but is not good practise to use var)
 // functions are block scoped
@@ -42,3 +42,43 @@ const firstName = "Slady";
 calcAge(1994);
 // console.log(age); // we are outside of the scope of age variable, so we can't access it
 // printAge(); //this too
+*/
+
+/// this Keyword   //////////
+
+// console.log(this); //window, global scope
+
+const calcAge = function (birthYear) {
+  console.log(2023 - birthYear);
+  console.log(this); // it will be undefiend
+};
+
+calcAge(1994);
+
+const calcAgeArrow = (birthYear) => {
+  console.log(2023 - birthYear);
+  console.log(this); // it will be window, bc arrow func doesn't get it's own this keyword, so it uses this keyword from its parent function/scope
+};
+calcAgeArrow(1994);
+
+const slady = {
+  year: 1994,
+  calcAge: function () {
+    console.log(this);
+    console.log(2023 - this.year);
+  },
+};
+slady.calcAge();
+
+// when we have method call, this keyword inside of the method will be the object that is calling the method(in this case slady object)
+// this keyword will point to the object that is calling the method, not the method where we wrote this keyword
+
+/// Method borrowing  /////////
+const yuri = {
+  year: 1999,
+};
+
+// function is just a value, so we can do this:
+yuri.calcAge = slady.calcAge;
+
+yuri.calcAge(); // this keyword now points to yuri (this keyword written in calcAge func in slady object)
