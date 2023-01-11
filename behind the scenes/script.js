@@ -143,6 +143,7 @@ addArrow(2, 5, 8);
 
 // Primitives vs. Objects (Primitive vs. Reference Types) //////
 
+/*
 // primitives: number, string, boolean, undefiend, null, symbol, bigint (primitive types)
 // objects: object literal, array, function ... (reference types)
 
@@ -155,6 +156,7 @@ console.log(age); //31
 console.log(oldAge); // 30
 
 // objects are stored in memory heap, which works like this: const me has address in call stack 0003, that holds a value of a reference of an memory address in heap, where is the actual value of the object (address 0003 with value D30F, D30F in heap holds {name: "Slady", age: 28}. when we say that friend = me, now friend points to the same address as me, which is 0003, referencing it's value in heap. so when we say that friend.age = 25, we are changing that in the object, which is the object that 0003 address is eventually leading to
+// that's why it is not a problem to use const when making objects, we can still change its value
 
 const me = {
   name: "Slady",
@@ -167,3 +169,48 @@ console.log("Friend:", friend);
 console.log("Me:", me);
 
 // so when we think that we are copying the object (friend = me), we are actually creating a new variable that is pointing to the exact same object
+*/
+
+/// practising:
+let lastName = "Williams";
+let oldLastName = lastName;
+lastName = "Davis";
+console.log(lastName, oldLastName);
+
+const jessica = {
+  firstName: "Jessica",
+  lastName: "Williams",
+  age: 27,
+};
+
+const marriedJessica = jessica;
+marriedJessica.lastName = "Davis";
+console.log("Before marriage:", jessica);
+console.log("After marriage:", marriedJessica);
+
+// both of these two variables (jessica nad marriedJessica) simply point to exactly the same memory address in the heap. And that's because in the stack, they both hold the same memory address reference. And so of course, it makes sense that if we change a property on marriedJessica, it will also change on Jessica itself.
+// const is not the problem here, bc the only thing it has to be constant is the value in stack, which we are not actually changing. The only thing that we are changing is the underlying object that is stored in the heap.
+// we can't change the value to the new memory address ( marriedJessica = {}), if it's not let
+
+// Copying the object, and changing one without affecting the other:
+
+const jessica2 = {
+  firstName: "Jessica",
+  lastName: "Williams",
+  age: 27,
+  family: ["Alice", "Bob"],
+};
+
+const jessicaCopy = Object.assign({}, jessica2); // calling this function, which will create a new object with all properies copied
+// this is a shallow copy, meaning it only copies on first level, while deep clone would copy everything
+
+jessicaCopy.lastName = "Davis";
+// console.log("Before marriage:", jessica2);
+// console.log("After marriage:", jessicaCopy);
+
+jessicaCopy.family.push("Mary");
+jessicaCopy.family.push("John"); // we are now manipalitng object whitin the object (array that is inside an object literal)
+
+console.log("Before marriage:", jessica2);
+console.log("After marriage:", jessicaCopy);
+// now both of them has an array of 4 members
