@@ -45,8 +45,8 @@ calcAge(1994);
 */
 
 /// this Keyword   //////////
-
-// console.log(this); //window, global scope
+/*
+console.log(this); //window, global scope
 
 const calcAge = function (birthYear) {
   console.log(2023 - birthYear);
@@ -82,3 +82,59 @@ const yuri = {
 yuri.calcAge = slady.calcAge;
 
 yuri.calcAge(); // this keyword now points to yuri (this keyword written in calcAge func in slady object)
+*/
+
+const slady = {
+  // this is not a block scope, it's just an object literal, how we define objects
+  firstName: "Sladjana",
+  year: 1994,
+  calcAge: function () {
+    console.log(2023 - this.year);
+
+    // It's a clear rule that a regular function call has the this keyword set to undefined.
+    // There are two solutions to this problem. The first solution is to use an extra variable that we usually call self utside of the function, and then we set that to this.  And so then through the scope chain, self will be equal to this. And so JavaScript goes up the scope chain, into the parent scope, which is calcAge. So here is where self is defined, and it is defined as this.
+
+    // const self = this;
+    // const isMillenial = function () {
+    //   // console.log(this);
+    //   // console.log(this.year >= 1981 && this.year <= 1996);
+    //   console.log(self.year >= 1981 && self.year <= 1996);
+    // };
+    // isMillenial(); // bc this is a regular function call (not an arrow function), this kw in it is undefiend, so we get an error when calling it
+
+    // Second, more modern solution is to use arrow function
+    // bc arrow function doesn't have its own this kw, so it will look up fore parent's this kw, in this case it's in calcAge
+    const isMillenial = () => {
+      console.log(this);
+      console.log(this.year >= 1981 && this.year <= 1996);
+    };
+    isMillenial();
+  },
+
+  greet: () => {
+    console.log(this);
+    console.log(`Hey ${this.firstName}`); //arrow func doesn't have theirs this keyword, it wil take this kw from it's parent, but object is in global scope, so this will be undefiend
+  },
+};
+slady.greet();
+slady.calcAge();
+
+// Arguments keyword //////
+
+// functions also get access to an arguments keyword.  just like the this keyword, the arguments keyword is only available in regular functions.
+
+const addExpr = function (a, b) {
+  console.log(arguments);
+  return a + b;
+};
+addExpr(2, 5);
+
+// this can be useful when we need a function to accept more parameters than we actually specified. it is completely legal to add more arguments. They will not have a name, so we didn't name them, but they exist. And we can see them here in the arguments array.
+addExpr(2, 5, 8, 12);
+
+//arrow func doesn't ahve access to arguments kw
+var addArrow = (a, b) => {
+  console.log(arguments);
+  return a + b;
+};
+addArrow(2, 5, 8);
