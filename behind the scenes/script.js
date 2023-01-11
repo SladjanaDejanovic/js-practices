@@ -84,6 +84,7 @@ yuri.calcAge = slady.calcAge;
 yuri.calcAge(); // this keyword now points to yuri (this keyword written in calcAge func in slady object)
 */
 
+/*
 const slady = {
   // this is not a block scope, it's just an object literal, how we define objects
   firstName: "Sladjana",
@@ -138,3 +139,31 @@ var addArrow = (a, b) => {
   return a + b;
 };
 addArrow(2, 5, 8);
+*/
+
+// Primitives vs. Objects (Primitive vs. Reference Types) //////
+
+// primitives: number, string, boolean, undefiend, null, symbol, bigint (primitive types)
+// objects: object literal, array, function ... (reference types)
+
+//primitives are stores in call stack, and variable will actually point to address in call stack where the value is stored. and this kind of value can't be changed (that's why we use let instead of const). let's say let age points to address 0001 where is value 30. the we say that oldAge is equal to age, which means that oldAge will point to same address, with a value of 30. then when we say that age is now equal to 31, that creates new address with a new value of 31
+
+let age = 30;
+let oldAge = age;
+age = 31;
+console.log(age); //31
+console.log(oldAge); // 30
+
+// objects are stored in memory heap, which works like this: const me has address in call stack 0003, that holds a value of a reference of an memory address in heap, where is the actual value of the object (address 0003 with value D30F, D30F in heap holds {name: "Slady", age: 28}. when we say that friend = me, now friend points to the same address as me, which is 0003, referencing it's value in heap. so when we say that friend.age = 25, we are changing that in the object, which is the object that 0003 address is eventually leading to
+
+const me = {
+  name: "Slady",
+  age: 28,
+};
+const friend = me;
+friend.age = 25;
+
+console.log("Friend:", friend);
+console.log("Me:", me);
+
+// so when we think that we are copying the object (friend = me), we are actually creating a new variable that is pointing to the exact same object
