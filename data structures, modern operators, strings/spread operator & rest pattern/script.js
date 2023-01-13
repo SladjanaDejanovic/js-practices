@@ -103,3 +103,23 @@ const restaurantCopy = { ...restaurant };
 restaurantCopy.name = "Ristorante Roma";
 console.log(restaurantCopy.name);
 console.log(restaurant.name);
+
+///// Rest pattern and parameters
+
+// syntax is the same, but it's used for collecting values and putting them in array, oposite of spread operator
+
+const arr1 = [1, 2, ...[3, 4]]; // SPREAD, bc of the RIGHT side of =
+
+const [a, b, ...others] = [1, 2, 3, 4, 5]; // REST, bc of the LEFT side of =
+console.log(a, b, others);
+
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, otherFood); // this otherFood only includes elements after last variable, doesn't include any skipped elements, that's why the rest pattern should always be the last in destructuring assignment, and there can be only one rest in destructuring assignment
+
+// objects
+
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
