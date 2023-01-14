@@ -108,3 +108,37 @@ console.log(guests);
 
 const guestCorrect = restaurant.numGuests ?? 10;
 console.log(guestCorrect);
+
+//// Logical assignment operators ///
+
+const restaurant1 = {
+  name: "Capri",
+  // numGuests: 20,
+  numGuests: 0,
+};
+
+const restaurant2 = {
+  name: "La Piazza",
+  owner: "Giovanni Rossi",
+};
+
+// restaurant2.numGuests = restaurant2.numGuests || 10; // chcking if there is numGuests, and if it is a truthy value it will show number of it, meaning if numGuests is defined; if not it will show default value of 10
+// restaurant1.numGuests = restaurant1.numGuests || 10;
+// console.log(restaurant1, restaurant2);
+
+// OR assignment operator (assigns a value to a variable if that variable is currently falsy, this means if it's 0 too)
+// restaurant1.numGuests ||= 10;
+// restaurant2.numGuests ||= 10;
+
+//// Nullish assignment operator (null or undefined) ///
+
+restaurant1.numGuests ??= 10;
+restaurant2.numGuests ??= 10;
+
+restaurant2.owner = restaurant2.owner && "<ANONYMOUS>";
+//AND assigns a value to a variable if that variable is currently TRUTHY
+restaurant1.owner &&= "<ANONYMOUS>";
+restaurant2.owner &&= "<ANONYMOUS>";
+
+console.log(restaurant1);
+console.log(restaurant2);
