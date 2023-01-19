@@ -2,6 +2,7 @@
 const weekdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 
 const openingHours = {
+  // we can compute property names
   [weekdays[3]]: {
     open: 12,
     close: 22,
@@ -54,3 +55,28 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
+
+// we wanna get opening hours for monday (and we don't know if monday even exist or even openingHours):
+if (restaurant.openingHours && restaurant.openingHours.mon)
+  console.log(restaurant.openingHours.mon.open); // we get nothing in console log
+
+// if (restaurant.openingHours.fri) console.log(restaurant.openingHours.fri.open); // this exist so we get the value of it
+
+// this is fixed with OPTIONAL CHAINING (?.), when the certain property doesn't exist it returns undefiend immediately
+console.log(restaurant.openingHours.mon?.open);
+
+// we can do multiple optional chaining:
+console.log(restaurant.openingHours?.mon?.open);
+
+// Real world example:
+
+const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+// loop over array and log to console if restaurant open or close on each day
+
+for (const day of days) {
+  console.log(day);
+  // if we wanna use varaible name as property name we put it in []
+  const open = restaurant.openingHours[day]?.open ?? "closed"; // set default value if it's undefiend with -  || "closed", bur if the value of opening hours is 0, which is a falsy value, it will then log "closed", so we fix that by typing - ?? "closed" - instead
+
+  console.log(`On ${day}, we open at ${open}`);
+}
