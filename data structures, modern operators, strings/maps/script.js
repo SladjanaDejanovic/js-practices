@@ -112,7 +112,7 @@ const question = new Map([
   [false, "Try again!"],
 ]);
 console.log(question);
-// this looks the same like what we'd get with Object.entrie(), we'll get arrat of arrays
+// this looks the same like what we'd get with Object.entries(), we'll get array of arrays
 
 // Converting object to map
 console.log(Object.entries(openingHours));
