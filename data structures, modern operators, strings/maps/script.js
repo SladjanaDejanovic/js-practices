@@ -61,6 +61,7 @@ const restaurant = {
 
 // easiest way to create a map is to make it empty and then...
 const rest = new Map();
+
 // ... fill it up with set method, passing in pair of key and a value
 rest.set("name", "Classico Italiano");
 rest.set(1, "Florence, Italy");
@@ -98,3 +99,41 @@ console.log(rest.get(arr));
 
 rest.set(document.querySelector("h1"), "Heading");
 console.log(rest);
+
+// another method of populating map, without set()
+// creating array of arrays, which will contain key-value pairs
+const question = new Map([
+  ["question", "What is the best programming language in the world?"],
+  [1, "C"],
+  [2, "Java"],
+  [3, "JavaScript"],
+  ["correct", 3],
+  [true, "Correct"],
+  [false, "Try again!"],
+]);
+console.log(question);
+// this looks the same like what we'd get with Object.entrie(), we'll get arrat of arrays
+
+// Converting object to map
+console.log(Object.entries(openingHours));
+const hoursMap = new Map(Object.entries(openingHours));
+console.log(hoursMap);
+
+// Looping
+// example
+console.log(question.get("question"));
+for (const [key, value] of question) {
+  if (typeof key === "number") console.log(`Answer ${key}: ${value}`);
+}
+
+// const answer = Number(prompt("Your answer"));
+const answer = 3;
+console.log(answer);
+console.log(question.get(question.get("correct") === answer));
+
+// Convert map to array
+console.log([...question]);
+
+console.log(question.entries());
+console.log(question.keys());
+console.log(question.values());
