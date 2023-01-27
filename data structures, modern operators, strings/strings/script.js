@@ -50,3 +50,14 @@ checkMiddleSeat("3E");
 console.log(new String("slady"));
 console.log(typeof new String("slady"));
 console.log(typeof new String("slady").slice(1));
+
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+// console.log("slady".toUpperCase()); // could be used directly on a string
+
+// Fix capitaliztion in name
+const passenger = "sLAdY"; // Slady
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
