@@ -13,7 +13,7 @@ console.log("B737".length);
 ////// methods
 
 // what we get it's called sub-string, bc it's just a part of original string
-// all methods always return a new string, so if we wanna use those substrings we have to store them in variables
+// ALL METHODS ALWAYS RETURN A NEW STRING, so if we wanna use those substrings we have to store them in variables
 
 // first ocurance of this letter:
 console.log(airline.indexOf("r"));
@@ -61,3 +61,104 @@ const passengerLower = passenger.toLowerCase();
 const passengerCorrect =
   passengerLower[0].toUpperCase() + passengerLower.slice(1);
 console.log(passengerCorrect);
+
+// Comparing emails
+const email = "hello@slady.com";
+const loginEmail = " Hello@Slady.Com \n";
+
+const lowerEmail = loginEmail.toLowerCase();
+const trimmedEmail = lowerEmail.trim(); //trim() cuts spaces
+console.log(trimmedEmail);
+// we can do it all in one go:
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+console.log(email === normalizedEmail);
+
+/// Replace parts of strings
+const priceGB = "288,97₤";
+const priceUS = priceGB.replace("₤", "$").replace(",", "."); // first argument is whawt we want to replace, second is a string that will be replacing it
+console.log(priceUS);
+
+const announcement =
+  "All passengers come to boarding door 23. Boarding door 23!";
+console.log(announcement.replaceAll("door", "gate")); // to replace all occurrances of this word, not only first one
+
+//regular expression (to target all of the occurrances of "door"):
+console.log(announcement.replaceAll(/door/g, "gate")); //puting the string inside // and adding g that stands for global
+
+// methods are case sensitive
+
+/// Booleans
+const plane1 = "Airbus A320neo";
+console.log(plane1.includes("A320"));
+console.log(plane1.includes("boing"));
+console.log(plane1.startsWith("Air"));
+
+if (plane1.startsWith("Airbus") && plane1.endsWith("neo")) {
+  console.log("Part of the NEW Airbus family");
+}
+
+// Practice
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+  if (baggage.includes("knife") || baggage.includes("gun")) {
+    console.log("You are NOT allowed on board");
+  } else {
+    console.log("Welcome aboard!");
+  }
+};
+checkBaggage("I have a laptop, some Food and a pocket Knife");
+checkBaggage("Socks and camera");
+checkBaggage("Got some snacks and a gun for protection");
+
+////// Split (storying parts of string as elements of new array)
+console.log("a+very+nice+string".split("+"));
+console.log("Sladjana Dejanovic".split(" "));
+
+const [firstName, lastName] = "Sladjana Dejanovic".split(" ");
+console.log(firstName);
+
+///// Join
+const newName = ["Mrs.", firstName, lastName.toUpperCase()].join(" ");
+console.log(newName);
+
+const capitalizeName = function (name) {
+  const names = name.split(" ");
+  const namesUpper = [];
+  for (const n of names) {
+    namesUpper.push(n[0].toUpperCase() + n.slice(1));
+    // same result with replace():
+    // namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  console.log(namesUpper.join(" "));
+};
+
+capitalizeName("jessica ann smith davis");
+capitalizeName("sladjana dejanovic");
+
+//// Padding - is adding characters to the string until that string reaches a desired length
+
+const message = "Go to gate 23!";
+console.log(message.padStart(25, "+")); //adding from start, first argument is how many final length of a string, and then what we're adding to the string
+console.log(message.padStart(25, "+").padEnd(30, "+"));
+
+// practice
+const maskCreditCard = function (number) {
+  const str = number + ""; // this will make number into a string, bc if one of the operatnts with + is a string it will convert all others into a string. we can make number into a string like this too: String()
+  const last = str.slice(-4);
+  return last.padStart(str.length, "*");
+};
+console.log(maskCreditCard(2564567634575545));
+console.log(maskCreditCard(2415776567511475));
+
+//// Repeat
+
+const message2 = "Bad weather... All departures delayed... ";
+console.log(message2.repeat(5));
+
+const planesInLine = function (n) {
+  console.log(`There are ${n} planes in the line ${"✈".repeat(n)}`);
+};
+planesInLine(4);
+planesInLine(3);
+planesInLine(12);
