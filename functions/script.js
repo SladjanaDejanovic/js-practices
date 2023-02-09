@@ -34,22 +34,42 @@ const slady = {
   passport: 2345689405,
 };
 
-const checkIn = function (flightNum, passenger) {
-  flightNum = "LH999";
-  passenger.name = "Ms." + passenger.name;
+// const checkIn = function (flightNum, passenger) {
+//   flightNum = "LH999";
+//   passenger.name = "Ms." + passenger.name;
 
-  if (passenger.passport === 2345689405) {
-    alert("Check in");
-  } else {
-    alert("Wrong passport!");
-  }
-};
+//   if (passenger.passport === 2345689405) {
+//     alert("Check in");
+//   } else {
+//     alert("Wrong passport!");
+//   }
+// };
 
-checkIn(flight, slady);
-console.log(flight);
-console.log(slady);
+// checkIn(flight, slady);
+// console.log(flight);
+// console.log(slady);
 
 // passing primitive type in a func is the same as crating a copy outside of the function, the value is simply copied
 // when passing a object, it's like copying that object, so whatever we change in a copy will also change in the original
 
 // passing by value and passing by reference - in js there's no passing by reference(we pass the refrence to the function but not pass by refrence)
+
+// Functions accepting callback functions
+
+const oneWord = function (str) {
+  return str.replace(/ /g, " ").toLowerCase();
+};
+
+const upperFirstWord = function (str) {
+  const [first, ...others] = str.split(" ");
+  return [first.toUpperCase(), ...others].join(" ");
+};
+// higher-order function
+const transformer = function (str, fn) {
+  console.log(`Original string: ${str}`);
+  console.log(`Transformed string: ${fn(str)}`);
+
+  console.log(`Transformed by: ${fn.name}`);
+};
+
+transformer("JavaScript is the best!", upperFirstWord); //when we pass in a function as an argument we are not calling it
