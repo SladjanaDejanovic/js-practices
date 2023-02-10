@@ -73,3 +73,30 @@ const transformer = function (str, fn) {
 };
 
 transformer("JavaScript is the best!", upperFirstWord); //when we pass in a function as an argument we are not calling it
+
+const high5 = function () {
+  console.log("🖐🏼");
+};
+
+document.body.addEventListener("click", high5);
+
+["Jonas", "Marta", "Adam"].forEach(high5);
+
+//// Functions returning functions
+
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+
+const greeterHey = greet("Hey");
+greeterHey("Jonas");
+greeterHey("Steven");
+
+greet("Hello")("Jonas");
+
+// chalenge
+
+const greetArrow = (greeting) => (name) => console.log(`${greeting} ${name}`);
+greetArrow("Hi")("Jonas");
