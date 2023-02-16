@@ -63,7 +63,7 @@ console.log(main, secondary);
 [main, secondary] = [secondary, main];
 console.log(main, secondary);
 
-// Recieve 2 return values from a function (func created array, adn then we destructured it)
+// Recieve 2 return values from a function (func created array, and then we destructured it)
 // console.log(restaurant.order(2, 0));
 
 const [starter, mainCourse] = restaurant.order(2, 0); // this is where we take values from the array and put them separately
