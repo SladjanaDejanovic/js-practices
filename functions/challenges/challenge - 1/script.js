@@ -3,8 +3,6 @@
 /*
 Build  a simple poll app
 
-Poll has a question, an array of options from which poeple can choose, and an array with the number of replies for each option. this data is stored in the starter object below.
-
 Tasks:
 1. Create a method called "registerNewAnswer" on the "poll" object. The method does 2 things: 
   1) Display a prompt window for the user to input the number of the selected option. The prompt shoul look like this:
@@ -30,10 +28,25 @@ BONUS: Use "displayResults" method to display the 2 arrays in the test data. Use
 bonus test data 1: [5, 2, 3]
 bonus test data 2: [1, 5, 3, 9, 6, 1]
 
-
-
-
-
-
-
 */
+
+const poll = {
+  question: "What is your favorite programming language?",
+  options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
+  answer: new Array(4).fill(0),
+
+  registerNewAnswer() {
+    const answer = Number(
+      prompt(
+        `${this.question} \n${this.options[0]}\n${this.options[1]}\n${this.options[2]}\n${this.options[3]}\n(Write option number)`
+      )
+      //solution from course prompt(`${this.question}\n${this.options.join("\n")}\n(Write option number)`
+    );
+
+    if (answer === 1) console.log("test");
+  },
+};
+
+document
+  .querySelector(".poll")
+  .addEventListener("click", poll.registerNewAnswer.bind(poll));
