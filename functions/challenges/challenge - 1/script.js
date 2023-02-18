@@ -33,7 +33,7 @@ bonus test data 2: [1, 5, 3, 9, 6, 1]
 const poll = {
   question: "What is your favorite programming language?",
   options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
-  answer: new Array(4).fill(0),
+  answers: new Array(4).fill(0),
 
   registerNewAnswer() {
     const answer = Number(
@@ -43,10 +43,33 @@ const poll = {
       //solution from course prompt(`${this.question}\n${this.options.join("\n")}\n(Write option number)`
     );
 
-    if (answer === 1) console.log("test");
+    console.log(answer);
+
+    // register answer (with short circuiting)
+    typeof answer === "number" &&
+      answer < this.answers.length &&
+      this.answers[answer]++;
+
+    this.displayResults();
+    this.displayResults("string");
+  },
+
+  displayResults(type = "array") {
+    if (type === "array") {
+      console.log(this.answers);
+    } else if (type === "string") {
+      console.log(`Poll results are ${this.answers.join(", ")}`);
+    }
   },
 };
 
 document
   .querySelector(".poll")
   .addEventListener("click", poll.registerNewAnswer.bind(poll));
+
+//// bonus - solution from course:
+// using the method outside its object(calling that function) but now have to change what this kw is, so we call() on it, saying what we're reffering to now (we are reffering to array, this kw has to points to array now), creating new object immediatelly inside with array we want to use
+poll.displayResults.call({ answers: [5, 2, 3] }, "string");
+poll.displayResults.call({ answers: [5, 2, 3] });
+poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
+poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, "string");
