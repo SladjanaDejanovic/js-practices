@@ -100,3 +100,17 @@ greet("Hello")("Jonas");
 
 const greetArrow = (greeting) => (name) => console.log(`${greeting} ${name}`);
 greetArrow("Hi")("Jonas");
+
+///// IIFE - Immediately Invoked Function Expressions
+
+/// executing func immediatelly, without saving it somewhere, for one use
+
+// putting it in () we transform it into expression, and then adding ()after expression we immediatelly call this function
+(function () {
+  console.log("This will never run again");
+})();
+// works with arrow func too
+(() => console.log("This will ALSO never run again"))();
+
+//function create scopes, and one scope doesn't have access to variables form inner scope
+// variables get incapsulated inside their scope (data incapsulation)
