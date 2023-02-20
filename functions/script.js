@@ -112,5 +112,5 @@ greetArrow("Hi")("Jonas");
 // works with arrow func too
 (() => console.log("This will ALSO never run again"))();
 
-//function create scopes, and one scope doesn't have access to variables form inner scope
+//function create scopes, and one scope doesn't have access to variables from inner scope
 // variables get incapsulated inside their scope (data incapsulation)
