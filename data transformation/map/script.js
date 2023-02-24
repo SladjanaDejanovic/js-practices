@@ -13,3 +13,20 @@ const movementsUSD = movements.map(function (mov) {
 });
 console.log(movements);
 console.log(movementsUSD);
+
+// even simpler with arrow function:
+const movementsUSDarrow = movements.map(mov => mov * eurToUsd);
+
+const movDescriptions = movements.map(
+  (mov, i) =>
+    // if (mov > 0) {
+    //   return `Movement ${i + 1}: You deposited ${mov}`;
+    // } else {
+    //   return `Movement ${i + 1}: You withdrew ${Math.abs(mov)}`;
+    // }
+    `Movements ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
+      mov
+    )}`
+);
+
+console.log(movDescriptions);
