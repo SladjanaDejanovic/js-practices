@@ -116,3 +116,11 @@ console.log(accounts);
 
 const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 console.log(account);
+
+//// findIndex
+// to delete element from array with splice() we need index from where we wanna remove it
+// it has callback function too
+// difference with indexOf() is that with indexOf we can only search elements that are int he array. with findIndex we can have conditions like below
+const index = accounts.findIndex(
+  acc => acc.username === currentAccount.username
+);
