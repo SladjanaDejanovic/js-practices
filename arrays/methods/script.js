@@ -117,10 +117,29 @@ console.log(accounts);
 const account = accounts.find(acc => acc.owner === 'Jessica Davis');
 console.log(account);
 
-//// findIndex
+////    findIndex   ////////////
 // to delete element from array with splice() we need index from where we wanna remove it
 // it has callback function too
 // difference with indexOf() is that with indexOf we can only search elements that are int he array. with findIndex we can have conditions like below
-const index = accounts.findIndex(
-  acc => acc.username === currentAccount.username
-);
+// const index = accounts.findIndex(
+//   acc => acc.username === currentAccount.username
+// );
+
+////    some  //////////////
+// different than includes(), bc here we can check for condition, and it returns boolean
+console.log(movements);
+console.log(movements.includes(-130));
+
+const anyDeposits = movements.some(mov => mov > 0);
+console.log(anyDeposits);
+
+///// evry  //////////
+// returns only if all elements in the array satisfy the condition (is a boolean)
+console.log(movements.every(mov => mov > 0));
+console.log(account4.movements.every(mov => mov > 0));
+
+// Separate callback (better for DRy principle)
+const deposit = mov => mov > 0;
+console.log(movements.some(deposit));
+console.log(movements.every(deposit));
+console.log(movements.filter(deposit));
