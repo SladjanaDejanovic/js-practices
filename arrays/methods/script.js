@@ -143,3 +143,38 @@ const deposit = mov => mov > 0;
 console.log(movements.some(deposit));
 console.log(movements.every(deposit));
 console.log(movements.filter(deposit));
+
+////// flat ///////////
+// when array consists of arrays, and we want to put all elements of all subarrays into one array we use flat() (it removes nested arrays and flatens the array)
+// only goes one level deep as a default (flat(1))
+const array = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(array.flat());
+
+const arrDeep = [[1, [2, 3]], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat(2)); // has a depth parameter
+
+// to take arrays from objects:
+// const accountMovements = accounts.map(acc => acc.movements);
+// console.log(accountMovements); // we got array of arrays
+
+// const allMovements = accountMovements.flat();
+// console.log(allMovements);
+
+// const overalBalance = allMovements.reduce((acc, mov) => acc + mov, 0);
+// console.log(overalBalance);
+
+// better with chaining:
+const overalBalance = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overalBalance);
+
+///////      flatMap  /////////////////
+// flat() then  map() is very common to do, so there is flatMap() for better performance
+// it recieves same callback as map()
+// it goes only 1 level deep and we can't change it
+const overalBalance2 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overalBalance);
