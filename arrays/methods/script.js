@@ -133,7 +133,7 @@ console.log(movements.includes(-130));
 const anyDeposits = movements.some(mov => mov > 0);
 console.log(anyDeposits);
 
-///// evry  //////////
+///// every  //////////
 // returns only if all elements in the array satisfy the condition (is a boolean)
 console.log(movements.every(mov => mov > 0));
 console.log(account4.movements.every(mov => mov > 0));
