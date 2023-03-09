@@ -101,3 +101,24 @@ console.log(Math.floor('23.9'));
 console.log((2.7).toFixed(0)); //it will return a string
 console.log((2.7).toFixed(3)); // 3 is for 3 decimal parts
 console.log(+(2.7356).toFixed(2)); //shortening to 2 decimals
+
+/////////////////////
+////// Remainder operator (remainder of a division)
+console.log(5 % 2);
+console.log(5 / 2); // 5 = 2 * 2 + 1
+
+console.log(8 % 3);
+console.log(8 / 3); // 8 = 2 * 3 + 2
+
+console.log(6 % 2);
+console.log(6 / 2);
+
+console.log(7 % 2);
+console.log(7 / 2);
+
+const isEven = n => n % 2 === 0;
+console.log(isEven(8));
+console.log(isEven(81));
+console.log(isEven(3476));
+
+// we can check if any number is divisible by another - if remainder is 0 thaen it is
