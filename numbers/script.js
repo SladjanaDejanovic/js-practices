@@ -53,8 +53,8 @@
 // console.log(Number.isInteger(20));
 // console.log(Number.isInteger(20.0));
 
-///////////////////
-//////// Math            ///////////////
+//////////////////////////////
+//////// Math   ///////////////
 
 //squere root
 console.log(Math.sqrt(25));
@@ -84,7 +84,7 @@ const randomInt = (min, max) =>
 // 0 ...1 -> 0 ... (max-min) -> min...max
 console.log(randomInt(10, 20));
 
-///////////////////////////
+//////////////////////////////////////
 ////// Rounding  /////////////
 
 // integers
@@ -102,7 +102,7 @@ console.log((2.7).toFixed(0)); //it will return a string
 console.log((2.7).toFixed(3)); // 3 is for 3 decimal parts
 console.log(+(2.7356).toFixed(2)); //shortening to 2 decimals
 
-/////////////////////
+//////////////////////////////
 ////// Remainder operator (remainder of a division)
 console.log(5 % 2);
 console.log(5 / 2); // 5 = 2 * 2 + 1
@@ -121,4 +121,4 @@ console.log(isEven(8));
 console.log(isEven(81));
 console.log(isEven(3476));
 
-// we can check if any number is divisible by another - if remainder is 0 thaen it is
+// check if any number is divisible by another - if remainder is 0 thaen it is
