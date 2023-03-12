@@ -104,6 +104,7 @@ console.log(+(2.7356).toFixed(2)); //shortening to 2 decimals
 
 //////////////////////////////
 ////// Remainder operator (remainder of a division)
+///////////////////////
 console.log(5 % 2);
 console.log(5 / 2); // 5 = 2 * 2 + 1
 
@@ -116,9 +117,55 @@ console.log(6 / 2);
 console.log(7 % 2);
 console.log(7 / 2);
 
+// check if any number is divisible by another - if remainder is 0 thaen it is
 const isEven = n => n % 2 === 0;
 console.log(isEven(8));
 console.log(isEven(81));
 console.log(isEven(3476));
 
-// check if any number is divisible by another - if remainder is 0 thaen it is
+////////////////////////////////
+/////// Numeric separators
+const diameter = 287_460_000_000;
+console.log(diameter);
+
+// we can place these separates anywhere we want, it makes numbers easier to read but doesn't affect js, it's just gonna ignore it
+
+const price = 345_99;
+console.log(price);
+
+const transferFee1 = 15_00;
+const transferFee2 = 1_500;
+
+// turning strings that contain underscores into numbers would not work:
+console.log(Number('230_000')); // NaN
+console.log(parseInt('230_000')); // 230
+
+/////////////////////////////////////////////////
+////// BigInt - big integer
+// biggest number js safely can represent:
+console.log(2 ** 53 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
+
+// with BIgInt now we can store numbers as big as we want
+console.log(34576541258674534594135465764653124n);
+console.log(BigInt(123146476456));
+
+// operations
+console.log(10000n + 10000n);
+console.log(231454864128451n + 10000000n);
+
+const huge = 125489796834786475344n;
+const num = 23;
+console.log(huge * BigInt(num));
+// console.log(huge * num); //can't mix BigInt with regular numbers:
+
+// exeptions - logial operations and string concatenations
+console.log(20n > 15); // true
+console.log(20n === 15); // false
+console.log(20n == 20); // true
+
+console.log(huge + ' is REALLY big number!!!');
+
+// divisions
+console.log(10 / 3); // 3.3333333...
+console.log(10n / 3n); // 3n
