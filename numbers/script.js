@@ -169,3 +169,41 @@ console.log(huge + ' is REALLY big number!!!');
 // divisions
 console.log(10 / 3); // 3.3333333...
 console.log(10n / 3n); // 3n
+
+////////////////////////////////////
+/////// Data and Time
+
+// Create date
+// with  new Date () constructor
+const now = new Date();
+console.log(now);
+
+// parsing a date string (unrealable to do it on your own)
+console.log(new Date('Mon Mar 13 2023 18:46:51'));
+console.log(new Date('December 24, 2015'));
+
+console.log(new Date(2037, 10, 31));
+console.log(new Date(0));
+console.log(new Date(3 * 24 * 60 * 60 * 1000));
+
+// dates are objects, so they have methods:
+const future = new Date(2037, 10, 19, 15, 23);
+console.log(future);
+console.log(future.getFullYear());
+console.log(future.getMonth());
+console.log(future.getDate()); // day of month
+console.log(future.getDay()); // day in week
+console.log(future.getHours());
+console.log(future.getMinutes());
+console.log(future.getSeconds());
+console.log(future.toISOString());
+console.log(future.getTime()); //timestamp is miliseconds passed since 01 january 1970
+
+// creating date based on timestamp
+console.log(new Date(2142253380000));
+
+// current timestamp, for this exact moment
+console.log(Date.now());
+
+future.setFullYear(2040);
+console.log(future);
