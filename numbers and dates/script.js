@@ -171,7 +171,7 @@ console.log(10 / 3); // 3.3333333...
 console.log(10n / 3n); // 3n
 
 ////////////////////////////////////
-/////// Data and Time
+/////// Date and Time
 
 // Create date
 // with  new Date () constructor
@@ -207,3 +207,13 @@ console.log(Date.now());
 
 future.setFullYear(2040);
 console.log(future);
+
+// ///// How many days passed between 2 dates ////////////
+const future2 = new Date(2037, 10, 19, 15, 23);
+console.log(Number(future2)); // converts it to timestamp
+console.log(+future2);
+
+const calcDaysPassed = (date1, date2) =>
+  Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
+const days1 = calcDaysPassed(new Date(2037, 3, 14), new Date(2037, 3, 24));
+console.log(days1);
