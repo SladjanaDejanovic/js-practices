@@ -222,4 +222,10 @@ console.log(days1);
 // Internationalizing numbers
 
 const num2 = 3884764.23;
-console.log(new Intl.NumberFormat('en-US').format(num2));
+console.log('US: ', new Intl.NumberFormat('en-US').format(num2));
+console.log('Germany: ', new Intl.NumberFormat('de-DE').format(num2));
+console.log('Syria: ', new Intl.NumberFormat('ar-SY').format(num2));
+console.log(
+  navigator.language,
+  new Intl.NumberFormat(navigator.language).format(num2)
+);
