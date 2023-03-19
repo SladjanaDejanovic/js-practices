@@ -221,11 +221,36 @@ console.log(days1);
 ////////////////////////////////////////
 // Internationalizing numbers
 
+const options2 = {
+  style: 'currency',
+  currency: 'EUR',
+  // style: 'percent',
+  // style: 'unit',
+  unit: 'celsius', //'mile-per-hour'
+  // useGrouping: false, //number is printed without separators
+};
+
 const num2 = 3884764.23;
-console.log('US: ', new Intl.NumberFormat('en-US').format(num2));
-console.log('Germany: ', new Intl.NumberFormat('de-DE').format(num2));
-console.log('Syria: ', new Intl.NumberFormat('ar-SY').format(num2));
+console.log('US: ', new Intl.NumberFormat('en-US', options2).format(num2));
+console.log('Germany: ', new Intl.NumberFormat('de-DE', options2).format(num2));
+console.log('Syria: ', new Intl.NumberFormat('ar-SY', options2).format(num2));
 console.log(
   navigator.language,
-  new Intl.NumberFormat(navigator.language).format(num2)
+  new Intl.NumberFormat(navigator.language, options2).format(num2)
 );
+
+///////////// interval and timeout
+// setTimeout - to execute some code at some point in the future
+// setInterval - keeps running until we stop it
+
+const ingredinets = ['olives', 'spinach'];
+const pizzaTimer = setTimeout(
+  (ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2} 🍕`),
+  3000,
+  'olives',
+  'spinach'
+); //first argument is callback func, second is amount of miliseconds that will pass until this func is called, arguments that we pass after the delay it will be arguments to callback function
+console.log('Waiting...');
+
+// we can cancel the timer at least until the delay have passed
+if (ingredinets.includes('spinach')) clearTimeout(pizzaTimer);
