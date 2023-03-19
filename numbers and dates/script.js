@@ -240,8 +240,7 @@ console.log(
 );
 
 ///////////// interval and timeout
-// setTimeout - to execute some code at some point in the future
-// setInterval - keeps running until we stop it
+// setTimeout - to execute some code at some point in the future, callback func is only executed once
 
 const ingredinets = ['olives', 'spinach'];
 const pizzaTimer = setTimeout(
@@ -254,3 +253,9 @@ console.log('Waiting...');
 
 // we can cancel the timer at least until the delay have passed
 if (ingredinets.includes('spinach')) clearTimeout(pizzaTimer);
+
+// setInterval - keeps running until we stop it
+setInterval(() => {
+  const now = new Date();
+  console.log(`${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`);
+}, 1000);
