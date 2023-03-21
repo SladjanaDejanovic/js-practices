@@ -79,3 +79,56 @@ document
   .addEventListener('click', function () {
     message.remove();
   });
+
+///////////////////////////
+// Styles, atributes, classes
+
+// STYLES  are inline, directly inserted in the dom
+
+message.style.backgroundColor = '#37383d';
+message.style.width = '120%';
+
+console.log(message.style.height);
+console.log(message.style.backgroundColor); //  we can only read inline styles we set ourselves
+
+// to get a style which is in css file:
+console.log(getComputedStyle(message).color);
+console.log(getComputedStyle(message).height);
+
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px'; // what we get with getComputedStyle is a string (50px) and to add that to a number (30) we have to take number form that string, without px
+
+// working with CSS custom properties (CSS variables)
+// global css variables are defined in root, which in js is equivalent of documnet element
+// document.documentElement.style.setProperty('--color-primary', 'orangered');
+
+// ATTRIBUTES
+
+const logo = document.querySelector('.nav__logo');
+// standard atributes:
+console.log(logo.alt);
+console.log(logo.src);
+
+// non-standard:
+console.log(logo.designer); // doesn't work
+console.log(logo.getAttribute('designer'));
+
+// setting attribute
+logo.alt = 'Beautiful minimalist logo';
+logo.setAttribute('company', 'Bankist');
+
+console.log(logo.src); // absolute source
+console.log(logo.getAttribute('src')); // relative
+
+const link = document.querySelector('.nav__link--btn');
+console.log(link.href); // absolute
+console.log(link.getAttribute('href')); //relative
+
+// Data-attributes
+console.log(logo.dataset.versionNumber);
+
+//CLASSES
+logo.classList.add('c', 'j');
+logo.classList.remove('c');
+logo.classList.toggle('c');
+logo.classList.contains('c');
