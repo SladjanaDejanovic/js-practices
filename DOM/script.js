@@ -132,3 +132,24 @@ logo.classList.add('c', 'j');
 logo.classList.remove('c');
 logo.classList.toggle('c');
 logo.classList.contains('c');
+
+//////////////////////////////////////////
+/// Types of Events and Events handlers
+// we can add multiple event listeners to the same event
+
+const h1 = document.querySelector('h1');
+
+//old way of doinf it:
+// h1.onmouseenter = function (e) {
+//   alert('onmouseenter: Great! You are reading the heading :D');
+// };
+
+const alertH1 = function (e) {
+  alert('addEventListener: Great! You are reading the heading :D');
+
+  // h1.removeEventListener('mouseenter', alertH1); // we can remove event handler if we don't need it anymore, so we can listen for event only once
+};
+
+h1.addEventListener('mouseenter', alertH1);
+
+setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
