@@ -181,3 +181,5 @@ document.querySelector('.nav').addEventListener('click', function (e) {
 });
 
 // we attach event to target, and if we attach that same event on its parent elements, by bubbling - when we click on target event will happen on all parent elements that has the same event attached too (of course, if we click only on parent element event will also happen as ususal)
+
+//// DOM traversing
