@@ -137,22 +137,22 @@ logo.classList.contains('c');
 /// Types of Events and Events handlers
 // we can add multiple event listeners to the same event
 
-const h1 = document.querySelector('h1');
+// const h1 = document.querySelector('h1');
 
 //old way of doinf it:
 // h1.onmouseenter = function (e) {
 //   alert('onmouseenter: Great! You are reading the heading :D');
 // };
 
-const alertH1 = function (e) {
-  alert('addEventListener: Great! You are reading the heading :D');
+// const alertH1 = function (e) {
+//   alert('addEventListener: Great! You are reading the heading :D');
 
-  // h1.removeEventListener('mouseenter', alertH1); // we can remove event handler if we don't need it anymore, so we can listen for event only once
-};
+// h1.removeEventListener('mouseenter', alertH1); // we can remove event handler if we don't need it anymore, so we can listen for event only once
+// };
 
-h1.addEventListener('mouseenter', alertH1);
+// h1.addEventListener('mouseenter', alertH1);
 
-setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
+// setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
 
 // Event propagation - event bubbling in practice
 
@@ -183,3 +183,34 @@ document.querySelector('.nav').addEventListener('click', function (e) {
 // we attach event to target, and if we attach that same event on its parent elements, by bubbling - when we click on target event will happen on all parent elements that has the same event attached too (of course, if we click only on parent element event will also happen as ususal)
 
 //// DOM traversing
+
+const h1 = document.querySelector('h1');
+
+// Going downwards: selecting child elements
+console.log(h1.querySelectorAll('.highlight'));
+console.log(h1.childNodes);
+console.log(h1.children); // only works for direct childre, returns html collection
+
+h1.firstElementChild.style.color = 'white';
+h1.lastElementChild.style.color = 'orangered';
+
+// Going upwards: selecting parents
+console.log(h1.parentNode);
+console.log(h1.parentElement);
+
+h1.closest('.header').style.background = 'var(--gradient-secondary)'; // closest() finds parent element just like how querySelector() finds children elements
+
+h1.closest('h1').style.background = 'var(--gradient-primary)';
+
+// Going sideways: siblings
+
+console.log(h1.previousElementSibling);
+console.log(h1.nextElementSibling);
+
+console.log(h1.previousSibling);
+console.log(h1.nextSibling); //nodes
+
+console.log(h1.parentElement.children);
+[...h1.parentElement.children].forEach(function (el) {
+  if (el !== h1) el.style.transform = 'scale(0.5)';
+});
