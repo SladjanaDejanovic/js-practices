@@ -1,12 +1,21 @@
 'use strict';
 
-///////////////////////////////////////
-// Modal window
-
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+const nav = document.querySelector('.nav');
+
+///////////////////////////////////////
+// Modal window
 
 const openModal = function () {
   modal.classList.remove('hidden');
@@ -214,3 +223,23 @@ console.log(h1.parentElement.children);
 [...h1.parentElement.children].forEach(function (el) {
   if (el !== h1) el.style.transform = 'scale(0.5)';
 });
+
+//// Passing "arguments" into handlers
+// it's impossible to pass another argument into and eventHandler function, it only has 1 parameter which is event. so if we want to pass additional values into the handler function that we need to use this kw, that becomes possible with using bind( )
+
+nav.addEventListener('mouseover', handleHover.bind(0.5)); // better way - using bind()
+nav.addEventListener('mouseout', handleHover.bind(1));
+
+//////////////////////////
+// Sticky navigation
+const initialCoords = section1.getBoundingClientRect();
+console.log(initialCoords);
+
+// window.addEventListener('scroll', function () {
+//   console.log(this.window.scrollY);
+
+//   if (this.window.scrollY > initialCoords.top) nav.classList.add('sticky');
+//   else nav.classList.remove('sticky');
+// });
+
+//// A Better Way: The Intersection Observer API
