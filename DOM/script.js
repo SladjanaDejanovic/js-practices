@@ -243,3 +243,10 @@ console.log(initialCoords);
 // });
 
 //// A Better Way: The Intersection Observer API
+const obsCallback = function () {};
+const obsOptions = {
+  root: null, //intersecting entire viewport
+};
+// root el is elemenet we want our target el to intersect
+const oberver = new IntersectionObserver();
+ResizeObserver.observe(section1);
