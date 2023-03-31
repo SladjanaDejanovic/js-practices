@@ -59,10 +59,10 @@ console.log(allButtons);
 
 console.log(document.getElementsByClassName('btn')); // returns HTML collection (different than querySelectorAll, which returns node list)
 
-///// Creating and inserting elements
+///////////      Creating and inserting elements
 // .insertAdjacentHTML //quick and easy way of creating element
 
-// creating el more programmatically
+// creating el more programmatically:
 
 // creates a DOM, that we manually insert in the webpage:
 const message = document.createElement('div');
@@ -82,17 +82,17 @@ header.append(message); // as last child
 header.before(message);
 header.after(message);
 
-////// Deleting elements
+//////////     Deleting elements
 document
   .querySelector('.btn--close-cookie')
   .addEventListener('click', function () {
     message.remove();
   });
 
-///////////////////////////
+//////////////////////////////////////////////////////
 // Styles, atributes, classes
 
-// STYLES  are inline, directly inserted in the dom
+//// STYLES  are inline, directly inserted in the dom
 
 message.style.backgroundColor = '#37383d';
 message.style.width = '120%';
@@ -111,7 +111,7 @@ message.style.height =
 // global css variables are defined in root, which in js is equivalent of documnet element
 // document.documentElement.style.setProperty('--color-primary', 'orangered');
 
-// ATTRIBUTES
+//// ATTRIBUTES
 
 const logo = document.querySelector('.nav__logo');
 // standard atributes:
@@ -136,34 +136,36 @@ console.log(link.getAttribute('href')); //relative
 // Data-attributes
 console.log(logo.dataset.versionNumber);
 
-//CLASSES
+//// CLASSES
 logo.classList.add('c', 'j');
 logo.classList.remove('c');
 logo.classList.toggle('c');
 logo.classList.contains('c');
 
-//////////////////////////////////////////
+//////////////////////////////////////////////////////
 /// Types of Events and Events handlers
+
 // we can add multiple event listeners to the same event
 
 // const h1 = document.querySelector('h1');
 
-//old way of doinf it:
 // h1.onmouseenter = function (e) {
 //   alert('onmouseenter: Great! You are reading the heading :D');
 // };
 
+//more modern  way of doing it:
 // const alertH1 = function (e) {
 //   alert('addEventListener: Great! You are reading the heading :D');
+
+// h1.addEventListener('mouseenter', alertH1);
 
 // h1.removeEventListener('mouseenter', alertH1); // we can remove event handler if we don't need it anymore, so we can listen for event only once
 // };
 
-// h1.addEventListener('mouseenter', alertH1);
-
 // setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
 
-// Event propagation - event bubbling in practice
+///////////////////////////////////////////////////
+////// Event propagation - event bubbling in practice
 
 const randomInt = (min, max) =>
   Math.floor(Math.random() * (max - min + 1) + min);
@@ -191,7 +193,8 @@ document.querySelector('.nav').addEventListener('click', function (e) {
 
 // we attach event to target, and if we attach that same event on its parent elements, by bubbling - when we click on target event will happen on all parent elements that has the same event attached too (of course, if we click only on parent element event will also happen as ususal)
 
-//// DOM traversing
+//////////////////////////////////////////////////////////
+///////////// DOM traversing
 
 const h1 = document.querySelector('h1');
 
@@ -200,16 +203,16 @@ console.log(h1.querySelectorAll('.highlight'));
 console.log(h1.childNodes);
 console.log(h1.children); // only works for direct childre, returns html collection
 
-h1.firstElementChild.style.color = 'white';
-h1.lastElementChild.style.color = 'orangered';
+// h1.firstElementChild.style.color = 'white';
+// h1.lastElementChild.style.color = 'orangered';
 
 // Going upwards: selecting parents
 console.log(h1.parentNode);
 console.log(h1.parentElement);
 
-h1.closest('.header').style.background = 'var(--gradient-secondary)'; // closest() finds parent element just like how querySelector() finds children elements
+// h1.closest('.header').style.background = 'var(--gradient-secondary)'; // closest() finds parent element just like how querySelector() finds children elements
 
-h1.closest('h1').style.background = 'var(--gradient-primary)';
+// h1.closest('h1').style.background = 'var(--gradient-primary)';
 
 // Going sideways: siblings
 
@@ -220,17 +223,34 @@ console.log(h1.previousSibling);
 console.log(h1.nextSibling); //nodes
 
 console.log(h1.parentElement.children);
-[...h1.parentElement.children].forEach(function (el) {
-  if (el !== h1) el.style.transform = 'scale(0.5)';
-});
+// [...h1.parentElement.children].forEach(function (el) {
+//   if (el !== h1) el.style.transform = 'scale(0.5)';
+// });
 
-//// Passing "arguments" into handlers
+//////////////////////////////////////////////////
+//// Passing "arguments" into handlers - menu fade animation
+
+// (mouseenter doesn't bubble, mouseover bubbles up)
+
 // it's impossible to pass another argument into and eventHandler function, it only has 1 parameter which is event. so if we want to pass additional values into the handler function that we need to use this kw, that becomes possible with using bind( )
+const handleHover = function (e, opacity) {
+  // there are no chinld elements that we could accidentally click when we click on links, so we don't need closest():
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('img');
+
+    siblings.forEach(el => {
+      if (el !== link) el.style.opacity = this;
+    });
+    logo.style.opacity = this;
+  }
+};
 
 nav.addEventListener('mouseover', handleHover.bind(0.5)); // better way - using bind()
 nav.addEventListener('mouseout', handleHover.bind(1));
 
-//////////////////////////
+////////////////////////////////////////////
 // Sticky navigation
 const initialCoords = section1.getBoundingClientRect();
 console.log(initialCoords);
@@ -243,10 +263,20 @@ console.log(initialCoords);
 // });
 
 //// A Better Way: The Intersection Observer API
-const obsCallback = function () {};
-const obsOptions = {
-  root: null, //intersecting entire viewport
+const obsCallback = function (entries, observer) {
+  entries.forEach(entry => {
+    console.log(entry);
+  });
 };
-// root el is elemenet we want our target el to intersect
-const oberver = new IntersectionObserver();
-ResizeObserver.observe(section1);
+//entries argument in this callback function are array of tresholds
+
+// callback fucn will get called each time that the observed element (target element in observe()) is intersecting the root element at the treshold that we defined
+
+const obsOptions = {
+  root: null, //  root el is elemenet we want our target el to intersect (null is for intersecting entire viewport)
+  treshold: 0.1, //10%
+  //treshold is percentage of intersection at which the observer callback will be called
+};
+
+const observer = new IntersectionObserver(obsCallback, obsOptions);
+observer.observe(section1);
