@@ -251,7 +251,8 @@ nav.addEventListener('mouseover', handleHover.bind(0.5)); // better way - using 
 nav.addEventListener('mouseout', handleHover.bind(1));
 
 ////////////////////////////////////////////
-// Sticky navigation
+// The Intersection Observer API
+
 const initialCoords = section1.getBoundingClientRect();
 console.log(initialCoords);
 
@@ -262,7 +263,6 @@ console.log(initialCoords);
 //   else nav.classList.remove('sticky');
 // });
 
-//// A Better Way: The Intersection Observer API
 const obsCallback = function (entries, observer) {
   entries.forEach(entry => {
     console.log(entry);
@@ -270,11 +270,12 @@ const obsCallback = function (entries, observer) {
 };
 //entries argument in this callback function are array of tresholds
 
-// callback fucn will get called each time that the observed element (target element in observe()) is intersecting the root element at the treshold that we defined
+// callback func will get called each time that the observed element (target element in observe()) is intersecting the root element at the treshold that we defined
 
 const obsOptions = {
   root: null, //  root el is elemenet we want our target el to intersect (null is for intersecting entire viewport)
-  treshold: 0.1, //10%
+  treshold: [0, 0.2], //0 means that callback will be triggered each time target element moves completely out of view, callback function will be called when the threshold is passed when moving into the view and when moving out of the view,
+
   //treshold is percentage of intersection at which the observer callback will be called
 };
 
