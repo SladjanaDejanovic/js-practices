@@ -50,12 +50,12 @@ console.log(document.body);
 
 const header = document.querySelector('.header');
 const allSections = document.querySelectorAll('.section'); //returns node list, which won't update with changing of DOM (if we delete something, and then console.log node list, we will still see all elements, bc at the time node list was created all elements existed)
-console.log(allSections);
+// console.log(allSections);
 
 document.getElementById('section--1');
 
 const allButtons = document.getElementsByTagName('button'); //returns HTML collection, if DOM changes then this collection is also updated automatically
-console.log(allButtons);
+// console.log(allButtons);
 
 console.log(document.getElementsByClassName('btn')); // returns HTML collection (different than querySelectorAll, which returns node list)
 
@@ -97,12 +97,12 @@ document
 message.style.backgroundColor = '#37383d';
 message.style.width = '120%';
 
-console.log(message.style.height);
-console.log(message.style.backgroundColor); //  we can only read inline styles we set ourselves
+// console.log(message.style.height);
+// console.log(message.style.backgroundColor); //  we can only read inline styles we set ourselves
 
 // to get a style which is in css file:
 console.log(getComputedStyle(message).color);
-console.log(getComputedStyle(message).height);
+// console.log(getComputedStyle(message).height);
 
 message.style.height =
   Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px'; // what we get with getComputedStyle is a string (50px) and to add that to a number (30) we have to take number form that string, without px
@@ -111,7 +111,7 @@ message.style.height =
 // global css variables are defined in root, which in js is equivalent of documnet element
 // document.documentElement.style.setProperty('--color-primary', 'orangered');
 
-//// ATTRIBUTES
+//////     ATTRIBUTES
 
 const logo = document.querySelector('.nav__logo');
 // standard atributes:
@@ -126,12 +126,12 @@ console.log(logo.getAttribute('designer'));
 logo.alt = 'Beautiful minimalist logo';
 logo.setAttribute('company', 'Bankist');
 
-console.log(logo.src); // absolute source
-console.log(logo.getAttribute('src')); // relative
+// console.log(logo.src); // absolute source
+// console.log(logo.getAttribute('src')); // relative
 
 const link = document.querySelector('.nav__link--btn');
-console.log(link.href); // absolute
-console.log(link.getAttribute('href')); //relative
+// console.log(link.href); // absolute
+// console.log(link.getAttribute('href')); //relative
 
 // Data-attributes
 console.log(logo.dataset.versionNumber);
@@ -174,7 +174,7 @@ const randomColor = () =>
 
 document.querySelector('.nav__link').addEventListener('click', function (e) {
   this.style.backgroundColor = randomColor();
-  console.log('LINK', e.target, e.currentTarget); // event target is where event originated, where event first happened, not where event was attached
+  // console.log('LINK', e.target, e.currentTarget); // event target is where event originated, where event first happened, not where event was attached
   //currentTarget is elemetn on which event is attached
 
   // Stop propagation
@@ -183,12 +183,12 @@ document.querySelector('.nav__link').addEventListener('click', function (e) {
 
 document.querySelector('.nav__links').addEventListener('click', function (e) {
   this.style.backgroundColor = randomColor();
-  console.log('CONTAINER', e.target, e.currentTarget);
+  // console.log('CONTAINER', e.target, e.currentTarget);
 });
 
 document.querySelector('.nav').addEventListener('click', function (e) {
   this.style.backgroundColor = randomColor();
-  console.log('NAV', e.target, e.currentTarget);
+  // console.log('NAV', e.target, e.currentTarget);
 });
 
 // we attach event to target, and if we attach that same event on its parent elements, by bubbling - when we click on target event will happen on all parent elements that has the same event attached too (of course, if we click only on parent element event will also happen as ususal)
@@ -201,7 +201,7 @@ const h1 = document.querySelector('h1');
 // Going downwards: selecting child elements
 console.log(h1.querySelectorAll('.highlight'));
 console.log(h1.childNodes);
-console.log(h1.children); // only works for direct childre, returns html collection
+console.log(h1.children); // only works for direct children, returns html collection
 
 // h1.firstElementChild.style.color = 'white';
 // h1.lastElementChild.style.color = 'orangered';
@@ -215,14 +215,13 @@ console.log(h1.parentElement);
 // h1.closest('h1').style.background = 'var(--gradient-primary)';
 
 // Going sideways: siblings
-
 console.log(h1.previousElementSibling);
 console.log(h1.nextElementSibling);
 
 console.log(h1.previousSibling);
-console.log(h1.nextSibling); //nodes
+// console.log(h1.nextSibling); //nodes
 
-console.log(h1.parentElement.children);
+// console.log(h1.parentElement.children);
 // [...h1.parentElement.children].forEach(function (el) {
 //   if (el !== h1) el.style.transform = 'scale(0.5)';
 // });
@@ -254,7 +253,7 @@ nav.addEventListener('mouseout', handleHover.bind(1));
 // The Intersection Observer API
 
 const initialCoords = section1.getBoundingClientRect();
-console.log(initialCoords);
+// console.log(initialCoords);
 
 // window.addEventListener('scroll', function () {
 //   console.log(this.window.scrollY);
@@ -265,7 +264,7 @@ console.log(initialCoords);
 
 const obsCallback = function (entries, observer) {
   entries.forEach(entry => {
-    console.log(entry);
+    // console.log(entry);
   });
 };
 //entries argument in this callback function are array of tresholds
@@ -282,6 +281,7 @@ const obsOptions = {
 const observer = new IntersectionObserver(obsCallback, obsOptions);
 observer.observe(section1);
 
+////////////////////////////////////////////
 ////// Slider
 
 const slides = document.querySelectorAll('.slide');
@@ -330,3 +330,21 @@ const prevSlide = function () {
 };
 
 btnLeft.addEventListener('click', prevSlide);
+
+///////////////////////////////////////////
+// DOM content loaded
+// this event doeasn't wait for imgs and other externalresources to load, just html and js need to be loaded
+document.addEventListener('DOMContentLoaded', function (e) {
+  console.log('HTML parsed and DOM tree built!', e);
+});
+
+window.addEventListener('load', function (e) {
+  console.log('Page fully loaded');
+});
+
+// created immediatelly before user is about to leave the page
+// window.addEventListener('beforeunload', function (e) {
+//   e.preventDefault();
+//   console.log(e);
+//   e.returnValue = '';
+// }); // we can use this to ask user if he really wanna exit page
