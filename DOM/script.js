@@ -17,7 +17,8 @@ const nav = document.querySelector('.nav');
 ///////////////////////////////////////
 // Modal window
 
-const openModal = function () {
+const openModal = function (e) {
+  e.preventDefault();
   modal.classList.remove('hidden');
   overlay.classList.remove('hidden');
 };
@@ -79,15 +80,15 @@ header.append(message); // as last child
 // header.append(message.cloneNode(true));
 
 // inserts as a sibling:
-header.before(message);
-header.after(message);
+// header.before(message);
+// header.after(message);
 
 //////////     Deleting elements
-document
-  .querySelector('.btn--close-cookie')
-  .addEventListener('click', function () {
-    message.remove();
-  });
+// document
+//   .querySelector('.btn--close-cookie')
+//   .addEventListener('click', function () {
+//     message.remove();
+//   });
 
 //////////////////////////////////////////////////////
 // Styles, atributes, classes
@@ -95,7 +96,7 @@ document
 //// STYLES  are inline, directly inserted in the dom
 
 message.style.backgroundColor = '#37383d';
-message.style.width = '120%';
+message.style.width = '103%';
 
 // console.log(message.style.height);
 // console.log(message.style.backgroundColor); //  we can only read inline styles we set ourselves
@@ -142,6 +143,93 @@ logo.classList.remove('c');
 logo.classList.toggle('c');
 logo.classList.contains('c');
 
+//////////////////////////////////////////
+// Scrolling
+
+btnScrollTo.addEventListener('click', function (e) {
+  // Get the coordinates of the el that we want ot scroll to
+  const s1coords = section1.getBoundingClientRect(); // this method is relative to visible viewport (x and y properties change values as we scroll and change position of the element on viewport basically)
+
+  // console.log(s1coords); //  DOMrect with positions, x and y positions, width and height of the element....
+  // console.log(e.target.getBoundingClientRect()); // e.target is element that was clicked (here it's btnScrollTo)
+  // current scroll position:
+  // console.log('Current scroll (X/Y)', window.pageXOffset, window.pageYOffset);
+  // height and width of viewport (without scroll bars, just the area available for content):
+  // console.log(
+  //   'height/width',
+  //   document.documentElement.clientHeight,
+  //   document.documentElement.clientWidth
+  // );
+
+  // Scrolling
+  // window.scrollTo(
+  //   s1coords.left + window.pageXOffset,
+  //   s1coords.top + window.pageYOffset
+  // ); // current position with current scroll
+
+  // making scroll smooth with passing in an object instead just argument:
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: s1coords.top + window.pageYOffset,
+  //   behavior: 'smooth',
+  // });
+
+  // more modern way of doing this:
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
+
+//////////////////////////////////////
+//// Page navigation
+
+// document.querySelectorAll('.nav__link').forEach(function (el) {
+//   el.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute('href'); // bc href looks like id of section to scroll into
+
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   });
+// });
+
+// Event delegation
+// 1. add event listener to a common parent element of all the elements that we're interested in
+// 2. in that event listener determine what element originated the event
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  e.preventDefault();
+
+  // Matching strategy (to find only links that we are interested in, bc we want event only when we click on certain parts, not the entire container of nav bar)
+  if (e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+
+    // if (e.target.classList.contains('btn--show-modal')) {
+    //   disableScroll();
+    // }
+  }
+});
+
+///////////////////////////////////////////
+// Tabbed component
+
+tabsContainer.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.operations__tab'); // there are span elements on the button that we can accidentally click, so we need to use closest() to find right element, to find a perent that matches a certain query
+
+  // Guard clause
+  if (!clicked) return; // if there's nothing clicked then we want to immediately finish this func
+
+  // Remove active classes
+  tabs.forEach(t => t.classList.remove('operations__tab--active'));
+  tabsContent.forEach(c => c.classList.remove('operations__content--active'));
+
+  // Active tab
+  clicked.classList.add('operations__tab--active');
+
+  // Activate content area
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
+});
+
 //////////////////////////////////////////////////////
 /// Types of Events and Events handlers
 
@@ -167,29 +255,29 @@ logo.classList.contains('c');
 ///////////////////////////////////////////////////
 ////// Event propagation - event bubbling in practice
 
-const randomInt = (min, max) =>
-  Math.floor(Math.random() * (max - min + 1) + min);
-const randomColor = () =>
-  `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+// const randomInt = (min, max) =>
+//   Math.floor(Math.random() * (max - min + 1) + min);
+// const randomColor = () =>
+//   `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
 
-document.querySelector('.nav__link').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomColor();
-  // console.log('LINK', e.target, e.currentTarget); // event target is where event originated, where event first happened, not where event was attached
-  //currentTarget is elemetn on which event is attached
+// document.querySelector('.nav__link').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor();
+//   // console.log('LINK', e.target, e.currentTarget); // event target is where event originated, where event first happened, not where event was attached
+//   //currentTarget is elemetn on which event is attached
 
-  // Stop propagation
-  e.stopPropagation();
-});
+//   // Stop propagation
+//   e.stopPropagation();
+// });
 
-document.querySelector('.nav__links').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomColor();
-  // console.log('CONTAINER', e.target, e.currentTarget);
-});
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor();
+//   // console.log('CONTAINER', e.target, e.currentTarget);
+// });
 
-document.querySelector('.nav').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomColor();
-  // console.log('NAV', e.target, e.currentTarget);
-});
+// document.querySelector('.nav').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor();
+//   // console.log('NAV', e.target, e.currentTarget);
+// });
 
 // we attach event to target, and if we attach that same event on its parent elements, by bubbling - when we click on target event will happen on all parent elements that has the same event attached too (of course, if we click only on parent element event will also happen as ususal)
 
@@ -249,6 +337,34 @@ const handleHover = function (e, opacity) {
 nav.addEventListener('mouseover', handleHover.bind(0.5)); // better way - using bind()
 nav.addEventListener('mouseout', handleHover.bind(1));
 
+//////////////////////////
+// Sticky navigation
+
+// window.addEventListener('scroll', function () {
+//   console.log(this.window.scrollY);
+
+//   if (this.window.scrollY > initialCoords.top) nav.classList.add('sticky');
+//   else nav.classList.remove('sticky');
+// });
+
+// const header = document.querySelector('.header'); // already selected above
+const navHeight = nav.getBoundingClientRect().height;
+
+const stickyNav = function (entries) {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+};
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+  // rootMargin: '-90px', //  box of certain amount of px that will be aplied outside of our target element (kinda extends or shortens the element) (in this case 90px is height of nav bar, so it appeares - becomes sticky - in the last 90px of header, in this rootMargin that we defined, but we can also caluclate the height dinamicaly:)
+  rootMargin: `-${navHeight}px`,
+});
+headerObserver.observe(header);
+
 ////////////////////////////////////////////
 // The Intersection Observer API
 
@@ -281,55 +397,118 @@ const obsOptions = {
 const observer = new IntersectionObserver(obsCallback, obsOptions);
 observer.observe(section1);
 
+///////////////////////////////////
+// Lazy loading images
+const imgTargets = document.querySelectorAll('img[data-src]'); // seleceted only the imgs that has this property
+
+const loadImg = function (entries, observer) {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) return;
+
+  // Replace src with data-src
+  entry.target.src = entry.target.dataset.src;
+  //js will do this behind the scenes with loading event, so we can listen to it and do something:
+
+  entry.target.addEventListener('load', function () {
+    entry.target.classList.remove('lazy-img');
+  });
+
+  observer.unobserve(entry.target);
+};
+
+const imgObserver = new IntersectionObserver(loadImg, {
+  root: null,
+  treshold: 0,
+  rootMargin: '200px', //to make imgs load before we really reach them so it's not noticable
+});
+
+imgTargets.forEach(img => imgObserver.observe(img));
+
 ////////////////////////////////////////////
 ////// Slider
+const slider = function () {
+  const slides = document.querySelectorAll('.slide');
+  const btnLeft = document.querySelector('.slider__btn--left');
+  const btnRight = document.querySelector('.slider__btn--right');
+  const dotContainer = document.querySelector('.dots');
 
-const slides = document.querySelectorAll('.slide');
-const btnLeft = document.querySelector('.slider__btn--left');
-const btnRight = document.querySelector('.slider__btn--right');
+  let curSlide = 0;
+  const maxSlide = slides.length;
 
-let curSlide = 0;
-const maxSlide = slides.length;
+  const createDots = function () {
+    slides.forEach(function (_, i) {
+      dotContainer.insertAdjacentHTML(
+        'beforeend',
+        `<button class="dots__dot" data-slide="${i}"></button>`
+      );
+    });
+  };
 
-// const slider = document.querySelector('.slider');
-// slider.style.transform = 'scale(0.5)';
-// slider.style.overflow = 'visible';
+  const activateDot = function (slide) {
+    document
+      .querySelectorAll('.dots__dot')
+      .forEach(dot => dot.classList.remove('dots__dot--active'));
 
-// 0%, 100%, 200%, 300% - for 4 slides
+    document
+      .querySelector(`.dots__dot[data-slide="${slide}"]`)
+      .classList.add('dots__dot--active');
+  };
 
-const goToSlide = function (slide) {
-  slides.forEach(
-    (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
-  );
+  const goToSlide = function (slide) {
+    slides.forEach(
+      (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
+    );
+  };
+
+  const nextSlide = function () {
+    if (curSlide === maxSlide - 1) {
+      curSlide = 0;
+    } else {
+      curSlide++;
+    }
+
+    goToSlide(curSlide);
+    activateDot(curSlide);
+  };
+
+  const prevSlide = function () {
+    if (curSlide === 0) {
+      curSlide = maxSlide - 1;
+    } else {
+      curSlide--;
+    }
+
+    goToSlide(curSlide);
+    activateDot(curSlide);
+  };
+
+  const init = function () {
+    goToSlide(0);
+    createDots();
+    activateDot(0);
+  };
+  init();
+
+  btnRight.addEventListener('click', nextSlide);
+  btnLeft.addEventListener('click', prevSlide);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') prevSlide();
+    if (e.key === 'ArrowRight') nextSlide();
+  });
+
+  // Dots
+  dotContainer.addEventListener('click', function (e) {
+    if (e.target.classList.contains('dots__dot')) {
+      // const slide = e.target.dataset.slide;
+      const { slide } = e.target.dataset;
+      goToSlide(slide);
+      activateDot(slide);
+    }
+  });
 };
-goToSlide(0);
-
-// Next slide
-const nextSlide = function () {
-  if (curSlide === maxSlide - 1) {
-    curSlide = 0;
-  } else {
-    curSlide++;
-  }
-
-  // curSlide = 1: -100$, 0%, 100%, 200%
-  goToSlide(curSlide);
-};
-
-btnRight.addEventListener('click', nextSlide);
-
-// Previous slide
-const prevSlide = function () {
-  if (curSlide === 0) {
-    curSlide = maxSlide - 1;
-  } else {
-    curSlide--;
-  }
-
-  goToSlide(curSlide);
-};
-
-btnLeft.addEventListener('click', prevSlide);
+slider();
 
 ///////////////////////////////////////////
 // DOM content loaded
@@ -348,3 +527,25 @@ window.addEventListener('load', function (e) {
 //   console.log(e);
 //   e.returnValue = '';
 // }); // we can use this to ask user if he really wanna exit page
+
+/////////////////////////////////////
+// defer and async
+
+// regular:
+// script tag in head of html --> parsing html, then that will stop while script is fetched then executed, and then parsing will continue. of course this is bad, that's why we dont do it
+// script tag at the end of body el --> parsing html > fetch script > execute
+
+// puting script tag with async or defer atribute in body el doesn't make sense, so it's not used
+
+// ASYNC (scripts are fetched asynchronosly and executed immediately)
+// parsing html and fetching script are simultanious, then parsing will wait while script is executed, and continue after that, DOMContentLoaded is fired as soon as html finished parsing
+// DOMContentLoaded won't wait for script to be executed
+// scripts not guaranteed to be executed in order
+
+// DEFER (scripts are fetched asynchronosly and executed after html is comletely parsed)
+// parsing html, meanwhile fetching script, after html is parsed script will be executed, and then DOMContentLoaded is fired
+// defer forces DOMContentLoaded event to only get fired after the whole script has been downloaded and executed
+// scripts are executed in order
+// defer is overall the best solution (especially in working with libraries)
+
+// async and defer are supported in modern browsers, bc this is html5 feature. if needed to support old browsers use script tag at the end of body
