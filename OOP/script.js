@@ -27,3 +27,31 @@ const matilda = new Person('Matilda', 2015);
 console.log(jack, matilda);
 
 console.log(slady instanceof Person);
+
+//// PROTOTYPES
+// each object created through same construcotr func will inherit all methods and properties that are definied on prototype property:
+console.log(Person.prototype);
+
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+};
+
+slady.calcAge();
+
+console.log(slady.__proto__); // prototype of slady object, essentially it's a prototype property of constructor func
+console.log(slady.__proto__ === Person.prototype);
+
+// Person.prototype is not prototype of a Person, but what will be used as a prototype for any future objects made from Person
+
+// to test if it's a protoype of another object:
+console.log(Person.prototype.isPrototypeOf(slady));
+console.log(Person.prototype.isPrototypeOf(Person));
+
+// setting properties to prototype:
+Person.prototype.species = 'Homo Sapiens';
+
+console.log(slady.species, jack.species);
+
+// to check if object has properties of its own, not only inherited ones"
+console.log(slady.hasOwnProperty('firstName'));
+console.log(slady.hasOwnProperty('species'));
