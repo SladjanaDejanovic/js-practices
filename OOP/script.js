@@ -55,3 +55,8 @@ console.log(slady.species, jack.species);
 // to check if object has properties of its own, not only inherited ones"
 console.log(slady.hasOwnProperty('firstName'));
 console.log(slady.hasOwnProperty('species'));
+
+// Prototype chains is series of links between objects, linked through prototypes (similar to the scope chain)
+// jonas.__proto__ is Person.prototype
+// Person.prototype is Object.prototype (bc person is an object, and when we create objects behind the scenes this is how they get created acctually - {} === new Object(...) )
+// and finally Object.prototype is null
