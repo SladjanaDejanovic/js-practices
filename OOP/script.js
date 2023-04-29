@@ -56,7 +56,25 @@ console.log(slady.species, jack.species);
 console.log(slady.hasOwnProperty('firstName'));
 console.log(slady.hasOwnProperty('species'));
 
+// PROTOTYPAL INHERITANCE
 // Prototype chains is series of links between objects, linked through prototypes (similar to the scope chain)
 // jonas.__proto__ is Person.prototype
 // Person.prototype is Object.prototype (bc person is an object, and when we create objects behind the scenes this is how they get created acctually - {} === new Object(...) )
 // and finally Object.prototype is null
+
+console.dir(Person.prototype.constructor);
+console.log();
+
+const arr = [3, 6, 4, 7, 9, 2, 4, 9, 3];
+console.log(arr.__proto__);
+console.log(arr.__proto__ === Array.prototype);
+
+// new Array === []  -  arrays are created by array construcotr. that's why al; arrays, as objects, have access to all of those methods, they inherited that from Array.prototype
+
+console.log(arr.__proto__.__proto__);
+
+Array.prototype.unique = function () {
+  return [...new Set(this)];
+};
+console.log(arr.unique());
+// it's a bad practice to add methods on arrays, bc in the future js might add a method with the same name that works differently, adn when working witha a team of developers, there can be a lot of bugs if there are same methods with different names and such
