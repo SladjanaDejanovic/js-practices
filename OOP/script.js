@@ -78,3 +78,42 @@ Array.prototype.unique = function () {
 };
 console.log(arr.unique());
 // it's a bad practice to add methods on arrays, bc in the future js might add a method with the same name that works differently, adn when working witha a team of developers, there can be a lot of bugs if there are same methods with different names and such
+
+////////////////////////
+// ES6 CLASSES
+// cleaner, more modern way of creating objects
+
+// class expression
+// const PersonCl = class {} // classes are special types of functions, they don't have arguments
+
+// class declaration
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+  // Methods will be added to .prototype property of the class
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+
+  greet() {
+    console.log(`Hey ${this.firstName}!`);
+  }
+}
+
+const jessica = new PersonCl('Jessica', 1996);
+console.log(jessica);
+jessica.calcAge();
+
+console.log(jessica.__proto__ === PersonCl.prototype);
+
+// PersonCl.prototype.greet = function () {
+//   console.log(`Hey ${this.firstName}!`);
+// };
+
+jessica.greet();
+
+// 1. Classes are NOT hoisted(can't be used before they are declared in the code, unlike function declarations)
+// 2. Classes are first-class citizens (we can pass them to func and return them from funcs)
+// 3. Body of a class is always executed in strict mode
