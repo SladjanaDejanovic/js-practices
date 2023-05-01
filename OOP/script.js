@@ -100,6 +100,10 @@ class PersonCl {
   greet() {
     console.log(`Hey ${this.firstName}!`);
   }
+
+  get age() {
+    return 2037 - this.birthYear;
+  }
 }
 
 const jessica = new PersonCl('Jessica', 1996);
@@ -117,3 +121,27 @@ jessica.greet();
 // 1. Classes are NOT hoisted(can't be used before they are declared in the code, unlike function declarations)
 // 2. Classes are first-class citizens (we can pass them to func and return them from funcs)
 // 3. Body of a class is always executed in strict mode
+
+/////////////////////////
+// Accessor properties - SETTERS AND GETTERS
+
+const account = {
+  owner: 'jonas',
+  movements: [200, 530, 120, 300],
+
+  get latest() {
+    return this.movements.slice(-1).pop();
+  },
+
+  // setters have 1 parameter
+  set latest(mov) {
+    this.movements.push(mov);
+  },
+};
+
+// get
+console.log(account.latest); // we don't call it, but write it as if it was just a property
+
+// set
+account.latest = 50;
+console.log(account.movements);
