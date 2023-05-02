@@ -88,8 +88,8 @@ console.log(arr.unique());
 
 // class declaration
 class PersonCl {
-  constructor(firstName, birthYear) {
-    this.firstName = firstName;
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
     this.birthYear = birthYear;
   }
   // Methods will be added to .prototype property of the class
@@ -104,9 +104,21 @@ class PersonCl {
   get age() {
     return 2037 - this.birthYear;
   }
+  // when we're setting property tyhat has same name as some parameter, as a convention we write it with underscore (different variable name to avoid naming conflict)
+  set fullName(name) {
+    console.log(name);
+    if (name.includes(' ')) this._fullName = name;
+    else alert(`${name} is not a full name!`);
+  }
+
+  // to fix this we also need a getter for this property
+  get fullName() {
+    return this._fullName;
+  }
+  //(the acctual property name is still with underscore, but we can access it simply like this jessica.fullName now)
 }
 
-const jessica = new PersonCl('Jessica', 1996);
+const jessica = new PersonCl('Jessica Davis', 1996);
 console.log(jessica);
 jessica.calcAge();
 
@@ -145,3 +157,5 @@ console.log(account.latest); // we don't call it, but write it as if it was just
 // set
 account.latest = 50;
 console.log(account.movements);
+
+// setteres are usefull for adata validation
