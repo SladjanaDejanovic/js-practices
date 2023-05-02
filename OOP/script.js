@@ -92,6 +92,8 @@ class PersonCl {
     this.fullName = fullName;
     this.birthYear = birthYear;
   }
+
+  // Instance methods
   // Methods will be added to .prototype property of the class
   calcAge() {
     console.log(2037 - this.birthYear);
@@ -104,10 +106,12 @@ class PersonCl {
   get age() {
     return 2037 - this.birthYear;
   }
-  // when we're setting property tyhat has same name as some parameter, as a convention we write it with underscore (different variable name to avoid naming conflict)
+
+  // setteres are usefull for data validation
   set fullName(name) {
     console.log(name);
     if (name.includes(' ')) this._fullName = name;
+    // when we're setting property tyhat has same name as some parameter, as a convention we write it with underscore (different variable name to avoid naming conflict)
     else alert(`${name} is not a full name!`);
   }
 
@@ -116,6 +120,12 @@ class PersonCl {
     return this._fullName;
   }
   //(the acctual property name is still with underscore, but we can access it simply like this jessica.fullName now)
+
+  // Static method
+  static hey() {
+    console.log('Hey there 👋');
+    console.log(this);
+  }
 }
 
 const jessica = new PersonCl('Jessica Davis', 1996);
@@ -158,4 +168,23 @@ console.log(account.latest); // we don't call it, but write it as if it was just
 account.latest = 50;
 console.log(account.movements);
 
-// setteres are usefull for adata validation
+//////////////////////////
+// STATIC METHOD
+
+// Array.from method converts any array liek structure to real array
+console.log(Array.from(document.querySelectorAll('h1')));
+
+// .from() is attached to Array constructor, not on prototype property of the construcotr, so [1,2,3].from() doesn't work, all the arrays do not inherit this method
+
+// for example Number.parseFloat() is also static method
+
+Person.hey = function () {
+  console.log('Hey there 👋');
+  console.log(this);
+};
+
+Person.hey(); // this is not inherited
+// jonas.hey(); // -thisd doesn't work
+
+// to create static method in class- look line 124
+PersonCl.hey();
