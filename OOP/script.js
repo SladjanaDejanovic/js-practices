@@ -1,5 +1,5 @@
 'use strict';
-
+///////////////////////////
 // CONSTRUCTOR FUNCTIONS (always starts with capital letter)
 
 // arrow func will not work as function constructor, bc it doesn't have its own this kw
@@ -28,6 +28,7 @@ console.log(jack, matilda);
 
 console.log(slady instanceof Person);
 
+////////////////////////////////
 //// PROTOTYPES
 // each object created through same construcotr func will inherit all methods and properties that are definied on prototype property:
 console.log(Person.prototype);
@@ -56,6 +57,7 @@ console.log(slady.species, jack.species);
 console.log(slady.hasOwnProperty('firstName'));
 console.log(slady.hasOwnProperty('species'));
 
+/////////////////////////
 // PROTOTYPAL INHERITANCE
 // Prototype chains is series of links between objects, linked through prototypes (similar to the scope chain)
 // jonas.__proto__ is Person.prototype
@@ -140,9 +142,9 @@ console.log(jessica.__proto__ === PersonCl.prototype);
 
 jessica.greet();
 
-// 1. Classes are NOT hoisted(can't be used before they are declared in the code, unlike function declarations)
+// 1. Classes are NOT hoisted (can't be used before they are declared in the code, unlike function declarations)
 // 2. Classes are first-class citizens (we can pass them to func and return them from funcs)
-// 3. Body of a class is always executed in strict mode
+// 3. Body of a class is always executed in strict mode (even if we don't write our code in strict mode)
 
 /////////////////////////
 // Accessor properties - SETTERS AND GETTERS
@@ -184,7 +186,7 @@ Person.hey = function () {
 };
 
 Person.hey(); // this is not inherited
-// jonas.hey(); // -thisd doesn't work
+// jonas.hey(); // -this doesn't work
 
 // to create static method in class- look line 124
 PersonCl.hey();
