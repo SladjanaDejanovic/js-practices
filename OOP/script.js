@@ -113,7 +113,7 @@ class PersonCl {
   set fullName(name) {
     console.log(name);
     if (name.includes(' ')) this._fullName = name;
-    // when we're setting property tyhat has same name as some parameter, as a convention we write it with underscore (different variable name to avoid naming conflict)
+    // when we're setting property that has same name as some parameter, as a convention we write it with underscore (different variable name to avoid naming conflict)
     else alert(`${name} is not a full name!`);
   }
 
