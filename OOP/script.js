@@ -190,3 +190,33 @@ Person.hey(); // this is not inherited
 
 // to create static method in class- look line 124
 PersonCl.hey();
+
+////////////////////////
+/// OBJECT.CREATE()
+// no need for constructor functions and prototype property
+
+// we can use Object.create to manually set the prototype of a object, to any other object that we want
+
+// creating object that we want to be prototype for other objects (with object literal):
+const PersonProto = {
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  },
+
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
+
+// creating an object, and pass in what we want to be prototype of that object:
+const steven = Object.create(PersonProto);
+steven.name = 'Steven';
+steven.birthYear = 2002;
+steven.calcAge();
+
+console.log(steven.__proto__ === PersonProto);
+
+const sarah = Object.create(PersonProto);
+sarah.init('Sarah', 1979); // programmatically adding properties to newly created object by using method that it inherited from its prototype
+sarah.calcAge();
