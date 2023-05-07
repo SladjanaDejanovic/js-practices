@@ -173,7 +173,7 @@ console.log(account.movements);
 //////////////////////////
 // STATIC METHOD
 
-// Array.from method converts any array liek structure to real array
+// Array.from method converts any array like structure to real array
 console.log(Array.from(document.querySelectorAll('h1')));
 
 // .from() is attached to Array constructor, not on prototype property of the construcotr, so [1,2,3].from() doesn't work, all the arrays do not inherit this method
