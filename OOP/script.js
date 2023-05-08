@@ -222,42 +222,57 @@ sarah.init('Sarah', 1979); // programmatically adding properties to newly create
 sarah.calcAge();
 
 //////////////////////////////////
-// Another class example
 
 class Account {
+  // 1) Public fields (instances)
+  locale = navigator.language;
+  // _movements = [];
+
+  // 2) Private fields (instances)
+  #movements = [];
+  #pin; // here it will undefined...
+
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
     // protected property
-    this._pin = pin;
-    this._movements = [];
-    this.locale = navigator.language;
+    this.#pin = pin; //.. and here will be set to the value we recieved
+    // this._movements = [];
+    // this.locale = navigator.language;
 
     console.log(`Thanks for opening account, ${owner}`);
   }
 
+  // 3) Public methods
   // Public interface
   getMovements() {
-    return this._movements;
+    return this.#movements;
   }
 
   deposit(val) {
-    this._movements.push(val);
+    this.#movements.push(val);
   }
 
   withdrawal(val) {
     this.deposit(-val);
   }
 
-  _approveLoan(val) {
-    return true;
-  }
-
   requestLoan(val) {
+    // if (this.#approveLoan(val)) {
     if (this._approveLoan(val)) {
       this.deposit(val);
       console.log(`Loan approved`);
     }
+  }
+
+  // 4) Private methods -not still available in Chrome
+  // #approveLoan(val) {
+  _approveLoan(val) {
+    return true;
+  }
+
+  static helper() {
+    console.log('Helper');
   }
 }
 
@@ -273,7 +288,7 @@ acc1.withdrawal(140);
 console.log(acc1);
 
 acc1.requestLoan(1000);
-acc1.approveLoan(1000);
+// acc1.approveLoan(1000);
 
 ///////////////////////
 // ENCAPSULATION - protected propertis and methods
@@ -281,3 +296,20 @@ acc1.approveLoan(1000);
 // with convention - addin underscore before name, this doesn't raelly make data private, so we call this PROTECTED PROPERTY. This property is not supposed to be touched outside of the class. If we want to do that, then we'l have to implement a public method for it
 
 console.log(acc1.getMovements());
+
+///////////////////
+// Class fields
+// 1) Public fields
+// 2) Private fields
+// 3) Public methods
+// 4) Private methods
+// (there is also static verseion) - static won't be availble on all the instances but only on class itself, useful for helper functions
+Account.helper();
+
+// we can think of a field like a property that's gonna be on all instances (in our example those are movements and locale)
+// fields can't eb defined in the construcotr
+
+// 2)- properties are really not accessable from the outside of the class, using # before name of property
+// console.log(acc1.#movements); // error: be declared in an enclosing class
+
+//4) useful to hide implementation details from the outside
