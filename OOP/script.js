@@ -309,8 +309,8 @@ console.log(acc1.getMovements());
 // (there is also static verseion) - static won't be availble on all the instances but only on class itself, useful for helper functions
 Account.helper();
 
-// we can think of a field like a property that's gonna be on all instances (in our example those are movements and locale)
-// fields can't eb defined in the construcotr
+// we can think of a field like a property that's gonna be on all instances (in our example those are movements and locale) - we are not getting it from constructor of an object, where properties might have different values based on input of every new object.. fields will be same for all objects
+// fields can't be defined in the construcotr
 
 // 2)- properties are really not accessable from the outside of the class, using # before name of property
 // console.log(acc1.#movements); // error: be declared in an enclosing class
