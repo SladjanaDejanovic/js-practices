@@ -251,10 +251,12 @@ class Account {
 
   deposit(val) {
     this.#movements.push(val);
+    return this;
   }
 
-  withdrawal(val) {
+  withdraw(val) {
     this.deposit(-val);
+    return this;
   }
 
   requestLoan(val) {
@@ -262,10 +264,11 @@ class Account {
     if (this._approveLoan(val)) {
       this.deposit(val);
       console.log(`Loan approved`);
+      return this;
     }
   }
 
-  // 4) Private methods -not still available in Chrome
+  // 4) Private methods - still not available in Chrome
   // #approveLoan(val) {
   _approveLoan(val) {
     return true;
@@ -284,7 +287,7 @@ console.log(acc1);
 //it's better to create methods that will interact with properties:
 
 acc1.deposit(250);
-acc1.withdrawal(140);
+acc1.withdraw(140);
 console.log(acc1);
 
 acc1.requestLoan(1000);
@@ -293,7 +296,7 @@ acc1.requestLoan(1000);
 ///////////////////////
 // ENCAPSULATION - protected propertis and methods
 
-// with convention - addin underscore before name, this doesn't raelly make data private, so we call this PROTECTED PROPERTY. This property is not supposed to be touched outside of the class. If we want to do that, then we'l have to implement a public method for it
+// with convention - adding underscore before name, this doesn't raelly make data private, so we call this PROTECTED PROPERTY. This property is not supposed to be touched outside of the class. If we want to do that, then we'l have to implement a public method for it
 
 console.log(acc1.getMovements());
 
@@ -313,3 +316,12 @@ Account.helper();
 // console.log(acc1.#movements); // error: be declared in an enclosing class
 
 //4) useful to hide implementation details from the outside
+
+///////////////////
+// Chaining methods
+
+// - we have to return object before calling next method (look lines with deposit() and withdraw())
+// return this   mkaes methods chainable
+
+acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000);
+console.log(acc1.getMovements());
