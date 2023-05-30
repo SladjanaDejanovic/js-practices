@@ -8,16 +8,42 @@ const countriesContainer = document.querySelector('.countries');
 //////////////////////////////
 // Doing AJAX calls with XMLHttp request (old school way)
 
-const request = new XMLHttpRequest();
+const getCountryData = function (country) {
+  const request = new XMLHttpRequest();
 
-// on github there is a huge repository of public APIs (here we're using REST countries; any API i want to use from here should have CORS(cross origine resource sharing) set to yes/unknown)
-request.open('GET', 'https://restcountries.com/v3.1/name/portugal');
-request.send();
+  // on github there is a huge repository of public APIs (here we're using REST countries; any API i want to use from here should have CORS(cross origine resource sharing) set to yes/unknown)
+  request.open('GET', `https://restcountries.com/v3.1/name/${country}`);
+  request.send();
 
-request.addEventListener('load', function () {
-  // in case there is  abug (also change name of the country like this ${country} in url):
-  // const [data] = JSON.parse(this.responseText);
-  // console.log(data);
+  request.addEventListener('load', function () {
+    const [data] = JSON.parse(this.responseText);
+    console.log(data);
 
-  console.log(this.responseText);
-});
+    // fixed bug that appears bc code from course isn not working today
+    const languages = Object.values(data.languages);
+    const currencies = Object.values(data.currencies);
+    const name = Object.values(data.name);
+    const flags = Object.values(data.flags);
+
+    const html = `<article class="country">
+  <img class="country__img" src="${flags[0]}" />
+  <div class="country__data">
+    <h3 class="country__name">${name[0]}</h3>
+    <h4 class="country__region">${data.region}</h4>
+    <p class="country__row"><span>👫</span>${(
+      +data.population / 1000000
+    ).toFixed(1)} milion people</p>
+    <p class="country__row"><span>🗣️</span>${languages[0]}</p>
+    <p class="country__row"><span>💰</span>${currencies[0].name}</p>
+  </div>
+</article>`;
+
+    countriesContainer.insertAdjacentHTML('beforeend', html);
+    countriesContainer.style.opacity = 1;
+  });
+};
+
+getCountryData('serbia');
+getCountryData('brazil');
+getCountryData('japan');
+getCountryData('korea');
