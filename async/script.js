@@ -9,16 +9,21 @@ const countriesContainer = document.querySelector('.countries');
 // Doing AJAX calls with XMLHttp request (old school way)
 
 const renderCountry = function (data, className = '') {
+  const flag = data.flags.svg;
+  const name = data.name.common;
+  const region = data.region;
+  const population = (data.population / 1000000).toFixed(1);
+  const language = Object.values(data.languages)[0];
+  const currency = Object.values(data.currencies)[0].name;
+
   const html = `<article class="country ${className}">
-  <img class="country__img" src="${data.flags[0]}" />
+  <img class="country__img" src="${flag}" />
   <div class="country__data">
-    <h3 class="country__name">${data.name[0]}</h3>
-    <h4 class="country__region">${data.region}</h4>
-    <p class="country__row"><span>👫</span>${(
-      +data.population / 1000000
-    ).toFixed(1)} milion people</p>
-    <p class="country__row"><span>🗣️</span>${data.languages[0]}</p>
-    <p class="country__row"><span>💰</span>${data.currencies[0]}</p>
+    <h3 class="country__name">${name}</h3>
+    <h4 class="country__region">${region}</h4>
+    <p class="country__row"><span>👫</span>${population} milion people</p>
+    <p class="country__row"><span>🗣️</span>${language}</p>
+    <p class="country__row"><span>💰</span>${currency}</p>
   </div>
 </article>`;
 
@@ -38,12 +43,6 @@ const getCountryAndNeighbour = function (country) {
     const [data] = JSON.parse(this.responseText);
     console.log(data);
 
-    // fixed bug that appears bc code from course is not working today
-    const languages = Object.values(data.languages);
-    const currencies = Object.values(data.currencies);
-    const name = Object.values(data.name);
-    const flags = Object.values(data.flags);
-
     // Render country 1
     renderCountry(data);
 
@@ -58,8 +57,7 @@ const getCountryAndNeighbour = function (country) {
     request2.send();
 
     request2.addEventListener('load', function () {
-      // response text is no longer an array
-      const data2 = JSON.parse(this.responseText);
+      const [data2] = JSON.parse(this.responseText);
       console.log(data2);
 
       renderCountry(data2, 'neighbour');
@@ -73,15 +71,15 @@ getCountryAndNeighbour('serbia');
 // getCountryAndNeighbour('korea');
 
 // Callback hell
-setTimeout(() => {
-  console.log('1 second passed');
-  setTimeout(() => {
-    console.log('2 seconds passed');
-    setTimeout(() => {
-      console.log('3 seconds passed');
-      setTimeout(() => {
-        console.log('4 seconds passed');
-      }, 1000);
-    }, 1000);
-  }, 1000);
-}, 1000);
+// setTimeout(() => {
+//   console.log('1 second passed');
+//   setTimeout(() => {
+//     console.log('2 seconds passed');
+//     setTimeout(() => {
+//       console.log('3 seconds passed');
+//       setTimeout(() => {
+//         console.log('4 seconds passed');
+//       }, 1000);
+//     }, 1000);
+//   }, 1000);
+// }, 1000);
