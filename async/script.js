@@ -65,11 +65,12 @@ const getCountryAndNeighbour = function (country) {
   });
 };
 
-getCountryAndNeighbour('serbia');
+// getCountryAndNeighbour('serbia');
 // getCountryAndNeighbour('brazil');
 // getCountryAndNeighbour('japan');
 // getCountryAndNeighbour('korea');
 
+/////////////////////////////////
 // Callback hell
 // setTimeout(() => {
 //   console.log('1 second passed');
@@ -83,3 +84,34 @@ getCountryAndNeighbour('serbia');
 //     }, 1000);
 //   }, 1000);
 // }, 1000);
+
+////////////////////////////
+// Fetch API
+
+const request = fetch('https://restcountries.com/v3.1/name/serbia');
+// console.log(request);
+
+// PROMISE is an object that is used as a placeholder for the future result of an asynchronous operation (like a container for asynchronously delivered value, for example response from ajax call)
+// by chaining promises we can avoid callback hell
+
+// Consuming promise return by fetch()
+// const getCountryData = function (country) {
+//   fetch(`https://restcountries.com/v3.1/name/${country}`)
+//     .then(function (response) {
+//       console.log(response);
+//       return response.json(); // json() is also async func so it will also return a promise
+//     })
+//     .then(function (data) {
+//       console.log(data);
+//       renderCountry(data[0]);
+//     });
+// };
+
+// simplified:
+const getCountryData = function (country) {
+  fetch(`https://restcountries.com/v3.1/name/${country}`)
+    .then(response => response.json())
+    .then(data => renderCountry(data[0]));
+};
+
+getCountryData('serbia');
