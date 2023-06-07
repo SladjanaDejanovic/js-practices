@@ -88,13 +88,14 @@ const getCountryAndNeighbour = function (country) {
 ////////////////////////////
 // Fetch API
 
-const request = fetch('https://restcountries.com/v3.1/name/serbia');
+// const request = fetch('https://restcountries.com/v3.1/name/serbia');
 // console.log(request);
 
 // PROMISE is an object that is used as a placeholder for the future result of an asynchronous operation (like a container for asynchronously delivered value, for example response from ajax call)
 // by chaining promises we can avoid callback hell
 
 // Consuming promise return by fetch()
+
 // const getCountryData = function (country) {
 //   fetch(`https://restcountries.com/v3.1/name/${country}`)
 //     .then(function (response) {
@@ -109,9 +110,16 @@ const request = fetch('https://restcountries.com/v3.1/name/serbia');
 
 // simplified:
 const getCountryData = function (country) {
+  // country 1
   fetch(`https://restcountries.com/v3.1/name/${country}`)
     .then(response => response.json())
-    .then(data => renderCountry(data[0]));
+    // Chaining promises
+    .then(data => {
+      renderCountry(data[0]);
+      const neighbour = data[0].borders[0];
+      // country 2
+      return fetch(`https://restcountries.com/v3.1/alpha/${neighbour}`);
+    });
 };
 
 getCountryData('serbia');
