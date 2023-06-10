@@ -5,7 +5,7 @@
 const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
 
-//////////////////////////////
+/////////////////////////////////////////////////////////
 // Doing AJAX calls with XMLHttp request (old school way)
 
 const renderCountry = function (data, className = '') {
@@ -67,8 +67,6 @@ const getCountryAndNeighbour = function (country) {
 
 // getCountryAndNeighbour('serbia');
 // getCountryAndNeighbour('brazil');
-// getCountryAndNeighbour('japan');
-// getCountryAndNeighbour('korea');
 
 /////////////////////////////////
 // Callback hell
