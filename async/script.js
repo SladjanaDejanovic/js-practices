@@ -5,8 +5,10 @@
 const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
 
-/////////////////////////////////////////////////////////
-// Doing AJAX calls with XMLHttp request (old school way)
+const renderError = function (msg) {
+  countriesContainer.insertAdjacentText('beforeend', msg);
+  // countriesContainer.style.opacity = 1;
+};
 
 const renderCountry = function (data, className = '') {
   const flag = data.flags.svg;
@@ -28,8 +30,11 @@ const renderCountry = function (data, className = '') {
 </article>`;
 
   countriesContainer.insertAdjacentHTML('beforeend', html);
-  countriesContainer.style.opacity = 1;
+  // countriesContainer.style.opacity = 1;
 };
+
+/////////////////////////////////////////////////////////
+// Doing AJAX calls with XMLHttp request (old school way)
 
 const getCountryAndNeighbour = function (country) {
   // AJAX call country 1
@@ -89,10 +94,11 @@ const getCountryAndNeighbour = function (country) {
 // const request = fetch('https://restcountries.com/v3.1/name/serbia');
 // console.log(request);
 
-// PROMISE is an object that is used as a placeholder for the future result of an asynchronous operation (like a container for asynchronously delivered value, for example response from ajax call)
+// PROMISE - an object used as a placeholder for the future result of an asynchronous operation (like a container for asynchronously delivered value, for example response from ajax call)
 // by chaining promises we can avoid callback hell
 
-// Consuming promise return by fetch()
+////////////
+// Consuming promise return by fetch():
 
 // const getCountryData = function (country) {
 //   fetch(`https://restcountries.com/v3.1/name/${country}`)
@@ -106,7 +112,6 @@ const getCountryAndNeighbour = function (country) {
 //     });
 // };
 
-// simplified:
 const getCountryData = function (country) {
   // country 1
   fetch(`https://restcountries.com/v3.1/name/${country}`)
@@ -126,12 +131,21 @@ const getCountryData = function (country) {
     })
     .then(response => response.json())
     .then(data => renderCountry(data[0], 'neighbour'))
-    .catch(err => alert(err));
+    .catch(err => {
+      console.error(`${err} 💥💥💥`);
+      renderError(`Something went wrong 💥💥💥 ${err.message}. Try again!`);
+    }) // simulating no internet error
+    .finally(() => {
+      countriesContainer.style.opacity = 1;
+    });
 };
 
 btn.addEventListener('click', function () {
   getCountryData('serbia');
 });
 
-// simulating no internet error:
-// promise rejegtion -                        1) pass a second callback in then() whcich will be called when promise is rejected (we don't have uncaught error anymore in console, bc we did catch it this callback, and dispalyed it as alert) err => alert(err)                      2) catching error from one place, globally, no matter where they appear in the chain - by adding catch() at the end of the chain (bc erors propagate down the chain until they're caught, and if they're not we get uncaught error in console)
+// PROMISE REJECTION -                        1) pass a second callback in then() whcich will be called when promise is rejected (we don't have uncaught error anymore in console, bc we did catch it this callback, and dispalyed it as alert) err => alert(err)                      2) catching error from one place, globally, no matter where they appear in the chain - by adding catch() at the end of the chain (bc erors propagate down the chain until they're caught, and if they're not we get uncaught error in console). catch() always returna a promise                    3) finally() method -callback here will always be called whatever happens with the promise. used for something that always needs to happen no matter the result of the promise (for exmple to hide loading spinner)
+
+// any error created in js contains message property (bc it's an object, and we can create errors)
+
+// fetch promise only rejects where there's no internet connection
