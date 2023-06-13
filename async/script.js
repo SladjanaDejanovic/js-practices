@@ -115,10 +115,16 @@ const getCountryAndNeighbour = function (country) {
 const getCountryData = function (country) {
   // country 1
   fetch(`https://restcountries.com/v3.1/name/${country}`)
-    .then(
-      response => response.json()
+    .then(response => {
+      console.log(response);
+
+      if (!response.ok)
+        //creating a error with ErrorConstructor, this becomes message of a error
+        throw new Error(`Country not found (${response.status})`); //creating our own error to reject the promise on purpose so we can handle that error down in catch method
+
+      return response.json();
       // err => alert(err)
-    )
+    })
     .then(data => {
       console.log(data);
       renderCountry(data[0]);
@@ -141,7 +147,7 @@ const getCountryData = function (country) {
 };
 
 btn.addEventListener('click', function () {
-  getCountryData('serbia');
+  getCountryData('sdfsdfsd');
 });
 
 // PROMISE REJECTION -                        1) pass a second callback in then() whcich will be called when promise is rejected (we don't have uncaught error anymore in console, bc we did catch it this callback, and dispalyed it as alert) err => alert(err)                      2) catching error from one place, globally, no matter where they appear in the chain - by adding catch() at the end of the chain (bc erors propagate down the chain until they're caught, and if they're not we get uncaught error in console). catch() always returna a promise                    3) finally() method -callback here will always be called whatever happens with the promise. used for something that always needs to happen no matter the result of the promise (for exmple to hide loading spinner)
