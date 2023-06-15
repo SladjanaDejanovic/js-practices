@@ -6,7 +6,7 @@ PART 1:
 
 1. Create a function 'whereAmI' which takes as inputs a latitude value (lat) and a longitude value (lng)
 
-2. DO 'reverse geocoding' of the provided coordinates. Reveresed geocoding means to converts coordinates to a meaningful location, like a city and a country name. Use this API to do reverse geocoding: https://geocode.xyz/api
+2. Do 'reverse geocoding' of the provided coordinates. Reveresed geocoding means to converts coordinates to a meaningful location, like a city and a country name. Use this API to do reverse geocoding: https://geocode.xyz/api
 The AJAX call will be done to a URL with this format: https://geocode.xyz/52.508,13.381?geoit=json
 Use the fetch API and promises to get the data
 
@@ -33,10 +33,11 @@ const countriesContainer = document.querySelector('.countries');
 
 const renderError = function (msg) {
   countriesContainer.insertAdjacentText('beforeend', msg);
+  countriesContainer.style.opacity = 1;
 };
 
 const renderCountry = function (data, className = '') {
-  const flag = data.flags.png;
+  const flag = data.flags.svg;
   const name = data.name.common;
   const region = data.region;
   const population = (data.population / 1000000).toFixed(1);
@@ -55,30 +56,48 @@ const renderCountry = function (data, className = '') {
 </article>`;
 
   countriesContainer.insertAdjacentHTML('beforeend', html);
-  // countriesContainer.style.opacity = 1;
+  countriesContainer.style.opacity = 1;
 };
 
 const whereAmI = function (lat, lng) {
-  fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
+  fetch(
+    `https://geocode.xyz/${lat},${lng}?geoit=json&auth=115400213181647e15870825x40399`
+  )
     .then(response => {
       console.log(response);
 
       if (!response.ok)
-        throw new Error(`Country not found (${response.status})`);
+        throw new Error(`Problem with geocoding (${response.status})`);
 
       return response.json();
     })
     .then(data => {
       console.log(data);
+      if (data.error) {
+        throw new Error(`${data.error.message}`);
+      }
+      console.log(`You are in ${data.city}, ${data.country}`);
 
-      renderCountry(data[0]);
+      return fetch(`https://restcountries.com/v3.1/name/${data.country}`)
+        .then(response => {
+          console.log(response);
+          if (!response.ok)
+            throw new Error(`Country not found (${response.status})`);
+          return response.json();
+        })
+        .then(data => {
+          console.log(data);
+          renderCountry(data[0]);
+        });
     })
     .catch(err => {
-      console.log(err);
-      renderError();
+      console.error(`${err.message}`);
+      renderError(`Something went wrong 💥💥💥 ${err.message} Try again!`);
     });
 };
 
 btn.addEventListener('click', function () {
+  whereAmI(52.508, 13.381);
   whereAmI(19.037, 72.873);
+  whereAmI(-33.933, 18.474);
 });
