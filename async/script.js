@@ -11,7 +11,7 @@ const renderError = function (msg) {
 };
 
 const renderCountry = function (data, className = '') {
-  const flag = data.flags.svg;
+  const flag = data.flags.png;
   const name = data.name.common;
   const region = data.region;
   const population = (data.population / 1000000).toFixed(1);
@@ -23,7 +23,7 @@ const renderCountry = function (data, className = '') {
   <div class="country__data">
     <h3 class="country__name">${name}</h3>
     <h4 class="country__region">${region}</h4>
-    <p class="country__row"><span>👫</span>${population} milion people</p>
+    <p class="country__row"><span>👫</span>${population}M people</p>
     <p class="country__row"><span>🗣️</span>${language}</p>
     <p class="country__row"><span>💰</span>${currency}</p>
   </div>
@@ -164,21 +164,22 @@ const getCountryData = function (country) {
     .then(data => {
       console.log(data);
       renderCountry(data[0]);
-      const neighbour = data[0].borders[0];
+      const neighbour = data[0].borders;
+      console.log(neighbour);
       // const neighbour = 'asfadf';
 
-      if (!neighbour) return;
+      if (!neighbour) throw new Error('No neighbour found!');
 
       // country 2
       return getJSON(
-        `https://restcountries.com/v3.1/alpha/${neighbour}`,
+        `https://restcountries.com/v3.1/alpha/${neighbour[0]}`,
         'Country not found'
       );
     })
     .then(data => renderCountry(data[0], 'neighbour'))
     .catch(err => {
       console.error(`${err} 💥💥💥`);
-      renderError(`Something went wrong 💥💥💥 ${err.message}. Try again!`);
+      renderError(`Something went wrong 💥💥💥 ${err.message} Try again!`);
     }) // simulating no internet error
     .finally(() => {
       countriesContainer.style.opacity = 1;
@@ -186,7 +187,7 @@ const getCountryData = function (country) {
 };
 
 btn.addEventListener('click', function () {
-  getCountryData('serbia');
+  getCountryData('australia');
 });
 
 // PROMISE REJECTION -                        1) pass a second callback in then() whcich will be called when promise is rejected (we don't have uncaught error anymore in console, bc we did catch it this callback, and dispalyed it as alert) err => alert(err)                      2) catching error from one place, globally, no matter where they appear in the chain - by adding catch() at the end of the chain (bc erors propagate down the chain until they're caught, and if they're not we get uncaught error in console). catch() always returna a promise                    3) finally() method -callback here will always be called whatever happens with the promise. used for something that always needs to happen no matter the result of the promise (for exmple to hide loading spinner)
