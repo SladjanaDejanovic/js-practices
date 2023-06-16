@@ -195,3 +195,17 @@ btn.addEventListener('click', function () {
 // any error created in js contains message property (bc it's an object, and we can create errors)
 
 // fetch promise only rejects where there's no internet connection
+
+////////////////////////////
+// EVENT LOOP
+console.log('Test start'); //1
+setTimeout(() => console.log('0 sec timer'), 0); // 4 - in callback queue (will be executed after everything in microtasks queue)
+Promise.resolve('Resolved promise 1').then(res => console.log(res)); // 3 - this will be put in microtasks queue, which has priority over callback queue
+
+Promise.resolve('Resolved promise 2').then(res => {
+  for (let i = 0; i < 10000000; i++) {}
+  console.log(res);
+});
+console.log('Test end'); //2
+
+// first will be executed code that it's outside of callbacks
