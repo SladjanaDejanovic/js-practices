@@ -73,7 +73,7 @@ const getCountryAndNeighbour = function (country) {
 // getCountryAndNeighbour('serbia');
 // getCountryAndNeighbour('brazil');
 
-/////////////////////////////////
+//////////////////////////////////////////////////
 // Callback hell
 // setTimeout(() => {
 //   console.log('1 second passed');
@@ -88,7 +88,7 @@ const getCountryAndNeighbour = function (country) {
 //   }, 1000);
 // }, 1000);
 
-////////////////////////////
+////////////////////////////////////////////////////////
 // Fetch API
 
 // const request = fetch('https://restcountries.com/v3.1/name/serbia');
@@ -97,7 +97,7 @@ const getCountryAndNeighbour = function (country) {
 // PROMISE - an object used as a placeholder for the future result of an asynchronous operation (like a container for asynchronously delivered value, for example response from ajax call)
 // by chaining promises we can avoid callback hell
 
-////////////
+/////////////////////////////////////////////////
 // Consuming promise return by fetch():
 
 // const getCountryData = function (country) {
@@ -190,22 +190,41 @@ btn.addEventListener('click', function () {
   getCountryData('australia');
 });
 
+/////////////////////////////////////////////////////////
 // PROMISE REJECTION -                        1) pass a second callback in then() whcich will be called when promise is rejected (we don't have uncaught error anymore in console, bc we did catch it this callback, and dispalyed it as alert) err => alert(err)                      2) catching error from one place, globally, no matter where they appear in the chain - by adding catch() at the end of the chain (bc erors propagate down the chain until they're caught, and if they're not we get uncaught error in console). catch() always returna a promise                    3) finally() method -callback here will always be called whatever happens with the promise. used for something that always needs to happen no matter the result of the promise (for exmple to hide loading spinner)
 
 // any error created in js contains message property (bc it's an object, and we can create errors)
 
 // fetch promise only rejects where there's no internet connection
 
-////////////////////////////
+///////////////////////////////////////////////////
 // EVENT LOOP
-console.log('Test start'); //1
-setTimeout(() => console.log('0 sec timer'), 0); // 4 - in callback queue (will be executed after everything in microtasks queue)
-Promise.resolve('Resolved promise 1').then(res => console.log(res)); // 3 - this will be put in microtasks queue, which has priority over callback queue
-
-Promise.resolve('Resolved promise 2').then(res => {
-  for (let i = 0; i < 10000000; i++) {}
-  console.log(res);
-});
-console.log('Test end'); //2
-
 // first will be executed code that it's outside of callbacks
+// console.log('Test start'); //1
+// setTimeout(() => console.log('0 sec timer'), 0); // 4 - in callback queue (will be executed after everything in microtasks queue)
+// Promise.resolve('Resolved promise 1').then(res => console.log(res)); // 3 - this will be put in microtasks queue, which has priority over callback queue
+
+// Promise.resolve('Resolved promise 2').then(res => {
+//   for (let i = 0; i < 10000000; i++) {}
+//   console.log(res);
+// });
+// console.log('Test end'); //2
+
+/////////////////////////////////////////////////
+// Building a simple promise
+
+// promise constructor takes 1 argument: executor function, and that func will have resoleve and reject parameters
+
+const lotteryPromise = new Promise(function (resolve, reject) {
+  console.log('Lottery draw is happening 🔮');
+  setTimeout(function () {
+    if (Math.random() >= 0.5) {
+      // to set promise as fullfilled
+      resolve('You WIN 💰'); // this will be available in then handler later
+    } else {
+      reject(new Error('You lost your money 😓')); // passing in an error msg, that we can handle in catch()
+    }
+  }, 2000);
+});
+
+lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
