@@ -269,3 +269,15 @@ wait(1)
 // to create fullfilled or rejected promise immediatelly
 Promise.resolve('abc').then(x => console.log(x));
 Promise.reject('abc').catch(x => console.error(x));
+
+////
+// promisifying geolocation api
+
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(
+      position => resolve(position),
+      err => reject(err)
+    );
+  });
+};
