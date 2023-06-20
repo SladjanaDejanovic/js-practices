@@ -186,9 +186,9 @@ const getCountryData = function (country) {
     });
 };
 
-btn.addEventListener('click', function () {
-  getCountryData('australia');
-});
+// btn.addEventListener('click', function () {
+//   getCountryData('australia');
+// });
 
 /////////////////////////////////////////////////////////
 // PROMISE REJECTION -                        1) pass a second callback in then() whcich will be called when promise is rejected (we don't have uncaught error anymore in console, bc we did catch it this callback, and dispalyed it as alert) err => alert(err)                      2) catching error from one place, globally, no matter where they appear in the chain - by adding catch() at the end of the chain (bc erors propagate down the chain until they're caught, and if they're not we get uncaught error in console). catch() always returna a promise                    3) finally() method -callback here will always be called whatever happens with the promise. used for something that always needs to happen no matter the result of the promise (for exmple to hide loading spinner)
@@ -215,19 +215,19 @@ btn.addEventListener('click', function () {
 
 // promise constructor takes 1 argument: executor function, and that func will have resoleve and reject parameters
 
-const lotteryPromise = new Promise(function (resolve, reject) {
-  console.log('Lottery draw is happening 🔮');
-  setTimeout(function () {
-    if (Math.random() >= 0.5) {
-      // to set promise as fullfilled
-      resolve('You WIN 💰'); // this will be available in then handler later
-    } else {
-      reject(new Error('You lost your money 😓')); // passing in an error msg, that we can handle in catch()
-    }
-  }, 2000);
-});
+// const lotteryPromise = new Promise(function (resolve, reject) {
+//   console.log('Lottery draw is happening 🔮');
+//   setTimeout(function () {
+//     if (Math.random() >= 0.5) {
+//       // to set promise as fullfilled
+//       resolve('You WIN 💰'); // this will be available in then handler later
+//     } else {
+//       reject(new Error('You lost your money 😓')); // passing in an error msg, that we can handle in catch()
+//     }
+//   }, 2000);
+// });
 
-lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
+// lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
 
 // ususally promises are only built to wrap up old callback based functions into promises - process called promisifying(to convert callback based asynchronous behavior to promise based)
 
@@ -251,33 +251,82 @@ const wait = function (seconds) {
 //   }, 1000);
 // }, 1000);
 
-wait(1)
-  .then(() => {
-    console.log('1 second passed');
-    return wait(1);
-  })
-  .then(() => {
-    console.log('2 seconds passed');
-    return wait(1);
-  })
-  .then(() => {
-    console.log('3 seconds passed');
-    return wait(1);
-  })
-  .then(() => console.log('4 seconds passed'));
+// wait(1)
+//   .then(() => {
+//     console.log('1 second passed');
+//     return wait(1);
+//   })
+//   .then(() => {
+//     console.log('2 seconds passed');
+//     return wait(1);
+//   })
+//   .then(() => {
+//     console.log('3 seconds passed');
+//     return wait(1);
+//   })
+//   .then(() => console.log('4 seconds passed'));
 
 // to create fullfilled or rejected promise immediatelly
-Promise.resolve('abc').then(x => console.log(x));
-Promise.reject('abc').catch(x => console.error(x));
+// Promise.resolve('abc').then(x => console.log(x));
+// Promise.reject('abc').catch(x => console.error(x));
 
 ////
 // promisifying geolocation api
 
 const getPosition = function () {
   return new Promise(function (resolve, reject) {
-    navigator.geolocation.getCurrentPosition(
-      position => resolve(position),
-      err => reject(err)
-    );
+    // navigator.geolocation.getCurrentPosition(
+    //   position => resolve(position),
+    //   err => reject(err)
+    // );
+    navigator.geolocation.getCurrentPosition(resolve, reject);
   });
 };
+
+// getPosition().then(pos => console.log(pos));
+
+const whereAmI = function (lat, lng) {
+  getPosition()
+    .then(pos => {
+      const { latitude: lat, longitude: lng } = pos.coords;
+
+      return fetch(
+        `https://geocode.xyz/${lat},${lng}?geoit=json&auth=115400213181647e15870825x40399`
+      );
+    })
+
+    .then(response => {
+      console.log(response);
+
+      if (!response.ok)
+        throw new Error(`Problem with geocoding (${response.status})`);
+
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+      if (data.error) {
+        throw new Error(`${data.error.message}`);
+      }
+      console.log(`You are in ${data.city}, ${data.country}`);
+
+      return fetch(`https://restcountries.com/v3.1/name/${data.country}`)
+        .then(response => {
+          console.log(response);
+          if (!response.ok)
+            throw new Error(`Country not found (${response.status})`);
+          return response.json();
+        })
+        .then(data => {
+          console.log(data);
+          renderCountry(data[0]);
+          countriesContainer.style.opacity = 1;
+        });
+    })
+    .catch(err => {
+      console.error(`${err.message}`);
+      renderError(`Something went wrong 💥💥💥 ${err.message} Try again!`);
+    });
+};
+
+btn.addEventListener('click', whereAmI);
