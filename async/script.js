@@ -30,7 +30,7 @@ const renderCountry = function (data, className = '') {
 </article>`;
 
   countriesContainer.insertAdjacentHTML('beforeend', html);
-  // countriesContainer.style.opacity = 1;
+  countriesContainer.style.opacity = 1;
 };
 
 /////////////////////////////////////////////////////////
@@ -285,48 +285,81 @@ const getPosition = function () {
 
 // getPosition().then(pos => console.log(pos));
 
-const whereAmI = function (lat, lng) {
-  getPosition()
-    .then(pos => {
-      const { latitude: lat, longitude: lng } = pos.coords;
+// const whereAmI = function (lat, lng) {
+//   getPosition()
+//     .then(pos => {
+//       const { latitude: lat, longitude: lng } = pos.coords;
 
-      return fetch(
-        `https://geocode.xyz/${lat},${lng}?geoit=json&auth=115400213181647e15870825x40399`
-      );
-    })
+//       return fetch(
+//         `https://geocode.xyz/${lat},${lng}?geoit=json&auth=115400213181647e15870825x40399`
+//       );
+//     })
 
-    .then(response => {
-      console.log(response);
+//     .then(response => {
+//       console.log(response);
 
-      if (!response.ok)
-        throw new Error(`Problem with geocoding (${response.status})`);
+//       if (!response.ok)
+//         throw new Error(`Problem with geocoding (${response.status})`);
 
-      return response.json();
-    })
-    .then(data => {
-      console.log(data);
-      if (data.error) {
-        throw new Error(`${data.error.message}`);
-      }
-      console.log(`You are in ${data.city}, ${data.country}`);
+//       return response.json();
+//     })
+//     .then(data => {
+//       console.log(data);
+//       if (data.error) {
+//         throw new Error(`${data.error.message}`);
+//       }
+//       console.log(`You are in ${data.city}, ${data.country}`);
 
-      return fetch(`https://restcountries.com/v3.1/name/${data.country}`)
-        .then(response => {
-          console.log(response);
-          if (!response.ok)
-            throw new Error(`Country not found (${response.status})`);
-          return response.json();
-        })
-        .then(data => {
-          console.log(data);
-          renderCountry(data[0]);
-          countriesContainer.style.opacity = 1;
-        });
-    })
-    .catch(err => {
-      console.error(`${err.message}`);
-      renderError(`Something went wrong 💥💥💥 ${err.message} Try again!`);
-    });
+//       return fetch(`https://restcountries.com/v3.1/name/${data.country}`)
+//         .then(response => {
+//           console.log(response);
+//           if (!response.ok)
+//             throw new Error(`Country not found (${response.status})`);
+//           return response.json();
+//         })
+//         .then(data => {
+//           console.log(data);
+//           renderCountry(data[0]);
+//           countriesContainer.style.opacity = 1;
+//         });
+//     })
+//     .catch(err => {
+//       console.error(`${err.message}`);
+//       renderError(`Something went wrong 💥💥💥 ${err.message} Try again!`);
+//     });
+// };
+
+// btn.addEventListener('click', whereAmI);
+
+////////////////////////////////////////////////
+// CONSUMING PROMISES WITH ASYNC/AWAIT
+// making asynchronous func that will keep running in the background while performing the code that's inside of it. after this func is done it automatically returns a promise. inside async func we can have 1 or more await statements
+
+//fetch() returns a promise
+// we can await until the value of the promise is returned, and then just assign that value to a variable
+
+// await will stop code execution at this point of the func until the promise is fulfilled
+
+const whereAmI = async function () {
+  // Geolocation
+  const pos = await getPosition();
+  const { latitude: lat, longitude: lng } = pos.coords;
+
+  // Reverse geocoding
+  const resGeo = await fetch(
+    `https://geocode.xyz/${lat},${lng}?geoit=json&auth=115400213181647e15870825x40399`
+  );
+  const dataGeo = await resGeo.json();
+  console.log(dataGeo);
+
+  // Country data
+
+  const res = await fetch(
+    `https://restcountries.com/v3.1/name/${dataGeo.country}`
+  );
+  const data = await res.json();
+  console.log(data);
+  renderCountry(data[0]);
 };
 
-btn.addEventListener('click', whereAmI);
+whereAmI();
