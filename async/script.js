@@ -418,3 +418,33 @@ const get3Countries = async function (c1, c2, c3) {
   }
 };
 get3Countries('serbia', 'brazil', 'korea');
+
+/////////////////////////////////////
+// PROMISE COMBINATORS: race, allSetlled, any
+// Promise.race receives an array of promises and it also returns a promise. this promise returned by Promise.race is settled as soon as one of the input promises settles (settled means that a value is available, but it doesn't matter if the promise got rejected or fulfilled.) In promice.race the first settled promise wins the race
+
+(async function () {
+  const res = await Promise.race([
+    getJSON(`https://restcountries.com/v3.1/name/italy`),
+    getJSON(`https://restcountries.com/v3.1/name/mexico`),
+    getJSON(`https://restcountries.com/v3.1/name/egypt`),
+  ]);
+  console.log(res[0]);
+})();
+
+// useful to prevent against never ending promises or very long running promises. for example if the user has very bad internet connection, fetch request might take too long to actually be useful, so we create a time out promise which automatically rejects after certain time has passed
+
+const timeout = function (sec) {
+  return new Promise(function (_, reject) {
+    setTimeout(() => {
+      reject(new Error('Request took too long!'));
+    }, sec * 1000);
+  });
+};
+
+Promise.race([
+  getJSON(`https://restcountries.com/v3.1/name/japan`),
+  timeout(0.2),
+])
+  .then(res => console.log(res[0]))
+  .catch(err => console.error(err));
