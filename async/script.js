@@ -421,7 +421,8 @@ get3Countries('serbia', 'brazil', 'korea');
 
 /////////////////////////////////////
 // PROMISE COMBINATORS: race, allSetlled, any
-// Promise.race receives an array of promises and it also returns a promise. this promise returned by Promise.race is settled as soon as one of the input promises settles (settled means that a value is available, but it doesn't matter if the promise got rejected or fulfilled.) In promice.race the first settled promise wins the race
+
+// Promise.race - receives an array of promises and it also returns a promise. this promise returned by Promise.race is settled as soon as one of the input promises settles (settled means that a value is available, but it doesn't matter if the promise got rejected or fulfilled.) In promice.race the first settled promise wins the race
 
 (async function () {
   const res = await Promise.race([
@@ -442,9 +443,31 @@ const timeout = function (sec) {
   });
 };
 
-Promise.race([
-  getJSON(`https://restcountries.com/v3.1/name/japan`),
-  timeout(0.2),
-])
+Promise.race([getJSON(`https://restcountries.com/v3.1/name/japan`), timeout(5)])
   .then(res => console.log(res[0]))
+  .catch(err => console.error(err));
+
+// Promise.allSettled - takes in array of promises and returns an array of all settled promises
+Promise.allSettled([
+  Promise.reject('ERROR'),
+  Promise.resolve('Success'),
+  Promise.resolve('Another Success'),
+]).then(res => console.log(res));
+
+// Promise.all shortcircuit if there is one rejected promise
+Promise.all([
+  Promise.resolve('Success'),
+  Promise.reject('ERROR'),
+  Promise.resolve('Another Success'),
+])
+  .then(res => console.log(res))
+  .catch(err => console.error(err));
+
+// Promise.any - returns first fullfiled promise from an array of promises, rejected promises are ignored
+Promise.any([
+  Promise.resolve('Success'),
+  Promise.reject('ERROR'),
+  Promise.resolve('Another Success'),
+])
+  .then(res => console.log(res))
   .catch(err => console.error(err));
