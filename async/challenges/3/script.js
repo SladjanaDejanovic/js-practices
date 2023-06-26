@@ -88,7 +88,7 @@ const loadNPause = async function () {
 // PART 2
 const loadAll = async function (imgArr) {
   try {
-    const imgs = imgArr.map(async img => await createImage(img)); // .map return array
+    const imgs = imgArr.map(async img => await createImage(img)); // .map returns array
     // console.log(imgs); // returns array of promises
 
     const imgsEl = await Promise.all(imgs);

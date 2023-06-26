@@ -199,6 +199,7 @@ const getCountryData = function (country) {
 
 ///////////////////////////////////////////////////
 // EVENT LOOP
+
 // first will be executed code that it's outside of callbacks
 // console.log('Test start'); //1
 // setTimeout(() => console.log('0 sec timer'), 0); // 4 - in callback queue (will be executed after everything in microtasks queue)
@@ -270,8 +271,8 @@ const wait = function (seconds) {
 // Promise.resolve('abc').then(x => console.log(x));
 // Promise.reject('abc').catch(x => console.error(x));
 
-////
-// promisifying geolocation api
+//////////////////////////////////////////
+// Promisifying geolocation api
 
 const getPosition = function () {
   return new Promise(function (resolve, reject) {
@@ -331,7 +332,7 @@ const getPosition = function () {
 
 // btn.addEventListener('click', whereAmI);
 
-////////////////////////////////////////////////
+///////////////////////////////////////////////////
 // CONSUMING PROMISES WITH ASYNC/AWAIT
 // making asynchronous func that will keep running in the background while performing the code that's inside of it. after this func is done it automatically returns a promise. inside async func we can have 1 or more await statements
 
@@ -374,6 +375,7 @@ const whereAmI = async function () {
   }
 };
 
+/////////////////////////////////////////////
 //// RETURNING VALUES FROM ASYNC FUNCTIONS
 // console.log('1: Will get location');
 
@@ -394,7 +396,7 @@ const whereAmI = async function () {
 //   console.log('3: Finished getting location');
 // })();
 
-//////////////////////////////////////////
+////////////////////////////////////////////
 // RUNNING PROMISES IN PARALLEL
 //  when doing multiple async operations at the same time and operations that don't depend on one another, always run them in parallel
 
@@ -405,7 +407,6 @@ const get3Countries = async function (c1, c2, c3) {
     // const [data3] = await getJSON(`https://restcountries.com/v3.1/name/${c3}`);
     // console.log([data1.capital, data2.capital, data3.capital]);
 
-    /////  Promise.all() takes an array of promises and returns a new promise, running all the promises in the array at the same time. If 1 promise rejects, then all the promises reject as well
     const data = await Promise.all([
       getJSON(`https://restcountries.com/v3.1/name/${c1}`),
       getJSON(`https://restcountries.com/v3.1/name/${c2}`),
@@ -419,10 +420,10 @@ const get3Countries = async function (c1, c2, c3) {
 };
 get3Countries('serbia', 'brazil', 'korea');
 
-/////////////////////////////////////
+///////////////////////////////////////////////////////////////
 // PROMISE COMBINATORS: race, allSetlled, any
 
-// Promise.race - receives an array of promises and it also returns a promise. this promise returned by Promise.race is settled as soon as one of the input promises settles (settled means that a value is available, but it doesn't matter if the promise got rejected or fulfilled.) In promice.race the first settled promise wins the race
+// Promise.race - receives an array of promises and it also returns a promise. This promise returned by Promise.race is settled as soon as one of the input promises settles (settled means that a value is available, but it doesn't matter if the promise got rejected or fulfilled.) In Promise.race the first settled promise wins the race
 
 (async function () {
   const res = await Promise.race([
@@ -433,7 +434,7 @@ get3Countries('serbia', 'brazil', 'korea');
   console.log(res[0]);
 })();
 
-// useful to prevent against never ending promises or very long running promises. for example if the user has very bad internet connection, fetch request might take too long to actually be useful, so we create a time out promise which automatically rejects after certain time has passed
+// Useful against never ending promises or very long running promises. For example: if the user has very bad internet connection, fetch request might take too long to actually be useful, so we create a time out promise which automatically rejects after certain time has passed
 
 const timeout = function (sec) {
   return new Promise(function (_, reject) {
@@ -454,7 +455,7 @@ Promise.allSettled([
   Promise.resolve('Another Success'),
 ]).then(res => console.log(res));
 
-// Promise.all shortcircuit if there is one rejected promise
+//Promise.all() takes an array of promises and returns a new promise, running all the promises in the array at the same time. If 1 promise rejects, then all the promises reject as well (it shortcircuit if there is one rejected promise)
 Promise.all([
   Promise.resolve('Success'),
   Promise.reject('ERROR'),
