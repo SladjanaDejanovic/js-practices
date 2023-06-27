@@ -1,7 +1,5 @@
 'use strict';
 
-// https://countries-api-836d.onrender.com/countries/
-
 const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
 
@@ -191,7 +189,10 @@ const getCountryData = function (country) {
 // });
 
 /////////////////////////////////////////////////////////
-// PROMISE REJECTION -                        1) pass a second callback in then() whcich will be called when promise is rejected (we don't have uncaught error anymore in console, bc we did catch it this callback, and dispalyed it as alert) err => alert(err)                      2) catching error from one place, globally, no matter where they appear in the chain - by adding catch() at the end of the chain (bc erors propagate down the chain until they're caught, and if they're not we get uncaught error in console). catch() always returna a promise                    3) finally() method -callback here will always be called whatever happens with the promise. used for something that always needs to happen no matter the result of the promise (for exmple to hide loading spinner)
+// PROMISE REJECTION -
+//   1) pass a second callback in then() whcich will be called when promise is rejected (we don't have uncaught error anymore in console, bc we did catch it this callback, and dispalyed it as alert) err => alert(err)
+// 2) catching error from one place, globally, no matter where they appear in the chain - by adding catch() at the end of the chain (bc erors propagate down the chain until they're caught, and if they're not we get uncaught error in console). catch() always returna a promise
+//  3) finally() method -callback here will always be called whatever happens with the promise. used for something that always needs to happen no matter the result of the promise (for exmple to hide loading spinner)
 
 // any error created in js contains message property (bc it's an object, and we can create errors)
 
@@ -232,6 +233,7 @@ const getCountryData = function (country) {
 
 // ususally promises are only built to wrap up old callback based functions into promises - process called promisifying(to convert callback based asynchronous behavior to promise based)
 
+////////////////
 // Promisifying setTimeout
 const wait = function (seconds) {
   return new Promise(function (resolve) {
@@ -267,7 +269,8 @@ const wait = function (seconds) {
 //   })
 //   .then(() => console.log('4 seconds passed'));
 
-// to create fullfilled or rejected promise immediatelly
+///////////
+// to create fullfilled or rejected promise immediatelly:
 // Promise.resolve('abc').then(x => console.log(x));
 // Promise.reject('abc').catch(x => console.error(x));
 
@@ -336,7 +339,7 @@ const getPosition = function () {
 // CONSUMING PROMISES WITH ASYNC/AWAIT
 // making asynchronous func that will keep running in the background while performing the code that's inside of it. after this func is done it automatically returns a promise. inside async func we can have 1 or more await statements
 
-//fetch() returns a promise
+// fetch() returns a promise
 // we can await until the value of the promise is returned, and then just assign that value to a variable
 
 // await will stop code execution at this point of the func until the promise is fulfilled
@@ -354,7 +357,6 @@ const whereAmI = async function () {
     if (!resGeo.ok) throw new Error('Problem getting location data 💥');
 
     const dataGeo = await resGeo.json();
-    // console.log(dataGeo);
 
     // Country data
     const res = await fetch(
@@ -362,7 +364,7 @@ const whereAmI = async function () {
     );
     if (!res.ok) throw new Error('Problem getting country 💥');
     const data = await res.json();
-    // console.log(data);
+
     renderCountry(data[0]);
 
     return `You are in ${dataGeo.city}, ${dataGeo.country}`;
