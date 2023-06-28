@@ -69,7 +69,6 @@ const getCountryAndNeighbour = function (country) {
 };
 
 // getCountryAndNeighbour('serbia');
-// getCountryAndNeighbour('brazil');
 
 //////////////////////////////////////////////////
 // Callback hell
@@ -92,6 +91,7 @@ const getCountryAndNeighbour = function (country) {
 // const request = fetch('https://restcountries.com/v3.1/name/serbia');
 // console.log(request);
 
+//////////////////////////////////
 // PROMISE - an object used as a placeholder for the future result of an asynchronous operation (like a container for asynchronously delivered value, for example response from ajax call)
 // by chaining promises we can avoid callback hell
 
@@ -379,6 +379,7 @@ const whereAmI = async function () {
 
 /////////////////////////////////////////////
 //// RETURNING VALUES FROM ASYNC FUNCTIONS
+
 // console.log('1: Will get location');
 
 // whereAmI()
@@ -425,7 +426,7 @@ get3Countries('serbia', 'brazil', 'korea');
 ///////////////////////////////////////////////////////////////
 // PROMISE COMBINATORS: race, allSetlled, any
 
-// Promise.race - receives an array of promises and it also returns a promise. This promise returned by Promise.race is settled as soon as one of the input promises settles (settled means that a value is available, but it doesn't matter if the promise got rejected or fulfilled.) In Promise.race the first settled promise wins the race
+//// Promise.race - receives an array of promises and it also returns a promise. This promise returned by Promise.race is settled as soon as one of the input promises settles (settled means that a value is available, but it doesn't matter if the promise got rejected or fulfilled.) In Promise.race the first settled promise wins the race
 
 (async function () {
   const res = await Promise.race([
@@ -450,14 +451,14 @@ Promise.race([getJSON(`https://restcountries.com/v3.1/name/japan`), timeout(5)])
   .then(res => console.log(res[0]))
   .catch(err => console.error(err));
 
-// Promise.allSettled - takes in array of promises and returns an array of all settled promises
+//// Promise.allSettled - takes in array of promises and returns an array of all settled promises
 Promise.allSettled([
   Promise.reject('ERROR'),
   Promise.resolve('Success'),
   Promise.resolve('Another Success'),
 ]).then(res => console.log(res));
 
-//Promise.all() takes an array of promises and returns a new promise, running all the promises in the array at the same time. If 1 promise rejects, then all the promises reject as well (it shortcircuit if there is one rejected promise)
+//// Promise.all() takes an array of promises and returns a new promise, running all the promises in the array at the same time. If 1 promise rejects, then all the promises reject as well (it shortcircuit if there is one rejected promise)
 Promise.all([
   Promise.resolve('Success'),
   Promise.reject('ERROR'),
@@ -466,7 +467,7 @@ Promise.all([
   .then(res => console.log(res))
   .catch(err => console.error(err));
 
-// Promise.any - returns first fullfiled promise from an array of promises, rejected promises are ignored
+//// Promise.any - returns first fullfiled promise from an array of promises, rejected promises are ignored
 Promise.any([
   Promise.resolve('Success'),
   Promise.reject('ERROR'),
