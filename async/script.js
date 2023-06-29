@@ -424,9 +424,9 @@ const get3Countries = async function (c1, c2, c3) {
 get3Countries('serbia', 'brazil', 'korea');
 
 ///////////////////////////////////////////////////////////////
-// PROMISE COMBINATORS: race, allSetlled, any
+// PROMISE COMBINATORS (take in array of promises and return a promise of array of promises, depending of which combinator is used)
 
-//// Promise.race - receives an array of promises and it also returns a promise. This promise returned by Promise.race is settled as soon as one of the input promises settles (settled means that a value is available, but it doesn't matter if the promise got rejected or fulfilled.) In Promise.race the first settled promise wins the race
+//// Promise.race - returns a promise. This promise returned by Promise.race is settled as soon as one of the input promises settles (settled means that a value is available, but it doesn't matter if the promise got rejected or fulfilled.) In Promise.race the first settled promise wins the race
 
 (async function () {
   const res = await Promise.race([
@@ -458,7 +458,7 @@ Promise.allSettled([
   Promise.resolve('Another Success'),
 ]).then(res => console.log(res));
 
-//// Promise.all() takes an array of promises and returns a new promise, running all the promises in the array at the same time. If 1 promise rejects, then all the promises reject as well (it shortcircuit if there is one rejected promise)
+//// Promise.all() takes an array of promises and returns a new promise, running all the promises in the array at the same time. If 1 promise rejects, then all the promises reject as well (it shortcircuits if there is one rejected promise)
 Promise.all([
   Promise.resolve('Success'),
   Promise.reject('ERROR'),
