@@ -5,22 +5,8 @@
 
  PART 2
  2. Consume the promise using .then and also add an error handler
+ 
  3. After the image has loaded, pause an execution for 2 seconds using wait fucntion from erlier
-
-const wait = function (seconds) {
-  return new Promise(function (resolve) {
-    setTimeout(resolve, seconds * 1000);
-  });
-};
-
-wait(1)
-  .then(() => {
-    console.log('1 second passed');
-    return wait(1);
-  })
-  .then(() => {
-    console.log('2 seconds passed');
-  });
 
 4. After the 2 seconds have passed, hide the current image (set dispaly to none), and load a second image (use the image element returned by the createImage promise to hide the current image, You'll need a global variable for this)
 
