@@ -1,9 +1,10 @@
 "use strict";
 
+//////////////////////
 /// Scope   ///////////////
 /*
 // const and let are block scoped - only available inside {}, inside the block in which they were created
-//var are function scoped(but is not good practise to use var)
+// var are function scoped(but is not good practise to use var)
 // functions are block scoped
 
 function calcAge(birthYear) {
@@ -92,8 +93,8 @@ const slady = {
   calcAge: function () {
     console.log(2023 - this.year);
 
-    // It's a clear rule that a regular function call has the this keyword set to undefined.
-    // There are two solutions to this problem. The first solution is to use an extra variable that we usually call self utside of the function, and then we set that to this.  And so then through the scope chain, self will be equal to this. And so JavaScript goes up the scope chain, into the parent scope, which is calcAge. So here is where self is defined, and it is defined as this.
+    // regular function call has the this keyword set to undefined.
+    // There are two solutions to this problem. - use an extra variable that we usually call self outside of the function, and then we set that to this.  And so then through the scope chain, self will be equal to this. And so JavaScript goes up the scope chain, into the parent scope, which is calcAge. So here is where self is defined, and it is defined as this.
 
     // const self = this;
     // const isMillenial = function () {
@@ -133,7 +134,7 @@ addExpr(2, 5);
 // this can be useful when we need a function to accept more parameters than we actually specified. it is completely legal to add more arguments. They will not have a name, so we didn't name them, but they exist. And we can see them here in the arguments array.
 addExpr(2, 5, 8, 12);
 
-//arrow func doesn't ahve access to arguments kw
+//arrow func doesn't have access to arguments kw
 var addArrow = (a, b) => {
   console.log(arguments);
   return a + b;
@@ -141,6 +142,7 @@ var addArrow = (a, b) => {
 addArrow(2, 5, 8);
 */
 
+////////////////////////
 // Primitives vs. Objects (Primitive vs. Reference Types) //////
 
 /*
