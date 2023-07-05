@@ -3,8 +3,8 @@
 //////////////////////
 /// Scope   ///////////////
 /*
-// const and let are block scoped - only available inside {}, inside the block in which they were created
-// var are function scoped(but is not good practise to use var)
+// const and let are block scoped - only available inside the block {} in which they were created
+// var are function scoped(but is not good practice to use var)
 // functions are block scoped
 
 function calcAge(birthYear) {

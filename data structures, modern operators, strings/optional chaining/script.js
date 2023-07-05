@@ -71,12 +71,12 @@ console.log(restaurant.openingHours?.mon?.open);
 // Real world example:
 
 const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
-// loop over array and log to console if restaurant open or close on each day
 
+// loop over array and log to console if restaurant open or close on each day:
 for (const day of days) {
   console.log(day);
   // if we wanna use varaible name as property name we put it in []
-  const open = restaurant.openingHours[day]?.open ?? "closed"; // set default value if it's undefiend with -  || "closed", bur if the value of opening hours is 0, which is a falsy value, it will then log "closed", so we fix that by typing - ?? "closed" - instead
+  const open = restaurant.openingHours[day]?.open ?? "closed"; // set default value if it's undefiend with -  || "closed", but if the value of opening hours is 0, which is a falsy value, it will then log "closed", so we fix that by typing - ?? "closed" - instead
 
   console.log(`On ${day}, we open at ${open}`);
 }

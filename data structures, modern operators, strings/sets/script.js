@@ -69,7 +69,7 @@ const orderSet = new Set([
 console.log(orderSet); //values that have duplicates will show only once
 
 // set is also iterable
-// is different than array bc elements inside are unique and their order is irrelevant, in set there is no indexes
+// is different than array bc elements inside are unique and their order is irrelevant, and there is no indexes
 
 console.log(new Set("Jonas")); // {'J', 'o', 'n', 'a', 's'}
 console.log(orderSet.size); // it's not length like in arrays
