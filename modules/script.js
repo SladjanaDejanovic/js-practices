@@ -29,3 +29,25 @@ import { cart } from './shoppingCart.js';
 add('bread', 3);
 add('apples', 6);
 console.log(cart); // import is a live connection, not simply a copy, they point at the same place in memory (cart was empty array as export from another module, but after calling add() which pushes objects to array, now cart looks like this)
+
+//// Top level await
+// in modules await keyword works outside of async function, but it's blocking execution of entire module, and of the module that is imported to (blocking code)
+// const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+// const data = await res.json();
+// console.log(data);
+
+const getLastPost = async function () {
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const data = await res.json();
+  console.log(data);
+
+  return { title: data.at(-1).title, text: data.at(-1).body };
+};
+
+const lastPost = getLastPost();
+
+// not very clean
+// lastPost.then(last => console.log(last));
+
+const lastPost2 = await getLastPost();
+console.log(lastPost2);

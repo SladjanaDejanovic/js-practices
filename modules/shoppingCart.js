@@ -1,6 +1,11 @@
 // Exporting module
 console.log('Exporting module');
 
+// blocking code
+// console.log('Start fetching users');
+// await fetch('https://jsonplaceholder.typicode.com/users');
+// console.log('Finish fetching users');
+
 // variables decalred in module are module scoped, private to this module
 const shippingCost = 10;
 export const cart = [];
