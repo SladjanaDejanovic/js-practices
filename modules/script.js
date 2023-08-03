@@ -25,7 +25,7 @@ add('pizza', 2);
 // import add, { addToCart, totalPrice as price, tq } from './shoppingCart.js';
 // console.log(price);
 
-import { cart } from './shoppingCart.js';
+import shoppingCart, { cart } from './shoppingCart.js';
 add('bread', 3);
 add('apples', 6);
 console.log(cart); // import is a live connection, not simply a copy, they point at the same place in memory (cart was empty array as export from another module, but after calling add() which pushes objects to array, now cart looks like this)
@@ -83,4 +83,14 @@ console.log(lastPost2);
 // console.log(ShoppingCart2);
 // console.log(ShoppingCart2.shippingCost);
 
-//// CommonJS modules
+//// CommonJS modules - in Node.js
+// export
+// export.function(product, quantity){
+//   cart.push({product, quantity})
+//   console.log(`${quantity} ${product} added to cart (shipping cost is ${shippingCost})`);
+// }
+// // import
+// const {addToCart} = require("./shoppingCart.js")
+
+// import cloneDeep from './JAVASCRIPT/node_modules/lodash-es/cloneDeep.js';
+import { cloneDeep } from './node_modules/lodash-es/cloneDeep.js';
