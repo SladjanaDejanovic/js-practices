@@ -49,8 +49,8 @@ const lastPost = getLastPost();
 // not very clean
 // lastPost.then(last => console.log(last));
 
-const lastPost2 = await getLastPost();
-console.log(lastPost2);
+// const lastPost2 = await getLastPost();
+// console.log(lastPost2);
 
 //// Module patern (way of using modules before) - making IIFE (immediatelly invoked function expression)
 // const ShoppingCart2 = (function () {
@@ -92,8 +92,11 @@ console.log(lastPost2);
 // // import
 // const {addToCart} = require("./shoppingCart.js")
 
-// import cloneDeep from './JAVASCRIPT/node_modules/lodash-es/cloneDeep.js';
-import { default as cloneDeep } from './node_modules/lodash-es/cloneDeep.js';
+///// introduction to NPM
+// import { default as cloneDeep } from './node_modules/lodash-es/cloneDeep.js';
+
+// with parcel (or any other bundler) there is no need to specify the entire path to a module, instead all we need to say is we want to include lodash library:
+import { default as cloneDeep } from 'lodash-es';
 
 const state = {
   cart: [
@@ -111,3 +114,8 @@ state.user.loggedIn = false;
 console.log(stateClone);
 
 console.log(stateDeepClone);
+
+// whenever we change modules, it will trigger rebuilt with parcel, and that new bundle will be injected into the browser not triggering whole page reload
+if (module.hot) {
+  module.hot.accept();
+}
