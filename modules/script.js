@@ -1,4 +1,4 @@
-// Importing module
+//// Importing module
 
 // import { addToCart } from './shoppingCart.js'; // string with a location of the module
 // or importing multiple at once:
@@ -6,7 +6,7 @@
 // addToCart('bread', 5);
 // console.log(price, tq);
 
-console.log('Importing module');
+//console.log('Importing module');
 
 // importing all the exports at once:
 // creating an object containg everything that is exported in another module
@@ -17,7 +17,7 @@ console.log('Importing module');
 // ShoppingCart.addToCart('bread', 5);
 // console.log(ShoppingCart.totalPrice);
 
-//importing default export (giving it a name we want, without {} like with a named export/import)
+// importing default export (giving it a name we want, without {} like with a named export/import)
 import add from './shoppingCart.js';
 add('pizza', 2);
 
@@ -92,7 +92,7 @@ const lastPost = getLastPost();
 // // import
 // const {addToCart} = require("./shoppingCart.js")
 
-///// introduction to NPM
+///// Introduction to NPM
 // import { default as cloneDeep } from './node_modules/lodash-es/cloneDeep.js';
 
 // with parcel (or any other bundler) there is no need to specify the entire path to a module, instead all we need to say is we want to include lodash library:
@@ -106,7 +106,7 @@ const state = {
   user: { loggedIn: true },
 };
 
-// creating deep copy
+// Creating deep copy
 const stateClone = Object.assign({}, state);
 const stateDeepClone = cloneDeep(state);
 
