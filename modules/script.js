@@ -96,7 +96,10 @@ const lastPost = getLastPost();
 // import { default as cloneDeep } from './node_modules/lodash-es/cloneDeep.js';
 
 // with parcel (or any other bundler) there is no need to specify the entire path to a module, instead all we need to say is we want to include lodash library:
-import { default as cloneDeep } from 'lodash-es';
+// import { default as cloneDeep } from 'lodash-es';
+
+// or we can just type lodash and parcel will know what package to install:
+import { default as cloneDeep } from 'lodash';
 
 const state = {
   cart: [
@@ -119,3 +122,10 @@ console.log(stateDeepClone);
 if (module.hot) {
   module.hot.accept();
 }
+
+// npx parcel index.html in a folder of a project (in this case it was my folder of modules)
+// another way is to use npm scripts, this way is actually used in practice. this is another way of running locally installed packages in the command line. they also allows us to automate repetative tasks so we don't have to write npx parcel .... every time we want to use it : writing this in package.json in "script" part "start": "parcel index.html", and then in command line type npm run start
+// (before this in "script" there was   "test": "echo \"Error: no test specified\" && exit 1","dev": "parcel index.html")
+
+// so now we have simple command whenever we want to start developing, just typing npm run start , which is the name of the script
+// whenever we are done developing it is time to make a final bundle, bundle that's compressed and has dead code elemination etc. so we need another parcel command, which we are adding in "script" again: "build": "parcel build index.html", in command line- npm run build
