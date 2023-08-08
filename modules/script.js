@@ -95,6 +95,7 @@ const lastPost = getLastPost();
 ///// Introduction to NPM
 // import { default as cloneDeep } from './node_modules/lodash-es/cloneDeep.js';
 
+// Bundling - Parcel
 // with parcel (or any other bundler) there is no need to specify the entire path to a module, instead all we need to say is we want to include lodash library:
 // import { default as cloneDeep } from 'lodash-es';
 
@@ -129,3 +130,23 @@ if (module.hot) {
 
 // so now we have simple command whenever we want to start developing, just typing npm run start , which is the name of the script
 // whenever we are done developing it is time to make a final bundle, bundle that's compressed and has dead code elemination etc. so we need another parcel command, which we are adding in "script" again: "build": "parcel build index.html", in command line- npm run build
+
+// parcel automatically uses babel to transpile our code
+
+// New additions to the languege (like Promise, find() and other array methods...) not converted to ES5 in bundled script, bc Babel can only transpile ES6 syntax (like classes, arrow funcitons etc)
+console.log(cart.find(el => el.quantity >= 2)); // finding the first el with this condition
+console.log(cart.filter(el => el.quantity >= 2)); // filter is for finding every el with this condition
+Promise.resolve('TEST').then(x => console.log(x));
+
+// these new features we have to polyfill them (using some library):
+import 'core-js/stable';
+
+// polyfilling recreate defined function and make it available in this bundle so that the code can use it. It's gonna polyfill everything, even tho we don't need it
+// if we want to reduce bundle size, if that really is a concern, we can pick what will be polyfilled, but it's a lot of work. for example:
+// import 'core-js/stable/array/find';
+
+//core-js is still not polyfilling all the features, so we have to isntall one more package for this    npm i regenerator-runtime
+// polyfilling async functions
+import 'regenerator-runtime/runtime';
+
+// usually we put all these imports at the top of the file

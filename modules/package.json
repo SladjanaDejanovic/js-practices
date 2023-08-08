@@ -17,9 +17,11 @@
   },
   "homepage": "https://github.com/MadBunny-1306/js-practices#readme",
   "dependencies": {
+    "core-js": "^3.32.0",
     "leaflet": "^1.9.4",
     "lodash-es": "^4.17.21",
     "parcel": "^1.12.3",
-    "parcel-bundler": "^1.8.1"
+    "parcel-bundler": "^1.8.1",
+    "regenerator-runtime": "^0.14.0"
   }
 }
