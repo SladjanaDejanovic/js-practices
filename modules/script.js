@@ -30,6 +30,7 @@ add('bread', 3);
 add('apples', 6);
 console.log(cart); // import is a live connection, not simply a copy, they point at the same place in memory (cart was empty array as export from another module, but after calling add() which pushes objects to array, now cart looks like this)
 
+/////////////////////////////
 //// Top level await
 // in modules await keyword works outside of async function, but it's blocking execution of entire module, and of the module that is imported to (blocking code)
 // const res = await fetch('https://jsonplaceholder.typicode.com/posts');
@@ -52,6 +53,7 @@ const lastPost = getLastPost();
 // const lastPost2 = await getLastPost();
 // console.log(lastPost2);
 
+////////////////////
 //// Module patern (way of using modules before) - making IIFE (immediatelly invoked function expression)
 // const ShoppingCart2 = (function () {
 //   const cart = [];
@@ -92,6 +94,7 @@ const lastPost = getLastPost();
 // // import
 // const {addToCart} = require("./shoppingCart.js")
 
+//////////////////////////
 ///// Introduction to NPM
 // import { default as cloneDeep } from './node_modules/lodash-es/cloneDeep.js';
 
@@ -131,21 +134,22 @@ if (module.hot) {
 // so now we have simple command whenever we want to start developing, just typing npm run start , which is the name of the script
 // whenever we are done developing it is time to make a final bundle, bundle that's compressed and has dead code elemination etc. so we need another parcel command, which we are adding in "script" again: "build": "parcel build index.html", in command line- npm run build
 
-// parcel automatically uses babel to transpile our code
+// Parcel automatically uses babel to transpile our code
 
-// New additions to the languege (like Promise, find() and other array methods...) not converted to ES5 in bundled script, bc Babel can only transpile ES6 syntax (like classes, arrow funcitons etc)
-console.log(cart.find(el => el.quantity >= 2)); // finding the first el with this condition
-console.log(cart.filter(el => el.quantity >= 2)); // filter is for finding every el with this condition
+// New additions to the language (like Promise, find() and other array methods...) are not converted to ES5 in bundled script, bc Babel can only transpile ES6 syntax (like classes, arrow funcitons etc)
+console.log(cart.find(el => el.quantity >= 2));
+console.log(cart.filter(el => el.quantity >= 2));
 Promise.resolve('TEST').then(x => console.log(x));
 
-// these new features we have to polyfill them (using some library):
+// These new features we have to polyfill them (using some library):
 import 'core-js/stable';
 
-// polyfilling recreate defined function and make it available in this bundle so that the code can use it. It's gonna polyfill everything, even tho we don't need it
+// Polyfilling recreate defined function and make it available in this bundle so that the code can use it. It's gonna polyfill everything, even tho we don't need it
 // if we want to reduce bundle size, if that really is a concern, we can pick what will be polyfilled, but it's a lot of work. for example:
 // import 'core-js/stable/array/find';
 
-//core-js is still not polyfilling all the features, so we have to isntall one more package for this    npm i regenerator-runtime
+//core-js is still not polyfilling all the features, so we have to install one more package for this    npm i regenerator-runtime
+
 // polyfilling async functions
 import 'regenerator-runtime/runtime';
 
