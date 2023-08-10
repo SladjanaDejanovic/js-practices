@@ -96,6 +96,8 @@ const lastPost = getLastPost();
 
 //////////////////////////
 ///// Introduction to NPM
+
+// lodash library for deep copy
 // import { default as cloneDeep } from './node_modules/lodash-es/cloneDeep.js';
 
 // Bundling - Parcel
@@ -141,10 +143,11 @@ console.log(cart.find(el => el.quantity >= 2));
 console.log(cart.filter(el => el.quantity >= 2));
 Promise.resolve('TEST').then(x => console.log(x));
 
+// Polyfilling
 // These new features we have to polyfill them (using some library):
 import 'core-js/stable';
 
-// Polyfilling recreate defined function and make it available in this bundle so that the code can use it. It's gonna polyfill everything, even tho we don't need it
+///// Polyfilling recreate defined function and make it available in this bundle so that the code can use it. It's gonna polyfill everything, even tho we don't need it
 // if we want to reduce bundle size, if that really is a concern, we can pick what will be polyfilled, but it's a lot of work. for example:
 // import 'core-js/stable/array/find';
 
