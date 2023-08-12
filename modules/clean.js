@@ -1,4 +1,7 @@
-const budget = [
+'use strict';
+
+///// to make object immutable Object.freeze(), which freezes only the first level of the object, we still can change object inside of this object
+const budget = Object.freeze([
   { value: 250, description: 'Sold old TV 📺', user: 'jonas' },
   { value: -45, description: 'Groceries 🥑', user: 'jonas' },
   { value: 3500, description: 'Monthly salary 👩‍💻', user: 'jonas' },
@@ -7,12 +10,19 @@ const budget = [
   { value: -20, description: 'Candy 🍭', user: 'matilda' },
   { value: -125, description: 'Toys 🚂', user: 'matilda' },
   { value: -1800, description: 'New Laptop 💻', user: 'jonas' },
-];
+]);
 
-const spendingLimits = {
+// changing object inside of object
+// budget[0].value = 1000;
+
+const spendingLimits = Object.freeze({
   jonas: 1500,
   matilda: 100,
-};
+});
+
+// we can no longer put any new properties
+// spendingLimits.jay = 200;
+// console.log(spendingLimits); // object would not change
 
 const getLimit = user => spendingLimits?.[user] ?? 0;
 
