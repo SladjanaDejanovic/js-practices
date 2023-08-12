@@ -24,7 +24,7 @@ const spendingLimits = Object.freeze({
 // spendingLimits.jay = 200;
 // console.log(spendingLimits); // object would not change
 
-const getLimit = user => spendingLimits?.[user] ?? 0;
+const getLimit = (limits, user) => limits?.[user] ?? 0;
 
 // Dealing with side effects
 ///////// function that produces side effects(soemthing outside of the function is manipulated or func does something else than retur a value)) is called impure function. To avoid this we should pass in all the data that func need, so it doesn't have to reach to outer scope, and func should not change any of these values. Also creating a copy and then return that copy of the state
@@ -56,7 +56,7 @@ const addExpense = function (
   //   // budget.push({ value: -value, description, cleanUser });
   // }
 
-  return value <= getLimit(cleanUser)
+  return value <= getLimit(limits, cleanUser)
     ? [...state, { value: -value, description, user }]
     : state;
 };
@@ -73,13 +73,30 @@ const newBudget2 = addExpense(
 const newBudget3 = addExpense(newBudget2, spendingLimits, 200, 'Stuff', 'Jay');
 console.log(newBudget3);
 
-const checkExpenses = function () {
-  for (const entry of budget)
-    if (entry.value < -getLimit(entry.user)) entry.flag = 'limit';
-};
-checkExpenses();
+/// Data transformations
+// const checkExpenses2 = function (state, limits) {
+//   return state.map(entry => {
+//     return entry.value < -getLimit(limits, entry.user)
+//       ? { ...entry, flag: 'limit' }
+//       : entry;
+//   });
+//   // for (const entry of budget)
+//   //   if (entry.value < -getLimit(limits, entry.user)) entry.flag = 'limit';
+// };
 
-const logbigExpenses = function (bigLimit) {
+// even simpler:
+const checkExpenses = (state, limits) =>
+  state.map(entry =>
+    entry.value < -getLimit(limits, entry.user)
+      ? { ...entry, flag: 'limit' }
+      : entry
+  );
+// we transformed checkExpenses into a pure function, which does not mutate anything because the map method returns a brand new array. So we give this function an array and it will then create a new one simply by mapping over the original one, creating a brand new array. And in each position of the array, we then either return a copy of the original entry plus the flag property, or return the original entry as it was.
+
+const finalBudget = checkExpenses(newBudget3, spendingLimits);
+console.log(finalBudget);
+
+const logBigExpenses = function (bigLimit) {
   let output = '';
   // if (entry.value <= -bigLimit) {
   //   output += `${entry.description.slice(-2)} / `; // Emojis are 2 chars
@@ -92,7 +109,4 @@ const logbigExpenses = function (bigLimit) {
   console.log(output);
 };
 
-console.log(budget);
-logbigExpenses(500);
-
-//
+logBigExpenses(500);
