@@ -17,6 +17,7 @@ const nav = document.querySelector('.nav');
 ///////////////////////////////////////
 // Modal window
 
+//Changing the display
 const openModal = function (e) {
   e.preventDefault();
   modal.classList.remove('hidden');
