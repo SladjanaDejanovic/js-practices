@@ -120,9 +120,9 @@ const stateClone = Object.assign({}, state);
 const stateDeepClone = cloneDeep(state);
 
 state.user.loggedIn = false;
-console.log(stateClone);
+// console.log(stateClone);
 
-console.log(stateDeepClone);
+// console.log(stateDeepClone);
 
 // whenever we change modules, it will trigger rebuilt with parcel, and that new bundle will be injected into the browser not triggering whole page reload
 if (module.hot) {
@@ -130,7 +130,7 @@ if (module.hot) {
 }
 
 // npx parcel index.html in a folder of a project (in this case it was my folder of modules)
-// another way is to use npm scripts, this way is actually used in practice. this is another way of running locally installed packages in the command line. they also allows us to automate repetative tasks so we don't have to write npx parcel .... every time we want to use it : writing this in package.json in "script" part "start": "parcel index.html", and then in command line type npm run start
+///// another way is to use npm scripts, this way is actually used in practice. this is another way of running locally installed packages in the command line. they also allows us to automate repetative tasks so we don't have to write npx parcel .... every time we want to use it : writing this in package.json in "script" part "start": "parcel index.html", and then in command line type npm run start
 // (before this in "script" there was   "test": "echo \"Error: no test specified\" && exit 1","dev": "parcel index.html")
 
 // so now we have simple command whenever we want to start developing, just typing npm run start , which is the name of the script
@@ -139,11 +139,11 @@ if (module.hot) {
 // Parcel automatically uses babel to transpile our code
 
 // New additions to the language (like Promise, find() and other array methods...) are not converted to ES5 in bundled script, bc Babel can only transpile ES6 syntax (like classes, arrow funcitons etc)
-console.log(cart.find(el => el.quantity >= 2));
-console.log(cart.filter(el => el.quantity >= 2));
-Promise.resolve('TEST').then(x => console.log(x));
+// console.log(cart.find(el => el.quantity >= 2));
+// console.log(cart.filter(el => el.quantity >= 2));
+// Promise.resolve('TEST').then(x => console.log(x));
 
-// Polyfilling
+///// Polyfilling
 // These new features we have to polyfill them (using some library):
 import 'core-js/stable';
 
