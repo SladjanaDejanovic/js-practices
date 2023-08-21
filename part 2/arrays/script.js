@@ -16,7 +16,7 @@ console.log(friends.length);
 //to get last element in array:
 console.log(friends[friends.length - 1]);
 
-//to change array:
+//to change item in array:
 friends[2] = "Jay";
 console.log(friends);
 
