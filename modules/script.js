@@ -17,11 +17,11 @@
 // ShoppingCart.addToCart('bread', 5);
 // console.log(ShoppingCart.totalPrice);
 
-// importing default export (giving it a name we want, without {} like with a named export/import)
+// Importing default export (giving it a name we want, without {} like with a named export/import)
 import add from './shoppingCart.js';
 add('pizza', 2);
 
-// default and named exports can be imported together (but in practice we never mix these two):
+// Default and named exports can be imported together (but in practice we never mix these two):
 // import add, { addToCart, totalPrice as price, tq } from './shoppingCart.js';
 // console.log(price);
 
@@ -85,6 +85,7 @@ const lastPost = getLastPost();
 // console.log(ShoppingCart2);
 // console.log(ShoppingCart2.shippingCost);
 
+//////////////////////
 //// CommonJS modules - in Node.js
 // export
 // export.function(product, quantity){
@@ -100,7 +101,7 @@ const lastPost = getLastPost();
 // lodash library for deep copy
 // import { default as cloneDeep } from './node_modules/lodash-es/cloneDeep.js';
 
-// Bundling - Parcel
+//// Bundling - Parcel
 // with parcel (or any other bundler) there is no need to specify the entire path to a module, instead all we need to say is we want to include lodash library:
 // import { default as cloneDeep } from 'lodash-es';
 
@@ -143,6 +144,7 @@ if (module.hot) {
 // console.log(cart.filter(el => el.quantity >= 2));
 // Promise.resolve('TEST').then(x => console.log(x));
 
+///////////
 ///// Polyfilling
 // These new features we have to polyfill them (using some library):
 import 'core-js/stable';
