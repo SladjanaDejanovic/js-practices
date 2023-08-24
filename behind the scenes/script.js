@@ -71,7 +71,7 @@ const slady = {
 };
 slady.calcAge();
 
-// when we have method call, this keyword inside of the method will be the object that is calling the method(in this case slady object)
+// this keyword inside of the method will be the object that is calling the method(in this case slady object)
 // this keyword will point to the object that is calling the method, not the method where we wrote this keyword
 
 /// Method borrowing  /////////
@@ -93,8 +93,8 @@ const slady = {
   calcAge: function () {
     console.log(2023 - this.year);
 
-    // regular function call has the this keyword set to undefined.
-    // There are two solutions to this problem. - use an extra variable that we usually call self outside of the function, and then we set that to this.  And so then through the scope chain, self will be equal to this. And so JavaScript goes up the scope chain, into the parent scope, which is calcAge. So here is where self is defined, and it is defined as this.
+    // regular function call has the this keyword set to undefined
+    // There are two solutions to this problem - use an extra variable that we usually call self outside of the function, and then we set that to this.  And so then through the scope chain, self will be equal to this. And so JS goes up the scope chain, into the parent scope, which is calcAge. So here is where self is defined, and it is defined as this
 
     // const self = this;
     // const isMillenial = function () {
@@ -105,7 +105,7 @@ const slady = {
     // isMillenial(); // bc this is a regular function call (not an arrow function), this kw in it is undefiend, so we get an error when calling it
 
     // Second, more modern solution is to use arrow function
-    // bc arrow function doesn't have its own this kw, so it will look up fore parent's this kw, in this case it's in calcAge
+    // bc arrow function doesn't have its own this kw, so it will look up for parent's this kw, in this case it's in calcAge
     const isMillenial = () => {
       console.log(this);
       console.log(this.year >= 1981 && this.year <= 1996);
@@ -123,7 +123,7 @@ slady.calcAge();
 
 // Arguments keyword //////
 
-// functions also get access to an arguments keyword.  just like the this keyword, the arguments keyword is only available in regular functions.
+// functions also get access to an arguments keyword. Just like the this keyword, the arguments keyword is only available in regular functions
 
 const addExpr = function (a, b) {
   console.log(arguments);
@@ -131,7 +131,7 @@ const addExpr = function (a, b) {
 };
 addExpr(2, 5);
 
-// this can be useful when we need a function to accept more parameters than we actually specified. it is completely legal to add more arguments. They will not have a name, so we didn't name them, but they exist. And we can see them here in the arguments array.
+// this can be useful when we need a function to accept more parameters than we actually specified. it is completely legal to add more arguments. They will not have a name, so we didn't name them, but they exist. And we can see them here in the arguments array
 addExpr(2, 5, 8, 12);
 
 //arrow func doesn't have access to arguments kw
