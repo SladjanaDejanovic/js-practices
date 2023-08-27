@@ -36,10 +36,10 @@ const c = arr[2];
 
 // with destructuring we can do that in one go:
 const [x, y, z] = arr;
-// console.log(x, y, z);
-// console.log(arr);
+console.log(x, y, z);
+console.log(arr);
 
-//taking only two first values :
+//taking only two first values:
 // const [first, second] = restaurant.categories;
 // console.log(first, second);
 
