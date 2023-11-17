@@ -7,11 +7,6 @@ const Person = function (firstName, birthYear) {
   // Instance properties - will be available on all instances that are created through this constructor func
   this.firstName = firstName;
   this.birthYear = birthYear;
-
-  // NEVER create method inside constructor func
-  // this.calcAge = function () {
-  //   console.log(2037 - this.birthYear);
-  // };
 };
 
 const slady = new Person('Slady', 1994);
@@ -260,7 +255,6 @@ class Account {
   }
 
   requestLoan(val) {
-    // if (this.#approveLoan(val)) {
     if (this._approveLoan(val)) {
       this.deposit(val);
       console.log(`Loan approved`);
@@ -269,7 +263,7 @@ class Account {
   }
 
   // 4) Private methods - still not available in Chrome
-  // #approveLoan(val) {
+
   _approveLoan(val) {
     return true;
   }
