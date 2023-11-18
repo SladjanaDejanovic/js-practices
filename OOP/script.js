@@ -288,9 +288,9 @@ acc1.requestLoan(1000);
 // acc1.approveLoan(1000);
 
 ///////////////////////
-// ENCAPSULATION - protected propertis and methods
+// ENCAPSULATION - protected properties and methods
 
-// with convention - adding underscore before name, this doesn't raelly make data private, so we call this PROTECTED PROPERTY. This property is not supposed to be touched outside of the class. If we want to do that, then we'l have to implement a public method for it
+// with convention - adding underscore before name, this doesn't raelly make data private, so we call this PROTECTED PROPERTY. This property is not supposed to be touched outside of the class. If we want to do that, then we'll have to implement a public method for it
 
 console.log(acc1.getMovements());
 
@@ -300,11 +300,11 @@ console.log(acc1.getMovements());
 // 2) Private fields
 // 3) Public methods
 // 4) Private methods
-// (there is also static verseion) - static won't be availble on all the instances but only on class itself, useful for helper functions
+// (there is also static version) - static won't be availble on all instances but only on class itself, useful for helper functions
 Account.helper();
 
 // we can think of a field like a property that's gonna be on all instances (in our example those are movements and locale) - we are not getting it from constructor of an object, where properties might have different values based on input of every new object.. fields will be same for all objects
-// fields can't be defined in the construcotr
+// fields can't be defined in the constructor
 
 // 2)- properties are really not accessable from the outside of the class, using # before name of property
 // console.log(acc1.#movements); // error: be declared in an enclosing class
