@@ -311,11 +311,11 @@ Account.helper();
 
 //4) useful to hide implementation details from the outside
 
-///////////////////
+///////////////////////
 // Chaining methods
 
 // - we have to return object before calling next method (look lines with deposit() and withdraw())
-// return this   mkaes methods chainable
+// return this   mkaks methods chainable
 
 acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000);
 console.log(acc1.getMovements());
