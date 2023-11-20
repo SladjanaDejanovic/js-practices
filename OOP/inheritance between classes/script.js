@@ -12,7 +12,7 @@ Person.prototype.calcAge = function () {
   console.log(2037 - this.birthYear);
 };
 
-// we want a child class to have some additional functionalities, so usually we pass in the same argumnets but also some aditional ones
+// we want a child class to have some additional functionalities, so usually we pass in the same arguments but also some aditional ones
 
 const Student = function (firstName, birthYear, course) {
   // this.firstName = firstName;
