@@ -15,10 +15,6 @@ Person.prototype.calcAge = function () {
 // we want a child class to have some additional functionalities, so usually we pass in the same arguments but also some aditional ones
 
 const Student = function (firstName, birthYear, course) {
-  // this.firstName = firstName;
-  // this.birthYear = birthYear;
-  // in order to keep up with DRY and in case that implemetation of Person changes in future:
-
   Person.call(this, firstName, birthYear); // we have to use .call(), bc if just call Person function as a regular function, this kw in it will be undefined, by using .call() it will set this kw
   this.course = course;
 };
