@@ -16,8 +16,6 @@ let highscore = 0;
 const displayMessage = function (message) {
   document.querySelector(".message").textContent = message;
 };
-//Event here is "click", and we need to specify the reaction to the click event. We are doing that by defining a function which is called the event handler.
-//.addEventListener - 1st arguments is event. 2nd argument is event handler function
 
 document.querySelector(".check").addEventListener("click", function () {
   const guess = Number(document.querySelector(".guess").value);
