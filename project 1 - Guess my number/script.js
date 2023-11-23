@@ -8,7 +8,7 @@ document.querySelector(".guess").value = 23; //bc .guess is input, so we can cha
 */
 
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
-let score = 20; //it's better to store value in variable in code, than to have it only on DOM
+let score = 20;
 //this score variable could be called state variable, bc it's a part of so-called aplication state(all data relevant to the aplication)
 
 let highscore = 0;
