@@ -32,7 +32,7 @@ document.querySelector(".check").addEventListener("click", function () {
     displayMessage("🎉 Correct number!");
     document.querySelector(".number").textContent = secretNumber;
 
-    document.querySelector("body").style.backgroundColor = "#60b347"; //in css it's background-color, but in js it's with cammel case writing, so it then becomes backgroundColor. this is the case for all properties that have 2 or more words in their name
+    document.querySelector("body").style.backgroundColor = "#60b347";
     document.querySelector(".number").style.width = "30rem"; //whenever we're manipulating a style we always specify a string
 
     if (score > highscore) {
