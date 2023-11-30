@@ -66,4 +66,4 @@ document.querySelector(".again").addEventListener("click", function () {
   document.querySelector("body").style.backgroundColor = "#222";
 });
 
-//tip for DRY: whenever we have repeating lines of code or lines that are almost the same, good thing to do is making a func and than calling it every time instead fo those lines of coe (in this case with displayed message)
+
