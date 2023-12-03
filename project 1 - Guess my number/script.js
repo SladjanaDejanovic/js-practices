@@ -1,10 +1,4 @@
 "use strict";
-/*
-console.log(document.querySelector(".message").textContent);
-document.querySelector(".number").textContent = 13;
-
-
-*/
 
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
