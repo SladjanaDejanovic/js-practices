@@ -4,7 +4,6 @@ console.log(document.querySelector(".message").textContent);
 document.querySelector(".number").textContent = 13;
 
 
-document.querySelector(".guess").value = 23; //bc .guess is input, so we can change its value
 */
 
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
@@ -23,7 +22,6 @@ document.querySelector(".check").addEventListener("click", function () {
 
   //When there is no input
   if (!guess) {
-    
     displayMessage("⛔ No number!");
 
     //When player wins
