@@ -2,7 +2,6 @@
 /*
 data structures in js: arrays and objects
 
-array is like a big container that we can put variables and later reference them
 
 */
 
@@ -43,8 +42,6 @@ const ages = [
 ];
 console.log(ages);
 
-//js has built in functions that we can apply directly on arrays, called METHODS. we can think of them as array operations
-
 //////Adding elements
 //to add an element to the end array:
 friends.push("Peter");
@@ -52,7 +49,6 @@ console.log(friends);
 
 //if we wanna add something then check how long array is, store it in a variable then call it in console.log:
 // const newLenght = friends.push("Bob");
-// console.log(newLenght);
 
 //to add element on the beginning of the array:
 friends.unshift("John");
