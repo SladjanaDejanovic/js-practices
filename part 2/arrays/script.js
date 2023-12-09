@@ -40,19 +40,19 @@ const ages = [
   calcAge(years[1]),
   calcAge(years[years.length - 1]),
 ];
-console.log(ages);
+// console.log(ages);
 
 //////Adding elements
 //to add an element to the end array:
 friends.push("Peter");
-console.log(friends);
+// console.log(friends);
 
 //if we wanna add something then check how long array is, store it in a variable then call it in console.log:
 // const newLenght = friends.push("Bob");
 
 //to add element on the beginning of the array:
 friends.unshift("John");
-console.log(friends);
+// console.log(friends);
 
 ///Removing elements
 //remove last el:
