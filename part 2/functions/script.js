@@ -27,8 +27,6 @@ if (hasDriversLicense) console.log("I can drive!");
 //   console.log("My name is Slady");
 // }
 
-// logger(); //  --->  invoking/calling/running the function
-
 // function fruitProcessor(apples, oranges) {
 //   //these parameters represent the input data of this function
 //   const juice = `Juice with ${apples} apples and ${oranges} oranges.`;
