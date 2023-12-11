@@ -121,9 +121,6 @@ const stateClone = Object.assign({}, state);
 const stateDeepClone = cloneDeep(state);
 
 state.user.loggedIn = false;
-// console.log(stateClone);
-
-// console.log(stateDeepClone);
 
 // whenever we change modules, it will trigger rebuilt with parcel, and that new bundle will be injected into the browser not triggering whole page reload
 if (module.hot) {
