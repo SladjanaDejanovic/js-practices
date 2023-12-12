@@ -76,13 +76,13 @@ console.log(Math.min(5, 18, 23, 11, 2));
 // there are also constatnts on Math object (Math namespace)
 
 // calc area of a circle with radius 10px
-console.log(Math.PI * Number.parseFloat('10px') ** 2);
+// console.log(Math.PI * Number.parseFloat('10px') ** 2);
 
 // generate random value between 2 integers
 const randomInt = (min, max) =>
   Math.trunc(Math.random() * (max - min) + 1) + min;
 // 0 ...1 -> 0 ... (max-min) -> min...max
-console.log(randomInt(10, 20));
+// console.log(randomInt(10, 20));
 
 //////////////////////////////////////
 ////// Rounding  /////////////
