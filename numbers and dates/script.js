@@ -57,7 +57,7 @@
 //////// Math   ///////////////
 
 //squere root
-console.log(Math.sqrt(25));
+// console.log(Math.sqrt(25));
 // console.log(25 ** (1 / 2));
 
 //cubic root
