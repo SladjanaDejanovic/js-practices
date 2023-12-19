@@ -92,10 +92,10 @@ const randomInt = (min, max) =>
 console.log(Math.round(23.3)); // to nearest
 
 console.log(Math.ceil(23.9)); // round up
-console.log(Math.ceil(23.3));
+// console.log(Math.ceil(23.3));
 
 console.log(Math.floor(23.3)); // round down
-console.log(Math.floor('23.9'));
+// console.log(Math.floor('23.9'));
 
 //decimals
 console.log((2.7).toFixed(0)); //it will return a string
