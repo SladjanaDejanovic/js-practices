@@ -18,9 +18,9 @@ booker(); // that's why this function now can change variable passengerCount, so
 booker(); // now it's 2 passengers
 booker(); // 3 passengers
 
-// closure is liek a backpack that a func carries around wherever it goes. this backpack has all the variables that were present in the environment where the functio was created
+// closure is like a backpack that a func carries around wherever it goes. this backpack has all the variables that were present in the environment where the function was created
 
-// we are not creating closires, this is something js does behind the scenes, we can observe it happening
+// we are not creating closures, this is something js does behind the scenes, we can observe it happening
 
 console.dir(booker);
 
