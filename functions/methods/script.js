@@ -16,7 +16,7 @@ const lufthansa = {
 
 lufthansa.book(239, "Sladjana Dejanovic");
 lufthansa.book(345, "John Smith");
-console.log(lufthansa.bookings);
+// console.log(lufthansa.bookings);
 
 const eurowings = {
   airline: "Eurowings",
