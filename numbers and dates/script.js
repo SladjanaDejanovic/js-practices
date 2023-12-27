@@ -105,7 +105,7 @@ console.log(+(2.7356).toFixed(2)); //shortening to 2 decimals
 //////////////////////////////
 ////// Remainder operator (remainder of a division)
 ///////////////////////
-console.log(5 % 2);
+// console.log(5 % 2);
 console.log(5 / 2); // 5 = 2 * 2 + 1
 
 console.log(8 % 3);
