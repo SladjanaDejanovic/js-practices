@@ -24,7 +24,7 @@ document.querySelector(".check").addEventListener("click", function () {
     document.querySelector(".number").textContent = secretNumber;
 
     document.querySelector("body").style.backgroundColor = "#60b347";
-    document.querySelector(".number").style.width = "30rem"; //whenever we're manipulating a style we always specify a string
+    document.querySelector(".number").style.width = "30rem";
 
     if (score > highscore) {
       highscore = score;
