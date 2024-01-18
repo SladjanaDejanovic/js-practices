@@ -14,7 +14,7 @@ console.log(x);
 // console.log(x);
 
 // we can also specify where we want to start o fill
-x.fill(1, 3, 5); // second parameter is position, 3rd is ned parameter (just like in slice)
+x.fill(1, 3, 5); // second parameter is position, 3rd is end parameter (just like in slice)
 console.log(x);
 
 // we can use fill() on other arrays, doesn't have to be empty array
