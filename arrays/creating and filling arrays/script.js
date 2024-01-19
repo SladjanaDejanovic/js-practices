@@ -26,7 +26,7 @@ console.log(arr);
 const y = Array.from({ length: 7 }, () => 1); // specifying length and then callback function (on every iteration it wil put 1)
 console.log(y);
 
-const z = Array.from({ length: 7 }, (_, i) => i + 1); //callback func has 2 parameters, of which index is always second, we don't need this first parameter(current element) so we can put undescore (_) as a throwaeay parameter
+const z = Array.from({ length: 7 }, (_, i) => i + 1); //callback func has 2 parameters, of which index is always second, we don't need this first parameter(current element) so we can put undescore (_) as a throwaway parameter
 console.log(z);
 
 // if we wanna use array methods on node list (we get node list when we use querySelectorAll, it's not a real array) we first have to convert it into array
