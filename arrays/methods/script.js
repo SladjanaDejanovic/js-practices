@@ -5,7 +5,7 @@ let arr = ['a', 'b', 'c', 'd', 'e'];
 //// // Slice method ///
 
 // it returns new array, doesn't change original array
-console.log(arr.slice(2)); // specifying starting position from whihc we are slicing
+console.log(arr.slice(2)); // specifying starting position from which we are slicing
 // we can define end parameter too (which won't be included in the output, length is end parameter minus begining):
 console.log(arr.slice(2, 4));
 
