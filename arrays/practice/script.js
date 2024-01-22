@@ -69,7 +69,7 @@ const { deposits, withdrawals } = accounts
     },
 
     { deposits: 0, withdrawals: 0 }
-  ); // here acculuator is called sums, and it's basically this second object with deposits and withdrawals, on that we are gonna add our values
+  ); // here accumulator is called sums, and it's basically this second object with deposits and withdrawals, on that we are gonna add our values
 
 console.log(deposits);
 console.log(withdrawals);
