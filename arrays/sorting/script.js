@@ -12,7 +12,7 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 console.log(movements);
 console.log(movements.sort()); // doesn't sort as we expect
 
-// so we have to fix this by passong in compare callback func into sort method:
+// so we have to fix this by passing in compare callback func into sort method:
 // movements.sort((a, b) => {
 //   // (a, b) current value and next value
 //   // ascending order
