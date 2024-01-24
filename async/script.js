@@ -49,7 +49,7 @@ const getCountryAndNeighbour = function (country) {
     // Render country 1
     renderCountry(data);
 
-    // Get neighbour country (2)
+    // Get neighbour country 2
     const [neighbour] = data.borders;
 
     if (!neighbour) return;
