@@ -337,7 +337,7 @@ const getPosition = function () {
 
 ///////////////////////////////////////////////////
 // CONSUMING PROMISES WITH ASYNC/AWAIT
-// making asynchronous func that will keep running in the background while performing the code that's inside of it. after this func is done it automatically returns a promise. inside async func we can have 1 or more await statements
+// making asynchronous func that will keep running in the background while performing the code that's inside of it. after this func is done, it automatically returns a promise. inside async func we can have 1 or more await statements
 
 // fetch() returns a promise
 // we can await until the value of the promise is returned, and then just assign that value to a variable
