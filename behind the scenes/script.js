@@ -37,7 +37,7 @@ function calcAge(birthYear) {
   return age;
 }
 
-//So only an inner scope can have access to the variables of its outer scope, but not the other way around.
+//... So only an inner scope can have access to the variables of its outer scope, but not the other way around.
 
 const firstName = "Slady";
 calcAge(1994);
@@ -121,7 +121,7 @@ const slady = {
 slady.greet();
 slady.calcAge();
 
-// Arguments keyword //////
+////// Arguments keyword //////
 
 // functions also get access to an arguments keyword. Just like the this keyword, the arguments keyword is only available in regular functions
 
