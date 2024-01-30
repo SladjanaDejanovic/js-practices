@@ -173,7 +173,7 @@ console.log("Me:", me);
 // so when we think that we are copying the object (friend = me), we are actually creating a new variable that is pointing to the exact same object
 */
 
-/// practising:
+/// practicing:
 let lastName = "Williams";
 let oldLastName = lastName;
 lastName = "Davis";
@@ -190,7 +190,7 @@ marriedJessica.lastName = "Davis";
 console.log("Before marriage:", jessica);
 console.log("After marriage:", marriedJessica);
 
-// both of these two variables (jessica nad marriedJessica) simply point to exactly the same memory address in the heap. And that's because in the stack, they both hold the same memory address reference. And so of course, it makes sense that if we change a property on marriedJessica, it will also change on Jessica itself.
+// both of these two variables (jessica nad marriedJessica) simply point to exactly the same memory address in the heap. And that's because in the stack, they both hold the same memory address reference. If we change a property on marriedJessica, it will also change on Jessica itself.
 // const is not the problem here, bc the only thing it has to be constant is the value in stack, which we are not actually changing. The only thing that we are changing is the underlying object that is stored in the heap.
 // we can't change the value to the new memory address ( marriedJessica = {}), if it's not let
 
