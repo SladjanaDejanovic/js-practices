@@ -192,7 +192,7 @@ console.log("After marriage:", marriedJessica);
 
 // both of these two variables (jessica nad marriedJessica) simply point to exactly the same memory address in the heap. And that's because in the stack, they both hold the same memory address reference. If we change a property on marriedJessica, it will also change on Jessica itself.
 // const is not the problem here, bc the only thing it has to be constant is the value in stack, which we are not actually changing. The only thing that we are changing is the underlying object that is stored in the heap.
-// we can't change the value to the new memory address ( marriedJessica = {}), if it's not let
+// we can't change the value to the new memory address ( marriedJessica = {}), if it's not let )
 
 // Copying the object, and changing one without affecting the other:
 
@@ -211,7 +211,7 @@ jessicaCopy.lastName = "Davis";
 // console.log("After marriage:", jessicaCopy);
 
 jessicaCopy.family.push("Mary");
-jessicaCopy.family.push("John"); // we are now manipalitng object whitin the object (array that is inside an object literal)
+jessicaCopy.family.push("John"); // we are now manipulitng object whitin the object (array that is inside an object literal)
 
 console.log("Before marriage:", jessica2);
 console.log("After marriage:", jessicaCopy);
