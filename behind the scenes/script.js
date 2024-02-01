@@ -215,4 +215,4 @@ jessicaCopy.family.push("John"); // we are now manipulitng object whitin the obj
 
 console.log("Before marriage:", jessica2);
 console.log("After marriage:", jessicaCopy);
-// now both of them has an array of 4 members
+// now both of them have an array of 4 members
