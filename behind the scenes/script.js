@@ -203,7 +203,7 @@ const jessica2 = {
   family: ["Alice", "Bob"],
 };
 
-const jessicaCopy = Object.assign({}, jessica2); // calling this function, which will create a new object with all properies copied
+const jessicaCopy = Object.assign({}, jessica2); // calling this function, which will create a new object with all properties copied
 // this is a shallow copy, meaning it only copies on first level, while deep clone would copy everything
 
 jessicaCopy.lastName = "Davis";
