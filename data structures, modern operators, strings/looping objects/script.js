@@ -79,7 +79,7 @@ console.log(openStr);
 const values = Object.values(openingHours);
 console.log(values);
 
-/// ENTRIES are VALUES and PROPERTY NAMES together(it's different tha entries method for arrays, bc there it will give index and element itself)
+/// ENTRIES are VALUES and PROPERTY NAMES together(it's different than entries method for arrays, bc there it will give index and element itself)
 
 /// ENTIRE object
 const entries = Object.entries(openingHours);
