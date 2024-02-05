@@ -55,7 +55,7 @@ const restaurant = {
   },
 };
 
-// set is a collection of a unique values, set can't ever have any duplicates
+// set is a collection of a unique values, set can't have any duplicates
 // Set can hold mixed data types
 // in Set() we have to pass iterable, so array, object or string
 const orderSet = new Set([
