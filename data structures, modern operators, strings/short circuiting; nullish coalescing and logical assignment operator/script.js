@@ -71,7 +71,7 @@ console.log(undefined || null);
 console.log(undefined || 0 || "" || "Hello" || 23 || null);
 
 // practical example
-restaurant.numGuests = 23; // if this number is 0, than it will show default, bc 0 is falsy value
+restaurant.numGuests = 23; // if this number is 0, then it will show default, bc 0 is falsy value
 
 const guests1 = restaurant.numGuests ? restaurant.numGuests : 10; // to check if numGuests exists, if not default value is 10...
 console.log(guests1);
