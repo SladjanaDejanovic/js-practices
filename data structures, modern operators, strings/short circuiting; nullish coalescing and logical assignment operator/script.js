@@ -81,7 +81,7 @@ console.log(guests2);
 
 console.log("------ AND ------");
 
-// /// AND works in opposite way of OR, it short-circuits when the first operant is falsy
+///// /// AND works in opposite way of OR, it short-circuits when the first operant is falsy
 
 console.log(0 && "Slady"); // it returns falsy value, without even evaluatung the second operant
 
@@ -97,7 +97,7 @@ if (restaurant.orderPizza) {
 
 restaurant.orderPizza && restaurant.orderPizza("mushroom", "cheese"); // if orderPizza exists then call that function
 
-/// The nullish coalescing operator (??) ///////
+/////// The nullish coalescing operator (??) ///////
 
 // this works with principle of nullish values, which are : null and undefiend, NOT including 0 or " " (it sees 0 nad " " as truthy values)
 console.log("---- ?? -----");
