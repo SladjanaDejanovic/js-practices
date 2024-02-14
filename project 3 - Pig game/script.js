@@ -20,7 +20,7 @@ const init = function () {
   diceEl.classList.add("hidden");
 
   //set scores to 0
-  scores = [0, 0]; //score of player 1 would be in index 0, player 2 in index 1
+  scores = [0, 0];
   currentScore = 0;
   score0El.textContent = 0;
   score1El.textContent = 0;
